@@ -16,7 +16,6 @@ class QuestionApi {
             nome: nome,
             options: opcao,
         };
-    
         this.questions.push(NovaQuestao);
     }
     constructor() {
@@ -30,7 +29,10 @@ let questionApi = new QuestionApi();
 for (let index = 0; index < 5; index++) {
     questionApi.addQuestion("Teste " + index, 
         [
-        {resposta: "a", propiedades: [1, 2, 3, 4, 5]}
+        {resposta: "a", propiedades: [1, 2, 3, 4, 5]},
+        {resposta: "b", propiedades: [1, 2, 3, 4, 5]},
+        {resposta: "c", propiedades: [1, 2, 3, 4, 5]},
+        {resposta: "d", propiedades: [1, 2, 3, 4, 5]}
         ]);
     console.log(questionApi.questions);
     
