@@ -1,6 +1,14 @@
+interface arquetipos{
+    
+        tipo1: number,
+        tipo2: number,
+        tipo3: number,
+        tipo4: number,
+        tipo5: number,
+}
 interface opcao{
     resposta: string;
-    propiedades: [number, number, number, number, number];
+    propiedades:arquetipos;
 }
 interface Question {
     nome: string;
@@ -10,7 +18,7 @@ interface Question {
 
 class QuestionApi {
     questions: Question[] = [];
-    resposta: [number, number, number, number, number][] = [];
+    resposta: arquetipos[] = [];
     addQuestion(nome: string, opcao: opcao[]) {
 
         let NovaQuestao: Question = {
@@ -30,10 +38,10 @@ let questionApi = new QuestionApi();
 for (let index = 0; index < 5; index++) {
     questionApi.addQuestion("Teste " + index, 
         [
-        {resposta: "a", propiedades: [1, 2, 3, 4, 5]},
-        {resposta: "b", propiedades: [1, 2, 3, 4, 5]},
-        {resposta: "c", propiedades: [1, 2, 3, 4, 5]},
-        {resposta: "d", propiedades: [1, 2, 3, 4, 5]}
+        {resposta: "a", propiedades: {tipo1: 1, tipo2: 2, tipo3: 3, tipo4: 4, tipo5: 5}},
+        {resposta: "b", propiedades: {tipo1: 1, tipo2: 2, tipo3: 3, tipo4: 4, tipo5: 5}},
+        {resposta: "c", propiedades: {tipo1: 1, tipo2: 2, tipo3: 3, tipo4: 4, tipo5: 5}},
+        {resposta: "d", propiedades: {tipo1: 1, tipo2: 2, tipo3: 3, tipo4: 4, tipo5: 5}},
         ]);
     console.log(questionApi.questions);
 }
