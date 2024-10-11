@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import selectGameAPI from '../../Controlers/SelectGameApi'
 import './SelectGame.css'
 import './Slider.css'
 function SelectGame() {
@@ -11,7 +11,15 @@ function SelectGame() {
     
     function handleChange(event: any, setRange1: any) {
         setRange1(event.target.value)
+
+        
     }
+    selectGameAPI.arquetipos.tipo1 = range1;
+    selectGameAPI.arquetipos.tipo2 = range2;
+    selectGameAPI.arquetipos.tipo3 = range3;
+    selectGameAPI.arquetipos.tipo4 = range4;
+    selectGameAPI.arquetipos.tipo5 = range5;
+    
   return (
     <div className='GameSelectCtn'>
         <h2>Selecione o Tipo de Jogador pro seu jogo</h2>
@@ -38,7 +46,7 @@ function SelectGame() {
                     <input onChange={(e)=>{handleChange(e,setRange5)}} type="range" id="html" name="fav_language" ></input>
                     <label >{range5}</label>
                 </li>
-                
+
             </ul>
            
         </section>
