@@ -1,20 +1,28 @@
 import { useState } from 'react'
 
-import './SelectGame.css'
-import './Slider.css'
-function SelectGame() {
+import './Question.css'
+type Props = {
+    nome: string
+    options: string[]
+}
+function SelectGame(props: Props) {
   const [count, setCount] = useState(0)
-
+  const nome = props.nome
+  const options = props.options
+  
   return (
-    <div className='GameSelectCtn'>
-        <h2>Selecione o Tipo de Jogador pro seu jogo</h2>
-        
-                        
-
-           
-
-
-        
+    <div className='QuestionCtn'>
+        <h2>{nome}</h2>
+        <ul>
+            {options.map((option) => {
+                return (
+                    <li>
+                        <h3>{option}</h3>
+                       
+                    </li>
+                )
+            })}
+        </ul>
     </div>
   )
 }

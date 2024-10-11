@@ -59,3 +59,12 @@
     width: fit-content;
     padding-right: 30px;
 }
+.GameSelectCtn ul li h2{
+    background-color: rgb(121, 121, 121);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    width: auto;
+    flex: 1 0 21%; /* explanation below */
+    padding-right: 30px;
+}
