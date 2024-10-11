@@ -1,12 +1,16 @@
 import { useState } from 'react'
 
 import './Question.css'
+interface opcao{
+    resposta: string;
+    propiedades: [number, number, number, number, number];
+}
 type Props = {
     nome: string
-    options: string[],
+    options: opcao[],
     questao?: any
 }
-function SelectGame(props: Props) {
+function Question(props: Props) {
   const [count, setCount] = useState(0)
   const nome = props.nome
   const options = props.options
@@ -17,11 +21,12 @@ function SelectGame(props: Props) {
     <div className='QuestionCtn'>
         <h2>{nome}</h2>
         <ul>
-            {options.map((option) => {
+            {
+            options.map((option) => {
+
                 return (
                     <li>
-                        <h3>{option}</h3>
-                       
+                        <h3>{option.resposta}</h3>
                     </li>
                 )
             })}
@@ -30,4 +35,4 @@ function SelectGame(props: Props) {
   )
 }
 
-export default SelectGame
+export default Question

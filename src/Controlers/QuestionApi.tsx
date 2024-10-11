@@ -2,8 +2,6 @@ interface opcao{
     resposta: string;
     propiedades: [number, number, number, number, number];
 }
-
-
 interface Question {
     nome: string;
     options: opcao[];
@@ -12,21 +10,13 @@ interface Question {
 
 class QuestionApi {
     questions: Question[] = [];
+    addQuestion(nome: string, opcao: opcao[]) {
 
-    addQuestion(nome: string, textoOpcao: string[], propsOpcao: [number, number, number, number, number][]) {
-        let OpcoesQuest: opcao[] = [];
-        for (let i=0; i< textoOpcao.length; i++){
-            let optionDefinir: opcao = {
-                resposta: textoOpcao[i],
-                propiedades: propsOpcao[i] as [number, number, number, number, number],
-            };
-            OpcoesQuest.push(optionDefinir);
-        }
-        
         let NovaQuestao: Question = {
             nome: nome,
-            options: OpcoesQuest,
+            options: opcao,
         };
+    
         this.questions.push(NovaQuestao);
     }
     constructor() {
@@ -35,8 +25,14 @@ class QuestionApi {
 }
 
 let questionApi = new QuestionApi();
+
+
 for (let index = 0; index < 5; index++) {
-    //questionApi.addQuestion("Teste " + index, ["a", [1, 2, 3, 4, 5]]);
+    questionApi.addQuestion("Teste " + index, 
+        [
+        {resposta: "a", propiedades: [1, 2, 3, 4, 5]}
+        ]);
+    console.log(questionApi.questions);
     
 }
 export default questionApi;

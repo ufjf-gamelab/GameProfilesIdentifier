@@ -16,15 +16,15 @@ function App() {
       
       <main>
         {
-          Start ? (
-            <Question nome={"Bem Vindo"} options={questoes[count].options}></Question>
-          ) : (
+            
             questoes.map((questao) => {
+
+              
               return (
-                  <Question nome={questao.nome} options={questao.options} questao = {questao}/>
+                <Question nome={questao.nome} options={questao.options}></Question>
               )
             }) 
-          )
+          
           
         }
       </main>
