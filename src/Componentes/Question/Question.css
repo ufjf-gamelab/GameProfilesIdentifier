@@ -14,7 +14,19 @@
 
     padding-top: 15px;
     padding-bottom: 15px;
-
+}
+.fadeIn{
+    animation: fadeIn 0.5s;
+}
+@keyframes fadeIn{
+    from{
+        opacity: 1;
+    }
+    to{
+        
+        transform: translateX(+100%);
+        opacity: 0;
+    }
 }
 .QuestionCtn h2{
     height: 30px;
