@@ -1,9 +1,16 @@
 import { useState } from 'react'
 import questionApi from '../../Controlers/QuestionApi';
 import './Question.css'
+interface arquetipos{
+    tipo1: number,
+    tipo2: number,
+    tipo3: number,
+    tipo4: number,
+    tipo5: number,
+}
 interface opcao{
     resposta: string;
-    propiedades: [number, number, number, number, number];
+    propiedades: arquetipos;
 }
 type Props = {
     nome: string
