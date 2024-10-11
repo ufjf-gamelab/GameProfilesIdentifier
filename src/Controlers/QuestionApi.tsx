@@ -10,6 +10,7 @@ interface Question {
 
 class QuestionApi {
     questions: Question[] = [];
+    resposta: [number, number, number, number, number][] = [];
     addQuestion(nome: string, opcao: opcao[]) {
 
         let NovaQuestao: Question = {
@@ -35,6 +36,5 @@ for (let index = 0; index < 5; index++) {
         {resposta: "d", propiedades: [1, 2, 3, 4, 5]}
         ]);
     console.log(questionApi.questions);
-    
 }
 export default questionApi;
