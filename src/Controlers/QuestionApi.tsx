@@ -21,7 +21,5 @@ class QuestionApi {
 let questionApi = new QuestionApi();
 for (let index = 0; index < 5; index++) {
     questionApi.addQuestion("Teste "+index, ["a", "b","c","d"]);
-
-    
 }
 export default questionApi;

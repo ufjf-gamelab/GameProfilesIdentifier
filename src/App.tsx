@@ -9,22 +9,19 @@ import questionApi from './Controlers/QuestionApi.js'
 function App() {
   const [count, setCount] = useState(0)
   const questoes = questionApi.questions
-  let Start = false
   return (
     <div className='App'>
       <Header></Header>
       
       <main>
         {
-          Start ? (
-            <Question nome={"Bem Vindo"} options={questoes[count].options}></Question>
-          ) : (
+          
             questoes.map((questao) => {
               return (
                   <Question nome={questao.nome} options={questao.options} questao = {questao}/>
               )
             }) 
-          )
+          
           
         }
       </main>
