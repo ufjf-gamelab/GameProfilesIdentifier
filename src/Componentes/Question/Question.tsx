@@ -12,21 +12,25 @@ type Props = {
 }
 function Question(props: Props) {
   const [count, setCount] = useState(0)
-  const [visivel,setVisivel] = useState(true)
+  const [fadeIn,setfadeIn] = useState("")
+  const [display, setDisplay] = useState("")
   const nome = props.nome
   const options = props.options
   function clique (opcao: opcao){
-    //fazer soma de propriedades agui
     console.log(opcao);
-    setVisivel(false);
-  }
-   
-  if (!visivel){
-    return null;
+    setfadeIn('fadeIn');
+    setTimeout(() => {
+        setDisplay('none');
+    }, 450);
+
   }
 
+
+
+  
+
   return (
-    <div className='QuestionCtn'>
+    <div className={'QuestionCtn ' + fadeIn} style={{display:display}} >
         <h2>{nome}</h2>
         <ul>
             {
