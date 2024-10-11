@@ -1,6 +1,7 @@
 interface Question {
     nome: string;
     options: string[];
+    selected?: number;
 }
 
 class QuestionApi {
