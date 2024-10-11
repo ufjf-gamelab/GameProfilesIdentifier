@@ -9,7 +9,6 @@ import questionApi from './Controlers/QuestionApi.js'
 function App() {
   const [count, setCount] = useState(0)
   const questoes = questionApi.questions
-  let Start = false
   return (
     <div className='App'>
       <Header></Header>
