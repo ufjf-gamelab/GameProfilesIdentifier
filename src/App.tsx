@@ -15,10 +15,12 @@ function App() {
       
       <main>
         {
-          
+            
             questoes.map((questao) => {
+
+              
               return (
-                  <Question nome={questao.nome} options={questao.options} questao = {questao}/>
+                <Question nome={questao.nome} options={questao.options}></Question>
               )
             }) 
           

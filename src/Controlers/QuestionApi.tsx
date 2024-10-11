@@ -1,17 +1,23 @@
+interface opcao{
+    resposta: string;
+    propiedades: [number, number, number, number, number];
+}
 interface Question {
     nome: string;
-    options: string[];
+    options: opcao[];
     selected?: number;
 }
 
 class QuestionApi {
     questions: Question[] = [];
+    addQuestion(nome: string, opcao: opcao[]) {
 
-    addQuestion(nome: string, Option: string[]) {
-        this.questions.push({
+        let NovaQuestao: Question = {
             nome: nome,
-            options: Option
-        });
+            options: opcao,
+        };
+    
+        this.questions.push(NovaQuestao);
     }
     constructor() {
         
@@ -19,7 +25,14 @@ class QuestionApi {
 }
 
 let questionApi = new QuestionApi();
+
+
 for (let index = 0; index < 5; index++) {
-    questionApi.addQuestion("Teste "+index, ["a", "b","c","d"]);
+    questionApi.addQuestion("Teste " + index, 
+        [
+        {resposta: "a", propiedades: [1, 2, 3, 4, 5]}
+        ]);
+    console.log(questionApi.questions);
+    
 }
 export default questionApi;
