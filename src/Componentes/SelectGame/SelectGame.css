@@ -75,7 +75,7 @@
     border:5px solid none;
     border: none;
     border-radius: 10px;
-    background-color: rgb(160, 154, 154);
+    background-color: rgb(121, 121, 121);
 }
 .GameSelectCtn section{
     display: flex;
@@ -119,7 +119,6 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    background-color: ;
    
 }
 
