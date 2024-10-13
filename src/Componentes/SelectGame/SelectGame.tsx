@@ -2,7 +2,9 @@ import { useState } from 'react'
 import './SelectGame.css'
 import './Slider.css'
 import resultApi from '../../Controlers/ResultGameApi'
+import { useNavigate } from 'react-router-dom';
 function SelectGame() {
+    const navigate = useNavigate();
     const [range1, setRange1] = useState(0)
     const [range2, setRange2] = useState(0)
     const [range3, setRange3] = useState(0)
@@ -31,7 +33,7 @@ function SelectGame() {
     resultApi.Inputs.criatividade = range6;
   return (
     <div className='GameSelectCtn'>
-        <h2>Selecione o Tipo de Jogador pro seu jogo</h2>
+        <h2>Selecione as Motivações pro seu jogo e calcule, quais perfis de Jogadores, ele agrada</h2>
             
         <section>
             <ul>
@@ -51,10 +53,9 @@ function SelectGame() {
                     
         </section>
       
-                        
-            <button onClick={()=>{
-                window.location.href = '/result'
-            }}>Start</button>
+            <button onClick={() => {
+                navigate('/result');
+            }}>Calcular</button>
 
            
 

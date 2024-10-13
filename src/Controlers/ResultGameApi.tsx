@@ -33,7 +33,7 @@ class ResultApi {
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Brigão'),
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Gladiador'),
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Ninja'),
-        new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Caçador de Recompensas'),
+        new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Caçador \n d   e Recompensas'),
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Arquiteto'),
         new Perfil(this.Inputs,{ação:1, social : 4, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Bardo')
     ];
@@ -54,5 +54,7 @@ class ResultApi {
 
 
 let resultApi = new ResultApi();
-
+window.setInterval(() => {
+    console.log(resultApi.Inputs)
+},1000)
 export default resultApi;

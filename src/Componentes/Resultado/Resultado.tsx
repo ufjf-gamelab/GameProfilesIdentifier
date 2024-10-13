@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { VictoryChart, VictoryBar,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
 import resultApi from '../../Controlers/ResultGameApi';
+import { useNavigate } from 'react-router-dom';
+
 function Resultado() {
     let  categorias =resultApi.Nomes
+    const navigate = useNavigate();
+
     console.log(resultApi.Resultados) 
     return (
       <div>
@@ -42,7 +46,8 @@ function Resultado() {
           />
             </VictoryChart>
           </div>
-          <button onClick={()=>{                window.location.href = '/'}}>Voltar</button>
+          <button onClick={()=>{                            navigate('/');
+  }}>Voltar</button>
         </div>
       </div>
 
