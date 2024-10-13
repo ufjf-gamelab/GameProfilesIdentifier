@@ -6,6 +6,7 @@ import Footer from './Componentes/Footer/Footer.jsx'
 import Question from './Componentes/Question/Question.jsx'
 import SelectGame from './Componentes/SelectGame/SelectGame.jsx'
 import questionApi from './Controlers/QuestionApi.js'
+import Resultado from './Componentes/Resultado/Resultado.js'
 function App() {
   const [count, setCount] = useState(0)
   const questoes = questionApi.questions
@@ -15,6 +16,7 @@ function App() {
       
       <main>
         <SelectGame></SelectGame>
+        <Resultado></Resultado>
         {/* {
             questoes.map((questao) => {
               return (

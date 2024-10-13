@@ -8,17 +8,19 @@ function SelectGame() {
     const [range3, setRange3] = useState(0)
     const [range4, setRange4] = useState(0)
     const [range5, setRange5] = useState(0)
-    
+    const [range6, setRange6] = useState(0)
+
     function handleChange(event: any, setRange1: any) {
         setRange1(event.target.value)
 
         
     }
-    selectGameAPI.arquetipos.tipo1 = range1;
-    selectGameAPI.arquetipos.tipo2 = range2;
-    selectGameAPI.arquetipos.tipo3 = range3;
-    selectGameAPI.arquetipos.tipo4 = range4;
-    selectGameAPI.arquetipos.tipo5 = range5;
+    selectGameAPI.Resultado.ação = range1;
+    selectGameAPI.Resultado.conquista = range2;
+    selectGameAPI.Resultado.criatividade = range3;
+    selectGameAPI.Resultado.imersão = range4;
+    selectGameAPI.Resultado.maestria = range5;
+    selectGameAPI.Resultado.social = range6;
     
   return (
     <div className='GameSelectCtn'>
@@ -46,7 +48,10 @@ function SelectGame() {
                     <input onChange={(e)=>{handleChange(e,setRange5)}} type="range" id="html" name="fav_language" ></input>
                     <label >{range5}</label>
                 </li>
-
+                <li>
+                    <input onChange={(e)=>{handleChange(e,setRange6)}} type="range" id="html" name="fav_language" ></input>
+                    <label >{range6}</label>
+                </li>
             </ul>
            
         </section>
