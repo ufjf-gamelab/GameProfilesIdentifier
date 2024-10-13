@@ -3,13 +3,10 @@ import { useState } from 'react'
 import './App.css'
 import Header from './Componentes/Header/Header.jsx'
 import Footer from './Componentes/Footer/Footer.jsx'
-import Question from './Componentes/Question/Question.jsx'
 import SelectGame from './Componentes/SelectGame/SelectGame.jsx'
-import questionApi from './Controlers/QuestionApi.js'
 import Resultado from './Componentes/Resultado/Resultado.js'
 function App() {
   const [count, setCount] = useState(0)
-  const questoes = questionApi.questions
   return (
     <div className='App'>
       <Header></Header>
@@ -17,13 +14,7 @@ function App() {
       <main>
         <SelectGame></SelectGame>
         <Resultado></Resultado>
-        {/* {
-            questoes.map((questao) => {
-              return (
-                <Question nome={questao.nome} options={questao.options}></Question>
-              )
-            }) 
-        } */}
+   
       </main>
       <Footer></Footer>
     </div>
