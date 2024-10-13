@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
+    width: 90%;
     max-width: 500px;
     border-radius: 15px;
     padding-top: 30px;
@@ -69,5 +69,5 @@
     margin: 5px;
     width: auto;
     flex: 1 0 21%; /* explanation below */
-    padding-right: 30px;
+   
 }

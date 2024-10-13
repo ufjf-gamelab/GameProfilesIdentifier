@@ -11,13 +11,14 @@ header{
 }
 h1{
     color: white;
+    
     margin: 0;
     height: auto;
     padding: 0%;
     margin-left: 15px;
 }
 header h2{
-    color: red;
+    color: orange;
     margin: 0;
     height: auto;
     margin-left: 15px;

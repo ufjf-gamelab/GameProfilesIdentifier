@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import inova from '../../assets/inova.png'
 import './footer.css'
 
 function App() {
@@ -7,8 +7,13 @@ function App() {
 
   return (
     <footer>
-        <h1>Eu SOU UM FOOTER :O</h1>
- 
+        <img src={inova}></img>
+        <section>
+            <h2>Desenvolvido por:</h2>
+            <h3>Tevo Fiorilo</h3>
+            <h3>Miguel Dias</h3> 
+            <h3> Isabela Coelho</h3>        
+        </section>
     </footer>
   )
 }
