@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type Motivações = {ação:number, social : number, maestria : number, conquista : number, imersão : number, criatividade : number};
 class Perfil{
     nome: string;
@@ -33,8 +35,9 @@ class ResultApi {
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Ninja'),
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Caçador de Recompensas'),
         new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Arquiteto'),
-        new Perfil(this.Inputs,{ação:1, social : 1, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Bardo')
+        new Perfil(this.Inputs,{ação:1, social : 4, maestria : 1, conquista : 1, imersão : 1, criatividade : 1},'Bardo')
     ];
+    
     get Nomes(){
         return this.Agradabilidades.map((p) => p.nome);
     }
@@ -42,7 +45,6 @@ class ResultApi {
         Array.prototype.sort.call(this.Agradabilidades, (a:Perfil, b:Perfil) => {
             return b.agradabilidade - a.agradabilidade;
         } );
-        console.log("aGRADABILIDADES",this.Agradabilidades);
         return this.Agradabilidades
     }
     constructor() {
@@ -50,5 +52,7 @@ class ResultApi {
     }
 }
 
+
 let resultApi = new ResultApi();
+
 export default resultApi;

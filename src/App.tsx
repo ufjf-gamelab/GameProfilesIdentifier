@@ -5,6 +5,7 @@ import Header from './Componentes/Header/Header.jsx'
 import Footer from './Componentes/Footer/Footer.jsx'
 import SelectGame from './Componentes/SelectGame/SelectGame.jsx'
 import Resultado from './Componentes/Resultado/Resultado.js'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 function App() {
   const [count, setCount] = useState(0)
   return (
@@ -12,9 +13,14 @@ function App() {
       <Header></Header>
       
       <main>
-        <SelectGame></SelectGame>
-        <Resultado></Resultado>
+      <BrowserRouter>
+      <Routes>
+          <Route path="/result" element= {        <Resultado></Resultado>          }/>
+          <Route path="/" element={<SelectGame />} />
+        </Routes>
    
+        </BrowserRouter>
+         
       </main>
       <Footer></Footer>
     </div>

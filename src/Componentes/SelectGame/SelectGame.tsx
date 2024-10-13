@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import selectGameAPI from '../../Controlers/SelectGameApi'
 import './SelectGame.css'
 import './Slider.css'
+import resultApi from '../../Controlers/ResultGameApi'
 function SelectGame() {
     const [range1, setRange1] = useState(0)
     const [range2, setRange2] = useState(0)
@@ -11,53 +11,50 @@ function SelectGame() {
     const [range6, setRange6] = useState(0)
 
     function handleChange(event: any, setRange1: any) {
-        setRange1(event.target.value)
-
-        
+        setRange1(event.target.value)        
     }
-    selectGameAPI.Resultado.ação = range1;
-    selectGameAPI.Resultado.conquista = range2;
-    selectGameAPI.Resultado.criatividade = range3;
-    selectGameAPI.Resultado.imersão = range4;
-    selectGameAPI.Resultado.maestria = range5;
-    selectGameAPI.Resultado.social = range6;
     
+    const ranges = [
+        { value: range1, setValue: setRange1, label: "Ação " },
+        { value: range2, setValue: setRange2, label: "Social " },
+        { value: range3, setValue: setRange3, label: "Maestria " },
+        { value: range4, setValue: setRange4, label: "Conquista " },
+        { value: range5, setValue: setRange5, label: "Imersão " },
+        { value: range6, setValue: setRange6, label: "Criatividade " }
+    ];
+
+    resultApi.Inputs.ação = range1;
+    resultApi.Inputs.social = range2;
+    resultApi.Inputs.maestria = range3;
+    resultApi.Inputs.conquista = range4;
+    resultApi.Inputs.imersão = range5;
+    resultApi.Inputs.criatividade = range6;
   return (
     <div className='GameSelectCtn'>
         <h2>Selecione o Tipo de Jogador pro seu jogo</h2>
             
         <section>
             <ul>
-                <li>
-                <input onChange={(e)=>{handleChange(e,setRange1)}} type="range"  min="0" max="100"   /> 
-                            <label >{"Char1: "+range1}</label>
-                </li>
-                <li>
-                    <input onChange={(e)=>{handleChange(e,setRange2)}} type="range" id="html" name="fav_language" ></input>
-                    <label >{range2}</label>
-                </li>
-                <li>
-                    <input onChange={(e)=>{handleChange(e,setRange3)}} type="range" id="html" name="fav_language" ></input>
-                    <label >{range3}</label>
-                </li>
-                <li>
-                    <input onChange={(e)=>{handleChange(e,setRange4)}} type="range" id="html" name="fav_language" ></input>
-                    <label >{range4}</label>
-                </li>
-                <li>
-                    <input onChange={(e)=>{handleChange(e,setRange5)}} type="range" id="html" name="fav_language" ></input>
-                    <label >{range5}</label>
-                </li>
-                <li>
-                    <input onChange={(e)=>{handleChange(e,setRange6)}} type="range" id="html" name="fav_language" ></input>
-                    <label >{range6}</label>
-                </li>
+                {ranges.map((range, index) => (
+                    <li key={index}>
+                        <input
+                            value={range.value}
+                            onChange={(e) => handleChange(e, range.setValue)}
+                            type="range"
+                            min="0"
+                            max="100"
+                        />
+                        <label>{range.label + range.value}</label>
+                    </li>
+                ))}
             </ul>
-           
+                    
         </section>
       
                         
-            <button>Start</button>
+            <button onClick={()=>{
+                window.location.href = '/result'
+            }}>Start</button>
 
            
 

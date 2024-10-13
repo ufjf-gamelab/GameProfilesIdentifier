@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { VictoryChart, VictoryBar,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
-import selectGameAPI from '../../Controlers/SelectGameApi';
 import resultApi from '../../Controlers/ResultGameApi';
 function Resultado() {
     let  categorias =resultApi.Nomes
+    console.log(resultApi.Resultados) 
     return (
       <div>
         <div>
@@ -28,20 +28,21 @@ function Resultado() {
              <VictoryArea
             style={{ data: { fill: "#00000080", width: 100 } }}
             data={[
-              { x: categorias[0], y:  resultApi.Resultados[0].agradabilidade },
-              { x: categorias[1], y: resultApi.Resultados[1].agradabilidade },
-              { x: categorias[2], y: resultApi.Resultados[2].agradabilidade },
-              { x: categorias[3], y: resultApi.Resultados[3].agradabilidade },
-              { x: categorias[4], y: resultApi.Resultados[4].agradabilidade },
-              { x: categorias[5], y:  resultApi.Resultados[5].agradabilidade },
-              { x: categorias[6], y:  resultApi.Resultados[6].agradabilidade },
-              { x: categorias[7], y:  resultApi.Resultados[7].agradabilidade },
-              { x: categorias[8], y:  resultApi.Resultados[8].agradabilidade }
+              { x: categorias[0], y:  resultApi.Agradabilidades[0].agradabilidade },
+              { x: categorias[1], y: resultApi.Agradabilidades[1].agradabilidade },
+              { x: categorias[2], y: resultApi.Agradabilidades[2].agradabilidade },
+              { x: categorias[3], y: resultApi.Agradabilidades[3].agradabilidade },
+              { x: categorias[4], y: resultApi.Agradabilidades[4].agradabilidade },
+              { x: categorias[5], y:  resultApi.Agradabilidades[5].agradabilidade },
+              { x: categorias[6], y:  resultApi.Agradabilidades[6].agradabilidade },
+              { x: categorias[7], y:  resultApi.Agradabilidades[7].agradabilidade },
+              { x: categorias[8], y:  resultApi.Agradabilidades[8].agradabilidade }
 
             ]}
           />
             </VictoryChart>
           </div>
+          <button onClick={()=>{                window.location.href = '/'}}>Voltar</button>
         </div>
       </div>
 
