@@ -7,7 +7,8 @@ header{
     flex-direction: column;
     gap: 0;
     align-self: flex-start;
-    box-shadow: 5px 5px 10px rgb(92, 91, 91);
+    box-shadow: -2.5px 5px 10px rgb(92, 91, 91);
+    border-bottom: #4d4d4d 5px solid ;
 }
 h1{
     color: white;

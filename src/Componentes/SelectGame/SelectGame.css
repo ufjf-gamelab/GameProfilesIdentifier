@@ -13,6 +13,51 @@
     gap: 20px;
     background-color: rgb(160, 154, 154);
 }
+@media only screen and (max-width: 768px) {
+    body {
+      background-color: lightcoral; /* Cor diferente para mobile */
+      font-size: 16px; /* Reduzindo o tamanho da fonte para mobile */
+    }
+  
+    .menu {
+      display: none; /* Esconder um menu, por exemplo */
+    }
+    .GameSelectCtn{
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 15px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        gap: 20px;
+        background:none;
+    }
+    .GameSelectCtn section {
+        padding: 5px;
+        border-radius: 5px;
+        margin: 5px;
+        width: 100% !important; 
+        display: flex   ;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .GameSelectCtn section ul li{
+        padding: 5px;
+        border-radius: 5px;
+        margin: 5px;
+        width: 100%;
+        padding-right: 30px;
+        display: flex   ;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+  }
 .GameSelectCtn h2{
     color: black;
     width: 80%;
@@ -28,6 +73,7 @@
     border:5px solid none;
     border: none;
     border-radius: 10px;
+    background-color: rgb(160, 154, 154);
 }
 .GameSelectCtn section{
     display: flex;
@@ -45,29 +91,31 @@
     
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     align-items: center;
     padding: 0%;
     margin: 0%;
+    justify-content: center;
     list-style-type: none;
 }
-.GameSelectCtn ul li{
+.GameSelectCtn section ul li{
     background-color: rgb(121, 121, 121);
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
     width: 100%;
-    padding-right: 30px;
     display: flex   ;
-    justify-content: space-between;
+    justify-content:  center;
+    
     align-items: center;
 }
-.GameSelectCtn ul li h2{
-    background-color: rgb(121, 121, 121);
+.GameSelectCtn section ul li label{
     padding: 5px;
     border-radius: 5px;
-    margin: 5px;
-    width: auto;
     flex: 1 0 21%; /* explanation below */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
    
 }

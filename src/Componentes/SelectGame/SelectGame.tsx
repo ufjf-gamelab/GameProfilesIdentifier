@@ -33,7 +33,7 @@ function SelectGame() {
     resultApi.Inputs.criatividade = range6;
   return (
     <div className='GameSelectCtn'>
-        <h2>Selecione as Motivações pro seu jogo e calcule, quais perfis de Jogadores, ele agrada</h2>
+        <h2>Selecione as Motivações pro seu jogo, e veja quais perfis de Jogadores ele agrada</h2>
             
         <section>
             <ul>
@@ -42,11 +42,11 @@ function SelectGame() {
                         <input
                             value={range.value}
                             onChange={(e) => handleChange(e, range.setValue)}
-                            type="range"
+                    type="range"
                             min="0"
                             max="100"
                         />
-                        <label>{range.label + range.value}</label>
+                        <label>{range.label }{ range.value+ "%"}</label>
                     </li>
                 ))}
             </ul>

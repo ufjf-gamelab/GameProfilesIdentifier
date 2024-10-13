@@ -2,20 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { VictoryChart, VictoryBar,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
 import resultApi from '../../Controlers/ResultGameApi';
 import { useNavigate } from 'react-router-dom';
-
+import './Resultado.css'
 function Resultado() {
     let  categorias =resultApi.Nomes
     const navigate = useNavigate();
 
     console.log(resultApi.Resultados) 
     return (
-      <div>
-        <div>
+      
+        <div className='ResultadoCtn'>
           <h2>Resultado</h2>
           <div>
-          <VictoryChart polar
-            theme={VictoryTheme.material}
-          >
+          <VictoryChart polar theme={VictoryTheme.material}>
             {
               categorias?.map((d, i) => {
                 return (
@@ -49,7 +47,6 @@ function Resultado() {
           <button onClick={()=>{                            navigate('/');
   }}>Voltar</button>
         </div>
-      </div>
 
 
     )
