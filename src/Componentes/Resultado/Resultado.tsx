@@ -17,6 +17,7 @@ function Resultado() {
             {
               categorias?.map((d, i) => {
                 return (
+                  
                   <VictoryPolarAxis dependentAxis
                     key={i}
                     label={d}
@@ -24,6 +25,9 @@ function Resultado() {
                     style={{ tickLabels: { fill: "none" } }}
                     axisValue={d}
                   />
+               
+                  
+
                 );
               })
             }

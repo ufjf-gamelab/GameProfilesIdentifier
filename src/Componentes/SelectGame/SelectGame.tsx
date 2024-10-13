@@ -46,7 +46,7 @@ function SelectGame() {
                             min="0"
                             max="100"
                         />
-                        <label>{range.label }{ range.value+ "%"}</label>
+                        <label>{range.label }<br></br>{ range.value+ "%"}</label>
                     </li>
                 ))}
             </ul>
