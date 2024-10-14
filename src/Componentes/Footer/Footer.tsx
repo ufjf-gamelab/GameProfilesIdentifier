@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import inova from '../../assets/inova.png'
 import './footer.css'
 
