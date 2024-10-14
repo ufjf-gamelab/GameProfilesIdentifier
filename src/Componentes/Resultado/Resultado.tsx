@@ -49,8 +49,7 @@ function Resultado(props:any) {
           />
             </VictoryChart>
           </div>
-          <button onClick={()=>{
-  }}>Voltar</button>
+          
         </div>
 
 

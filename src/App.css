@@ -19,10 +19,18 @@ main{
     min-height: calc(100vh - 150px);
     height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 0;
+    gap: 120px;
+}
+@media only screen and (max-width: 768px) {
+    main{
+      padding-top: 30px;
+      padding-bottom: 30px;
+        flex-direction: column;
+        gap: 0;
+    }
 }
 #root{
   height: 100vh;

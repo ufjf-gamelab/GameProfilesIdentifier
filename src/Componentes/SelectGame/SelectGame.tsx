@@ -74,13 +74,12 @@ function SelectGame(props:any) {
                     />
                     <label>{'Criatividade'}<br></br>{ props.criatividade+ "%"}</label>
                 </li>
-                
+
             </ul>
                     
         </section>
       
-            <button onClick={() => {
-            }}>Calcular</button>
+     
 
            
 
