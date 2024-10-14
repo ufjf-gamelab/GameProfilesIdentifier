@@ -25,7 +25,7 @@ class Perfil{
 }
 
 class ResultApi {
-    Inputs: Motivações = {ação:10, social : 10, maestria : 10, conquista : 10, imersão : 10, criatividade : 10};
+    Inputs: Motivações = {ação:0, social : 0, maestria : 0, conquista : 0, imersão : 0, criatividade : 0};
     Agradabilidades: Perfil[] = [ //social  //ação // conquista // maestria // imersão // criatividade
         new Perfil(this.Inputs,{ação:89, social : 62, maestria : 70, conquista : 62, imersão : 21, criatividade : 64},'Acrobata'),
         new Perfil(this.Inputs,{ação:54, social : 85, maestria : 41, conquista : 89, imersão : 43, criatividade : 50},'Jardineiro'),
@@ -50,9 +50,47 @@ class ResultApi {
     constructor() {
         
     }
+
+    getTextoResultado(){
+        const ordenados = this.Agradabilidades.slice()
+       ordenados.sort((a:Perfil, b:Perfil) => {
+            return b.agradabilidade - a.agradabilidade;
+        });
+        const nomeMaiorElemento = ordenados[0].nome;
+        const nomeSegundoMaiorElemento = ordenados[1].nome;
+        let resultado = {
+            textoPrimeiro: '',
+            textoSegundo: '',
+            nomeMaiorElemento: '',
+            nomeSegundoMaiorElemento: ''
+        }
+        resultado.nomeMaiorElemento = nomeMaiorElemento
+        resultado.nomeSegundoMaiorElemento = nomeSegundoMaiorElemento
+        switch (nomeMaiorElemento) {
+            case 'Acrobata':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Jardineiro':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Caçador':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Brigão':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Gladiador':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Ninja':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Caçador de Recompensas':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Arquiteto':
+                resultado.textoPrimeiro = "lorem ipsum"
+            case 'Bardo':
+                resultado.textoPrimeiro = "lorem ipsum"
+        return resultado
+
+    }
+}
 }
 
 
-let resultApi = new ResultApi();
 
-export default resultApi;
+export default ResultApi;

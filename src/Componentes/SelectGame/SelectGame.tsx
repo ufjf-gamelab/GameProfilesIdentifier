@@ -1,8 +1,5 @@
-import { useState } from 'react'
 import './SelectGame.css'
 import './Slider.css'
-import resultApi from '../../Controlers/ResultGameApi'
-import { useNavigate } from 'react-router-dom';
 
 type Motivações = {ação:number, social : number, maestria : number, conquista : number, imersão : number, criatividade : number};
 

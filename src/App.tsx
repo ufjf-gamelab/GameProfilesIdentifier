@@ -4,11 +4,11 @@ import Header from './Componentes/Header/Header.jsx'
 import Footer from './Componentes/Footer/Footer.jsx'
 import SelectGame from './Componentes/SelectGame/SelectGame.jsx'
 import Resultado from './Componentes/Resultado/Resultado.js'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
-import resultApi from './Controlers/ResultGameApi.js'
+import ResultApi from './Controlers/ResultGameApi.js'
 
 function App() {
+  const resultApi = new ResultApi()
   const [ação, setAção] = useState(resultApi.Inputs.ação)
   const [social, setSocial] = useState(resultApi.Inputs.social)
   const [maestria, setMaestria] = useState(resultApi.Inputs.maestria)
@@ -18,7 +18,6 @@ function App() {
   return (
     <div className='App'>
       <Header></Header>
-      
       <main>
           <SelectGame ação={ação} setAção={setAção} 
                       social={social} setSocial={setSocial}
@@ -26,17 +25,16 @@ function App() {
                       conquista={conquista} setConquista={setConquista}
                       imersão={imersão} setImersão={setImersão}
                       criatividade={criatividade} setCriatividade={setCriatividade}
-                      />
-
+          />
           <Resultado ação={ação}
                       social={social}
                       maestria={maestria}
                       conquista={conquista}
                       imersão={imersão}
                       criatividade={criatividade}
-          />          
-       
 
+                      resultApi={resultApi}
+          />          
       </main>
       <Footer></Footer>
     </div>
