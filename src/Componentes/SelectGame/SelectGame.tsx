@@ -7,30 +7,7 @@ import { useNavigate } from 'react-router-dom';
 type Motivações = {ação:number, social : number, maestria : number, conquista : number, imersão : number, criatividade : number};
 
 function SelectGame(props:any) {
-   
-    // function handleChange(event: any, setRange1: any) {
-    //     setmotivações(resultApi)
-    //     setRange1(event.target.value)        
 
-        
-    // }
-    
-    // resultApi.Inputs.ação = range1;
-    // resultApi.Inputs.social = range2;
-    // resultApi.Inputs.maestria = range3;
-    // resultApi.Inputs.conquista = range4;
-    // resultApi.Inputs.imersão = range5;
-    // resultApi.Inputs.criatividade = range6;
-
-
-    // const ranges = [
-    //     { value: motivações.ação, setValue: setmotivações, label: "Ação " },
-    //     { value: motivações.social, setValue: setmotivações, label: "Social " },
-    //     { value: motivações.maestria, setValue: setmotivações, label: "Maestria " },
-    //     { value: motivações.conquista, setValue: setmotivações, label: "Conquista " },
-    //     { value: motivações.imersão, setValue: setmotivações, label: "Imersão " },
-    //     { value: motivações.criatividade, setValue: setmotivações, label: "Criatividade " }
-    // ];
   return (
     console.log(props),
     <div className='GameSelectCtn'>
@@ -38,19 +15,65 @@ function SelectGame(props:any) {
         <section>
             <ul> 
                 <li >
-
                     <input
                         value={props.ação}
-                        onChange={(e) =>{
-                            props.setAção(e.target.value)
-                        }}
+                        onChange={(e) =>{props.setAção(e.target.value)}}
                         type="range"
                         min="0"
                         max="100"
                     />
                     <label>{'Ação'}<br></br>{ props.ação+ "%"}</label>
                 </li>
-                    
+                <li >
+                    <input
+                        value={props.social}
+                        onChange={(e) =>{props.setSocial(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Social'}<br></br>{ props.social+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.maestria}
+                        onChange={(e) =>{props.setMaestria(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Maestria'}<br></br>{ props.maestria+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.conquista}
+                        onChange={(e) =>{props.setConquista(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Conquista'}<br></br>{ props.conquista+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.imersão}
+                        onChange={(e) =>{props.setImersão(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Imersão'}<br></br>{ props.imersão+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.criatividade}
+                        onChange={(e) =>{props.setCriatividade(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Criatividade'}<br></br>{ props.criatividade+ "%"}</label>
+                </li>
                 
             </ul>
                     

@@ -1,10 +1,14 @@
 import { VictoryChart,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
 import resultApi from '../../Controlers/ResultGameApi';
 import './Resultado.css'
-function Resultado() {
+function Resultado(props:any) {
     let  categorias =resultApi.Nomes
-
-    console.log(resultApi.Resultados) 
+    resultApi.Inputs.ação = props.ação
+    resultApi.Inputs.social = props.social
+    resultApi.Inputs.maestria = props.maestria
+    resultApi.Inputs.conquista = props.conquista
+    resultApi.Inputs.imersão = props.imersão
+    resultApi.Inputs.criatividade = props.criatividade
     return (
       
         <div className='ResultadoCtn'>
