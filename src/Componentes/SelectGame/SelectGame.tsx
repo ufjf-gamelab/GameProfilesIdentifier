@@ -4,7 +4,6 @@ import './Slider.css'
 import resultApi from '../../Controlers/ResultGameApi'
 import { useNavigate } from 'react-router-dom';
 function SelectGame() {
-    const navigate = useNavigate();
     const [range1, setRange1] = useState(0)
     const [range2, setRange2] = useState(0)
     const [range3, setRange3] = useState(0)
@@ -54,7 +53,6 @@ function SelectGame() {
         </section>
       
             <button onClick={() => {
-                navigate('/result');
             }}>Calcular</button>
 
            

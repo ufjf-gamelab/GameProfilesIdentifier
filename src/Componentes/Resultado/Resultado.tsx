@@ -1,10 +1,8 @@
 import { VictoryChart,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
 import resultApi from '../../Controlers/ResultGameApi';
-import { useNavigate } from 'react-router-dom';
 import './Resultado.css'
 function Resultado() {
     let  categorias =resultApi.Nomes
-    const navigate = useNavigate();
 
     console.log(resultApi.Resultados) 
     return (
