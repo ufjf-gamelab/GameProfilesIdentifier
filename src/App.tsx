@@ -7,19 +7,19 @@ import Resultado from './Componentes/Resultado/Resultado.js'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import resultApi from './Controlers/ResultGameApi.js'
-function App() {
-  const [motivações, setmotivações] = useState(resultApi.Inputs)
 
+function App() {
+  const [ação, setAção] = useState(resultApi.Inputs.ação)
   return (
     <div className='App'>
       <Header></Header>
       
       <main>
-      <SelectGame />
+          <SelectGame ação={ação} setAção={setAção}/>
 
           <Resultado></Resultado>          
        
-         
+
       </main>
       <Footer></Footer>
     </div>

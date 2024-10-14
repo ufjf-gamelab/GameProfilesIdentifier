@@ -3,51 +3,55 @@ import './SelectGame.css'
 import './Slider.css'
 import resultApi from '../../Controlers/ResultGameApi'
 import { useNavigate } from 'react-router-dom';
-function SelectGame() {
-    const [range1, setRange1] = useState(0)
-    const [range2, setRange2] = useState(0)
-    const [range3, setRange3] = useState(0)
-    const [range4, setRange4] = useState(0)
-    const [range5, setRange5] = useState(0)
-    const [range6, setRange6] = useState(0)
 
-    function handleChange(event: any, setRange1: any) {
-        setRange1(event.target.value)        
-    }
+type Motivações = {ação:number, social : number, maestria : number, conquista : number, imersão : number, criatividade : number};
+
+function SelectGame(props:any) {
+   
+    // function handleChange(event: any, setRange1: any) {
+    //     setmotivações(resultApi)
+    //     setRange1(event.target.value)        
+
+        
+    // }
     
-    const ranges = [
-        { value: range1, setValue: setRange1, label: "Ação " },
-        { value: range2, setValue: setRange2, label: "Social " },
-        { value: range3, setValue: setRange3, label: "Maestria " },
-        { value: range4, setValue: setRange4, label: "Conquista " },
-        { value: range5, setValue: setRange5, label: "Imersão " },
-        { value: range6, setValue: setRange6, label: "Criatividade " }
-    ];
+    // resultApi.Inputs.ação = range1;
+    // resultApi.Inputs.social = range2;
+    // resultApi.Inputs.maestria = range3;
+    // resultApi.Inputs.conquista = range4;
+    // resultApi.Inputs.imersão = range5;
+    // resultApi.Inputs.criatividade = range6;
 
-    resultApi.Inputs.ação = range1;
-    resultApi.Inputs.social = range2;
-    resultApi.Inputs.maestria = range3;
-    resultApi.Inputs.conquista = range4;
-    resultApi.Inputs.imersão = range5;
-    resultApi.Inputs.criatividade = range6;
+
+    // const ranges = [
+    //     { value: motivações.ação, setValue: setmotivações, label: "Ação " },
+    //     { value: motivações.social, setValue: setmotivações, label: "Social " },
+    //     { value: motivações.maestria, setValue: setmotivações, label: "Maestria " },
+    //     { value: motivações.conquista, setValue: setmotivações, label: "Conquista " },
+    //     { value: motivações.imersão, setValue: setmotivações, label: "Imersão " },
+    //     { value: motivações.criatividade, setValue: setmotivações, label: "Criatividade " }
+    // ];
   return (
+    console.log(props),
     <div className='GameSelectCtn'>
         <h2>Selecione as Motivações pro seu jogo, e veja quais perfis de Jogadores ele agrada</h2>
-            
         <section>
-            <ul>
-                {ranges.map((range, index) => (
-                    <li key={index}>
-                        <input
-                            value={range.value}
-                            onChange={(e) => handleChange(e, range.setValue)}
-                    type="range"
-                            min="0"
-                            max="100"
-                        />
-                        <label>{range.label }<br></br>{ range.value+ "%"}</label>
-                    </li>
-                ))}
+            <ul> 
+                <li >
+
+                    <input
+                        value={props.ação}
+                        onChange={(e) =>{
+                            props.setAção(e.target.value)
+                        }}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Ação'}<br></br>{ props.ação+ "%"}</label>
+                </li>
+                    
+                
             </ul>
                     
         </section>

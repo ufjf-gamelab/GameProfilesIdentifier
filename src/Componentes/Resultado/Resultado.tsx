@@ -45,7 +45,7 @@ function Resultado() {
           />
             </VictoryChart>
           </div>
-          <button onClick={()=>{                            navigate('/');
+          <button onClick={()=>{
   }}>Voltar</button>
         </div>
 
