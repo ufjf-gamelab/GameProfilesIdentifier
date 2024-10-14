@@ -3,59 +3,83 @@ import './SelectGame.css'
 import './Slider.css'
 import resultApi from '../../Controlers/ResultGameApi'
 import { useNavigate } from 'react-router-dom';
-function SelectGame() {
-    const navigate = useNavigate();
-    const [range1, setRange1] = useState(0)
-    const [range2, setRange2] = useState(0)
-    const [range3, setRange3] = useState(0)
-    const [range4, setRange4] = useState(0)
-    const [range5, setRange5] = useState(0)
-    const [range6, setRange6] = useState(0)
 
-    function handleChange(event: any, setRange1: any) {
-        setRange1(event.target.value)        
-    }
-    
-    const ranges = [
-        { value: range1, setValue: setRange1, label: "Ação " },
-        { value: range2, setValue: setRange2, label: "Social " },
-        { value: range3, setValue: setRange3, label: "Maestria " },
-        { value: range4, setValue: setRange4, label: "Conquista " },
-        { value: range5, setValue: setRange5, label: "Imersão " },
-        { value: range6, setValue: setRange6, label: "Criatividade " }
-    ];
+type Motivações = {ação:number, social : number, maestria : number, conquista : number, imersão : number, criatividade : number};
 
-    resultApi.Inputs.ação = range1;
-    resultApi.Inputs.social = range2;
-    resultApi.Inputs.maestria = range3;
-    resultApi.Inputs.conquista = range4;
-    resultApi.Inputs.imersão = range5;
-    resultApi.Inputs.criatividade = range6;
+function SelectGame(props:any) {
+
   return (
+    console.log(props),
     <div className='GameSelectCtn'>
         <h2>Selecione as Motivações pro seu jogo, e veja quais perfis de Jogadores ele agrada</h2>
-            
         <section>
-            <ul>
-                {ranges.map((range, index) => (
-                    <li key={index}>
-                        <input
-                            value={range.value}
-                            onChange={(e) => handleChange(e, range.setValue)}
-                    type="range"
-                            min="0"
-                            max="100"
-                        />
-                        <label>{range.label }<br></br>{ range.value+ "%"}</label>
-                    </li>
-                ))}
+            <ul> 
+                <li >
+                    <input
+                        value={props.ação}
+                        onChange={(e) =>{props.setAção(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Ação'}<br></br>{ props.ação+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.social}
+                        onChange={(e) =>{props.setSocial(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Social'}<br></br>{ props.social+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.maestria}
+                        onChange={(e) =>{props.setMaestria(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Maestria'}<br></br>{ props.maestria+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.conquista}
+                        onChange={(e) =>{props.setConquista(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Conquista'}<br></br>{ props.conquista+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.imersão}
+                        onChange={(e) =>{props.setImersão(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Imersão'}<br></br>{ props.imersão+ "%"}</label>
+                </li>
+                <li >
+                    <input
+                        value={props.criatividade}
+                        onChange={(e) =>{props.setCriatividade(e.target.value)}}
+                        type="range"
+                        min="0"
+                        max="100"
+                    />
+                    <label>{'Criatividade'}<br></br>{ props.criatividade+ "%"}</label>
+                </li>
+
             </ul>
                     
         </section>
       
-            <button onClick={() => {
-                navigate('/result');
-            }}>Calcular</button>
+     
 
            
 

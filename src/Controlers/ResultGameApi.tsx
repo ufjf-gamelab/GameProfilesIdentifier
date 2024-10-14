@@ -54,7 +54,5 @@ class ResultApi {
 
 
 let resultApi = new ResultApi();
-window.setInterval(() => {
-    console.log(resultApi.Inputs)
-},1000)
+
 export default resultApi;

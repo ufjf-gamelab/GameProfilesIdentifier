@@ -1,12 +1,14 @@
 import { VictoryChart,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
 import resultApi from '../../Controlers/ResultGameApi';
-import { useNavigate } from 'react-router-dom';
 import './Resultado.css'
-function Resultado() {
+function Resultado(props:any) {
     let  categorias =resultApi.Nomes
-    const navigate = useNavigate();
-
-    console.log(resultApi.Resultados) 
+    resultApi.Inputs.ação = props.ação
+    resultApi.Inputs.social = props.social
+    resultApi.Inputs.maestria = props.maestria
+    resultApi.Inputs.conquista = props.conquista
+    resultApi.Inputs.imersão = props.imersão
+    resultApi.Inputs.criatividade = props.criatividade
     return (
       
         <div className='ResultadoCtn'>
@@ -47,8 +49,7 @@ function Resultado() {
           />
             </VictoryChart>
           </div>
-          <button onClick={()=>{                            navigate('/');
-  }}>Voltar</button>
+          
         </div>
 
 
