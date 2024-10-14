@@ -7,7 +7,6 @@ import SelectGame from './Componentes/SelectGame/SelectGame.jsx'
 import Resultado from './Componentes/Resultado/Resultado.js'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 function App() {
-  const [count, setCount] = useState(0)
   return (
     <div className='App'>
       <Header></Header>

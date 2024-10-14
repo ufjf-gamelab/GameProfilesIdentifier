@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { VictoryChart, VictoryBar,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
+import { VictoryChart,VictoryArea, VictoryPolarAxis, VictoryTheme } from 'victory';
 import resultApi from '../../Controlers/ResultGameApi';
 import { useNavigate } from 'react-router-dom';
 import './Resultado.css'

@@ -3,7 +3,6 @@ import inova from '../../assets/inova.png'
 import './footer.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <footer>
