@@ -68,26 +68,36 @@ class ResultApi {
         resultado.nomeSegundoMaiorElemento = nomeSegundoMaiorElemento
         switch (nomeMaiorElemento) {
             case 'Acrobata':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Jardineiro':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Caçador':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Brigão':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Gladiador':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Ninja':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Caçador de Recompensas':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Arquiteto':
-                resultado.textoPrimeiro = "lorem ipsum"
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
             case 'Bardo':
-                resultado.textoPrimeiro = "lorem ipsum"
-        return resultado
+                resultado.textoPrimeiro = "lorem ipsum";
+                break;
+        }
+        return resultado;
 
-    }
+    
 }
 }
 

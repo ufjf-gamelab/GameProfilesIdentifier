@@ -1,7 +1,6 @@
 import './SelectGame.css'
 import './Slider.css'
 
-type Motivações = {ação:number, social : number, maestria : number, conquista : number, imersão : number, criatividade : number};
 
 function SelectGame(props:any) {
 
