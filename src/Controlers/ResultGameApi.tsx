@@ -8,14 +8,26 @@ class Perfil{
     Pesos:Motivações = {ação:0, social : 0, maestria : 0, conquista : 0, imersão : 0, criatividade : 0};
     
     get agradabilidade(){
-        
-        this.#agradabilidade=  this.Inputs.ação * this.Pesos.ação +
-                 this.Inputs.social * this.Pesos.social + 
-                 this.Inputs.maestria * this.Pesos.maestria + 
-                 this.Inputs.conquista * this.Pesos.conquista + 
-                 this.Inputs.imersão * this.Pesos.imersão + 
-                 this.Inputs.criatividade * this.Pesos.criatividade;
-        return this.#agradabilidade
+        const somaPonderada = 
+            this.Inputs.ação * this.Pesos.ação +
+            this.Inputs.social * this.Pesos.social + 
+            this.Inputs.maestria * this.Pesos.maestria + 
+            this.Inputs.conquista * this.Pesos.conquista + 
+            this.Inputs.imersão * this.Pesos.imersão + 
+            this.Inputs.criatividade * this.Pesos.criatividade;
+
+        const somaPesos = 
+            this.Pesos.ação +
+            this.Pesos.social + 
+            this.Pesos.maestria + 
+            this.Pesos.conquista + 
+            this.Pesos.imersão + 
+            this.Pesos.criatividade;
+
+        const mediaPonderada = somaPonderada / somaPesos;
+        this.#agradabilidade = mediaPonderada;
+
+        return this.#agradabilidade;
     }
     constructor(Inputs:Motivações,Pesos:Motivações, nome: string){
         this.nome = nome;
