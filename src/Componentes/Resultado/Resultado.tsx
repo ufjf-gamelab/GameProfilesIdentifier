@@ -21,15 +21,16 @@ function Resultado(props: any) {
       <h2>Resultado</h2>
       <div>
         <VictoryChart polar theme={VictoryTheme.material}>
-          {categorias?.map((d: any, i: any) => {
+          {categorias?.map((nome: any, i: any) => {
             return (
               <VictoryPolarAxis
                 dependentAxis
                 key={i}
-                label={d}
+                
+                label={nome + '\n' + resultApi.Agradabilidades[i].agradabilidade.toFixed(0)+"%" }
                 labelPlacement="perpendicular"
                 style={{ tickLabels: { fill: "none" } }}
-                axisValue={d}
+                axisValue={nome}
               />
             );
           })}
