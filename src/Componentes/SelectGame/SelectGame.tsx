@@ -45,8 +45,7 @@ function SelectGame(props: any) {
     (
       <div className="GameSelectCtn">
         <h2>
-          Selecione as Motivações pro seu jogo, e veja quais perfis de Jogadores
-          ele agrada
+            Ao selecionar os Motivações do seu jogo abaixo, um grafico será gerado com o resultado da taxa de agradabilidade estimada para cada perfil de jogador.
         </h2>
         <section>
           <ul>
@@ -78,7 +77,7 @@ function SelectGame(props: any) {
                     value={input.value}
                     variant="solid"
                   >
-                    <h2> {input.value}</h2>
+                    <h2 style={{fontWeight:'700', fontSize:'small'}}> {input.value}</h2>
                   </CircularProgress>
                 </label>
               </li>

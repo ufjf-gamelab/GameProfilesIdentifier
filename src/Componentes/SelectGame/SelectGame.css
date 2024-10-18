@@ -64,7 +64,9 @@
     height: auto;
     display: flex;
     justify-content: center;
-    text-align: center;
+    text-align:left;
+    font-weight: 100;
+    font-size: large;
     width: 80%;
     padding: 0%;
 }
