@@ -9,6 +9,7 @@ import ResultApi from './Controlers/ResultGameApi.js'
 
 function App() {
   const resultApi = new ResultApi()
+
   const [ação, setAção] = useState(resultApi.Inputs.ação)
   const [social, setSocial] = useState(resultApi.Inputs.social)
   const [maestria, setMaestria] = useState(resultApi.Inputs.maestria)
@@ -26,7 +27,7 @@ function App() {
                       imersão={imersão} setImersão={setImersão}
                       criatividade={criatividade} setCriatividade={setCriatividade}
           />
-          <Resultado ação={ação}
+          <Resultado  ação={ação}
                       social={social}
                       maestria={maestria}
                       conquista={conquista}
