@@ -80,31 +80,31 @@ class ResultApi {
         resultado.nomeSegundoMaiorElemento = nomeSegundoMaiorElemento
         switch (nomeMaiorElemento) {
             case 'Acrobata':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Valoriza desafios solo, enfrentando missões difíceis com habilidade e prática ";
                 break;
             case 'Jardineiro':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Se dedica a acumular itens, recursos ou conquistas, visando completar coleções.";
                 break;
             case 'Caçador':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Busca intensa por ação e destruição, apreciando combates e explosões.";
                 break;
             case 'Brigão':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Jogadores que buscam ação rápida e combate tático em batalhas dinâmicas e interações diretas.";
                 break;
             case 'Gladiador':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Jogadores hardcore que buscam experiências épicas e jogabilidade dinâmica em MMOs e shooters.";
                 break;
             case 'Ninja':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = " Jogadores que enfrentam desafios e competem, focando em decisões estratégicas e ritmo rápido em jogos de luta.";
                 break;
             case 'Caçador de Recompensas':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Jogadores motivados por desafios e recompensas, que se dedicam a completar objetivos e coletar itens valiosos em ambientes competitivos";
                 break;
             case 'Arquiteto':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Gosta de criar e personalizar mundos e sistemas dentro do jogo, exercendo sua criatividade.";
                 break;
             case 'Bardo':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Prioriza a interação social, formando comunidades e colaborando com outros jogadores.";
                 break;
         }
         return resultado;

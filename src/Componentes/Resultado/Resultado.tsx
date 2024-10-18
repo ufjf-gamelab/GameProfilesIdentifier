@@ -77,7 +77,7 @@ function Resultado(props: any) {
           />
         </VictoryChart>
       </div>
-      <div>
+      <div className="resultText">
         {}
         {"O perfil que mais gostaria do seu jogo é: "}
         <br />
