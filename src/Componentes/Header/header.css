@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 header{
     width: 100%;
     height: 100px;
@@ -15,15 +16,22 @@ header{
     background-size: 7px 7px;
 }
 h1{
-    color: black;
     margin: 0;
     height: auto;
     width: fit-content;
     padding: 0%;
     margin-left: 15px;
+
+    font-weight: 0;
+    font-size:40px;
+    color: rgb(24, 24, 24);
 }
 header h2{
     color: black;
+    color: rgb(204, 90, 90);
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     margin: 0;
     height: auto;
     margin-left: 15px;
