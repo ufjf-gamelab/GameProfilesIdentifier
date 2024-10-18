@@ -6,12 +6,12 @@
     align-items: center;
     justify-content: space-evenly;
     width: 90%;
-    max-width: 500px;
+    max-width: 450px;
     border-radius: 15px;
     padding-top: 30px;
     padding-bottom: 30px;
     gap: 20px;
-    background-color: rgb(160, 154, 154);
+
 }
 @media only screen and (max-width: 768px) {
     body {
@@ -68,14 +68,7 @@
     width: 80%;
     padding: 0%;
 }
-.GameSelectCtn button{
-    width: 80%;
-    height: 40px;
-    border:5px solid none;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(121, 121, 121);
-}
+
 .GameSelectCtn section{
     display: flex;
     justify-content: space-evenly;
@@ -100,7 +93,8 @@
     list-style-type: none;
 }
 .GameSelectCtn section ul li{
-    background-color: rgb(121, 121, 121);
+    background-color: #96c6db;
+
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
@@ -111,20 +105,38 @@
     grid-template-columns: 2fr 1fr;
     grid-row: 1fr;
     justify-content:  space-between;
-    
+    border:  4px solid #87b2c5ce;
     align-items: center;
+    padding: 5;
+    
+
+    
 }
 .GameSelectCtn section ul li input{
     width: 100%;
-    height: 50%;
-    border: 10px solid black;
+    height: 20%;
     margin: 0;
     padding: 0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  
+
+    -webkit-appearance: none;
+    background: #111;
+    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgb(198, 222, 233);
+
 }
+.GameSelectCtn section ul li input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 5px;
+    border-radius: 50%;
+    background: #00fd0a;
+    cursor: pointer;
+    border: 4px solid #b90c0c;
+    box-shadow: -407px 0 0 400px #00fd0a;
+  }
 .GameSelectCtn section ul li label{
     padding: 5px;
     border-radius: 5px;
@@ -160,3 +172,7 @@
     justify-content: flex-start !important;
     align-items: flex-start;
 }
+
+
+
+  

@@ -8,18 +8,22 @@ header{
     gap: 0;
     align-self: flex-start;
     box-shadow: -2.5px 5px 10px rgb(92, 91, 91);
-    border-bottom: #4d4d4d 5px solid ;
+
+    background-color: #769faf;
+    opacity: 1;
+    background-image: radial-gradient(#769faf 0.35000000000000003px, #a2d5e9    0.35000000000000003px);
+    background-size: 7px 7px;
 }
 h1{
-    color: white;
-    
+    color: black;
     margin: 0;
     height: auto;
+    width: fit-content;
     padding: 0%;
     margin-left: 15px;
 }
 header h2{
-    color: orange;
+    color: black;
     margin: 0;
     height: auto;
     margin-left: 15px;
