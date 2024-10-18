@@ -6,12 +6,12 @@
     align-items: center;
     justify-content: space-evenly;
     width: 90%;
-    max-width: 500px;
+    max-width: 450px;
     border-radius: 15px;
     padding-top: 30px;
     padding-bottom: 30px;
     gap: 20px;
-    background-color: rgb(160, 154, 154);
+
 }
 @media only screen and (max-width: 768px) {
     body {
@@ -64,18 +64,13 @@
     height: auto;
     display: flex;
     justify-content: center;
-    text-align: center;
+    text-align:left;
+    font-weight: 100;
+    font-size: large;
     width: 80%;
     padding: 0%;
 }
-.GameSelectCtn button{
-    width: 80%;
-    height: 40px;
-    border:5px solid none;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(121, 121, 121);
-}
+
 .GameSelectCtn section{
     display: flex;
     justify-content: space-evenly;
@@ -100,41 +95,46 @@
     list-style-type: none;
 }
 .GameSelectCtn section ul li{
-    background-color: rgb(121, 121, 121);
-    padding: 5px;
+    background-color: #87c1dab4;
+
+    padding: 0px;
+    padding-left: 25px;
+    padding-right: 10px;
     border-radius: 5px;
     margin: 5px;
     width: 100%;
-    height: 45px;
+    height: auto;
 
     display: grid   ;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
     grid-row: 1fr;
     justify-content:  space-between;
-    
+    align-content: center;
     align-items: center;
+
+    justify-content: center;
+    border-radius: 8px;
+    align-content: center;
+    box-shadow: 5px 5px 5px gainsboro;
+    align-items: center;
+    
+    
+
+    
 }
-.GameSelectCtn section ul li input{
-    width: 100%;
-    height: 50%;
-    border: 10px solid black;
+
+
+.GameSelectCtn section ul li label{
+    border-radius: 5px;    
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
     margin: 0;
     padding: 0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.GameSelectCtn section ul li label{
-    padding: 5px;
-    border-radius: 5px;
-    width: fit-content;
-    
-    display: flex;
-    justify-content: flex-end;
-    text-align: right;
-    align-items: center;
     width:auto ;
+
+    margin-bottom: 10px;
+
    
 }
 
@@ -149,14 +149,19 @@
     margin: 0;
     gap: 0;
     border-radius: 5px;
+    
 }
 .InputDescription label{
     width: 100% !important;
     margin: 0;
     padding: 0;
     display: flex;
-    font-size: small;
+    font-size: medium;
     text-align: left !important;
     justify-content: flex-start !important;
     align-items: flex-start;
 }
+
+
+
+  

@@ -45,7 +45,7 @@ class ResultApi {
         new Perfil(this.Inputs,{ação:78+27, social : 71+78, maestria : 37+39, conquista : 27+66, imersão : 30+12, criatividade : 37+37},'Brigão'),
         new Perfil(this.Inputs,{ação:69+75, social : 76+76, maestria : 68+79, conquista : 78+74, imersão : 61+62, criatividade : 66+63},'Gladiador'),
         new Perfil(this.Inputs,{ação:74+50, social : 56+82, maestria : 69+76, conquista : 22+49, imersão : 27+43, criatividade : 15+22},'Ninja'),
-        new Perfil(this.Inputs,{ação:61+75, social : 24+28, maestria : 28+31, conquista : 45+61, imersão : 70+63, criatividade : 61+62},'Caçador \n d   e Recompensas'),
+        new Perfil(this.Inputs,{ação:61+75, social : 24+28, maestria : 28+31, conquista : 45+61, imersão : 70+63, criatividade : 61+62},'Caçador \n de Recompensas'),
         new Perfil(this.Inputs,{ação:15+23, social : 20+23, maestria : 63+35, conquista : 59+52, imersão : 59+59, criatividade : 51+51},'Arquiteto'),
         new Perfil(this.Inputs,{ação:35+34, social : 68+37, maestria : 52+32, conquista : 26+18, imersão : 62+67, criatividade : 66+69},'Bardo')
     ];
@@ -80,31 +80,31 @@ class ResultApi {
         resultado.nomeSegundoMaiorElemento = nomeSegundoMaiorElemento
         switch (nomeMaiorElemento) {
             case 'Acrobata':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Valoriza desafios solo, enfrentando missões difíceis com habilidade e prática ";
                 break;
             case 'Jardineiro':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Se dedica a acumular itens, recursos ou conquistas, visando completar coleções.";
                 break;
             case 'Caçador':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Busca intensa por ação e destruição, apreciando combates e explosões.";
                 break;
             case 'Brigão':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Jogadores que buscam ação rápida e combate tático em batalhas dinâmicas e interações diretas.";
                 break;
             case 'Gladiador':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Jogadores hardcore que buscam experiências épicas e jogabilidade dinâmica em MMOs e shooters.";
                 break;
             case 'Ninja':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = " Jogadores que enfrentam desafios e competem, focando em decisões estratégicas e ritmo rápido em jogos de luta.";
                 break;
             case 'Caçador de Recompensas':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Jogadores motivados por desafios e recompensas, que se dedicam a completar objetivos e coletar itens valiosos em ambientes competitivos";
                 break;
             case 'Arquiteto':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Gosta de criar e personalizar mundos e sistemas dentro do jogo, exercendo sua criatividade.";
                 break;
             case 'Bardo':
-                resultado.textoPrimeiro = "lorem ipsum";
+                resultado.textoPrimeiro = "Prioriza a interação social, formando comunidades e colaborando com outros jogadores.";
                 break;
         }
         return resultado;
