@@ -1,13 +1,44 @@
+import { Slider } from "@mui/joy";
 import "./SelectGame.css";
-
+import CircularProgress from "@mui/joy/CircularProgress";
 function SelectGame(props: any) {
   const inputs = [
-    {label: "Ação", value: props.ação, setValue: props.setAção, description:"bla bla" },
-    {label: "Social", value: props.social, setValue: props.setSocial, description:"bla bla" },
-    {label: "Maestria", value: props.maestria, setValue: props.setMaestria, description:"bla bla" },
-    {label: "Conquista",value: props.conquista,setValue: props.setConquista, description:"bla bla",},
-    {label: "Imersão", value: props.imersão, setValue: props.setImersão, description:"bla bla" },
-    {label: "Criatividade",value: props.criatividade,setValue: props.setCriatividade, description:"bla bla",},
+    {
+      label: "Ação",
+      value: props.ação,
+      setValue: props.setAção,
+      description: "Foco em destruição e excitação intensa.",
+    },
+    {
+      label: "Social",
+      value: props.social,
+      setValue: props.setSocial,
+      description: " Competição e interação em comunidade.",
+    },
+    {
+      label: "Maestria",
+      value: props.maestria,
+      setValue: props.setMaestria,
+      description: "Desafio e desenvolvimento de estratégias",
+    },
+    {
+      label: "Conquista",
+      value: props.conquista,
+      setValue: props.setConquista,
+      description: "Completar objetivos e obter poder.",
+    },
+    {
+      label: "Imersão",
+      value: props.imersão,
+      setValue: props.setImersão,
+      description: "Exploração de fantasia e histórias profundas",
+    },
+    {
+      label: "Criatividade",
+      value: props.criatividade,
+      setValue: props.setCriatividade,
+      description: "Personalização e descoberta de novidades.",
+    },
   ];
   return (
     console.log(props),
@@ -22,20 +53,33 @@ function SelectGame(props: any) {
             {inputs.map((input, index) => (
               <li key={index}>
                 <div className="InputDescription">
-                    <input
+                  <Slider
+                    color="primary"
+                    disabled={false}
+                    marks={false}
+                    orientation="horizontal"
+                    size="md"
                     value={input.value}
-                    onChange={(e) => input.setValue(e.target.value)}
-                    type="range"
-                    min="0"
-                    max="100"
-                    />
-                    <label>{input.description}</label>
+                    onChange={(e) =>
+                      input.setValue((e.target as HTMLInputElement).value)
+                    }
+                    valueLabelDisplay="off"
+                    variant="soft"
+                  />
+                  <label>
+                    🛈 {input.label}: {input.description}
+                  </label>
                 </div>
-                
+
                 <label>
-                  {input.label}
-                  <br />
-                  {input.value + "%"}
+                  <CircularProgress
+                    determinate
+                    size="md"
+                    value={input.value}
+                    variant="solid"
+                  >
+                    <h2> {input.value}</h2>
+                  </CircularProgress>
                 </label>
               </li>
             ))}
