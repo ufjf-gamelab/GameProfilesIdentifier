@@ -14,11 +14,11 @@ function App() {
         </section>
         <section >
           <h2>Referências:</h2>
-            <a  href='https://quanticfoundry.com/gamer-types/'>The 9 Quantic Gamer Types</a>     
-            <a  href='https://apps.quanticfoundry.com/surveys/start/gamerprofile/'>GamerProfile Quantic Foundry</a> 
-            <a  href='https://quanticfoundry.com/'>Quantic Foundry</a>
-            <a  href='https://mud.co.uk/richard/selfware.html '>A Self of Sense</a>
-            <a  href='https://www2.ufjf.br/inovagames/2024/10/10/o-que-motiva-os-jogadores-e-o-que-te-motiva-a-jogar-parte-3/'>O que motiva os Jogadores? (Parte 3) - Site Inova Games</a>      
+            <a    href='https://quanticfoundry.com/gamer-types/'>The 9 Quantic Gamer Types</a>     
+            <a   href='https://apps.quanticfoundry.com/surveys/start/gamerprofile/'>GamerProfile Quantic Foundry</a> 
+            <a   href='https://quanticfoundry.com/'>Quantic Foundry</a>
+            <a   href='https://mud.co.uk/richard/selfware.html '>A Self of Sense</a>
+            <a   href='https://www2.ufjf.br/inovagames/2024/10/10/o-que-motiva-os-jogadores-e-o-que-te-motiva-a-jogar-parte-3/'>O que motiva os Jogadores? (Parte 3) - Site Inova Games</a>      
 
         </section>
     </footer>
