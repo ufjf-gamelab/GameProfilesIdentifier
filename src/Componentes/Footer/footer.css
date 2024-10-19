@@ -1,7 +1,7 @@
 footer{
     width: 100%;
     height: auto;
-    border-top: 4px solid #000;
+    
     display: flex;
     justify-content: flex-end !important;
     align-items: center;
@@ -10,13 +10,13 @@ footer{
     
     align-self: center;
 
-    background-color: #59565c;
-opacity: 1;
-background-image: radial-gradient(#1d1d1d 0.35000000000000003px, #131313    0.35000000000000003px);
-background-size: 7px 7px;
+    background-color: #769faf;
+    opacity: 1;
+    background-image: radial-gradient(#769faf 0.35000000000000003px, #a2d5e9    0.35000000000000003px);
+    background-size: 7px 7px;
     min-height: 200px;
     padding-bottom: 20px;
-
+    box-shadow: -2.5px -5px 10px rgb(92, 91, 91);
 }
 
 footer img{
@@ -79,16 +79,25 @@ footer section{
     }
 }
 footer section h2{
-    color: white;
+    color: rgb(53, 53, 53);
     margin: 0;
     height: auto;
     padding: 0%;
     width: auto;
 }
-footer section h3{
-    color: white;
+footer section a{
+    color: black;
     margin: 0;
     height: auto;
     padding: 0%;
     margin-left: 15px;
+    font-weight: normal;
+}
+footer section h3{
+    color: black;
+    margin: 0;
+    height: auto;
+    padding: 0%;
+    margin-left: 15px;
+    font-weight: normal; 
 }
