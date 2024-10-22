@@ -80,7 +80,7 @@ class ResultApi {
         resultado.nomeSegundoMaiorElemento = nomeSegundoMaiorElemento
         switch (nomeMaiorElemento) {
             case 'Acrobata':
-                resultado.textoPrimeiro = "Seu jogo deve focar em oferecer desafios complexos e mecânicas profundas que recompensem a prática contínua, sem distrações com construção ou ";
+                resultado.textoPrimeiro = "Seu jogo deve focar em oferecer desafios complexos e mecânicas profundas que recompensem a prática contínua, sem distrações com construção ou decoração.";
                 break;
             case 'Jardineiro':
                 resultado.textoPrimeiro = "Seu jogo deve focar em oferecer tarefas simples e relaxantes, com uma jogabilidade direta e com recompensa, sem a complexidade de planejamento estratégico.";
@@ -107,9 +107,9 @@ class ResultApi {
                 resultado.textoPrimeiro = "Seu jogo deve focar em oferecer mundos dinâmicos e interativos, onde os jogadores possam se conectar e colaborar, criando narrativas coletivas e explorando experiências de forma orgânica, sem pressa por progressão ou metas fixas.";
                 break;
         }
-        switch (nomeSegundoMaiorElemento) {
+        switch (nomeSegundoMaiorElemento) { 
             case 'Acrobata':
-                resultado.textoSegundo = "Seu jogo deve focar em oferecer desafios complexos e mecânicas profundas que recompensem a prática contínua, sem distrações com construção ou ";
+                resultado.textoSegundo = "Seu jogo deve focar em oferecer desafios complexos e mecânicas profundas que recompensem a prática contínua, sem distrações com construção ou decoração";
                 break;
             case 'Jardineiro':
                 resultado.textoSegundo = "Seu jogo deve focar em oferecer tarefas simples e relaxantes, com uma jogabilidade direta e com recompensa, sem a complexidade de planejamento estratégico.";

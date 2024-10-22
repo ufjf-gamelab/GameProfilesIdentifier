@@ -84,7 +84,6 @@ function Resultado(props: any) {
         <br />
         {"•⁠ "+ResultadoTexto.nomeMaiorElemento + ": " + ResultadoTexto.textoPrimeiro}
         <br />
-        <br />
         {"•⁠ "+ResultadoTexto.nomeSegundoMaiorElemento + ": " + ResultadoTexto.textoSegundo}
       </div>
     </div>
