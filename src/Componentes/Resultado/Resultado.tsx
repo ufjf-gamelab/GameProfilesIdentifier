@@ -79,10 +79,13 @@ function Resultado(props: any) {
       </div>
       <div className="resultText">
         {}
-        {"O perfil que mais gostaria do seu jogo é: "}
+        {"Os perfis que mais gostariam do seu jogo são: "}
         <br />
-        {ResultadoTexto.nomeMaiorElemento + "," + ResultadoTexto.textoPrimeiro}
-        {}
+        <br />
+        {"•⁠ "+ResultadoTexto.nomeMaiorElemento + ": " + ResultadoTexto.textoPrimeiro}
+        <br />
+        <br />
+        {"•⁠ "+ResultadoTexto.nomeSegundoMaiorElemento + ": " + ResultadoTexto.textoSegundo}
       </div>
     </div>
   );
