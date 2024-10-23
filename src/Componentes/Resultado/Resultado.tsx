@@ -14,7 +14,7 @@ function Resultado(props: any) {
   resultApi.Inputs.conquista = props.conquista;
   resultApi.Inputs.imersão = props.imersão;
   resultApi.Inputs.criatividade = props.criatividade;
-
+  
   const ResultadoTexto = resultApi.getTextoResultado();
   return (
     <div className="ResultadoCtn">
@@ -78,13 +78,14 @@ function Resultado(props: any) {
         </VictoryChart>
       </div>
       <div className="resultText">
-        {}
-        {"Os perfis que mais gostariam do seu jogo são: "}
         <br />
-        <br />
-        {"•⁠ "+ResultadoTexto.nomeMaiorElemento + ": " + ResultadoTexto.textoPrimeiro}
-        <br />
-        {"•⁠ "+ResultadoTexto.nomeSegundoMaiorElemento + ": " + ResultadoTexto.textoSegundo}
+        {ResultadoTexto.nomeMaiorElemento !== "" ? (
+          
+          <>
+            {"O perfil que mais gostaria do seu jogo é: "}
+            {ResultadoTexto.nomeMaiorElemento + "," + ResultadoTexto.textoPrimeiro}
+          </>
+        ) : null}
       </div>
     </div>
   );

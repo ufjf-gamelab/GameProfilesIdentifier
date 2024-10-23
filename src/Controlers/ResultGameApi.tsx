@@ -68,8 +68,15 @@ class ResultApi {
        ordenados.sort((a:Perfil, b:Perfil) => {
             return b.agradabilidade - a.agradabilidade;
         });
-        const nomeMaiorElemento = ordenados[0].nome;
-        const nomeSegundoMaiorElemento = ordenados[1].nome;
+        let nomeMaiorElemento = ordenados[0].nome;
+        let nomeSegundoMaiorElemento = ordenados[1].nome;
+        if(ordenados[0].agradabilidade==0){
+            nomeMaiorElemento = '';
+        }
+        if(ordenados[1].agradabilidade==0){
+            nomeSegundoMaiorElemento = '';
+        }
+        console.log(nomeMaiorElemento);
         const resultado = {
             textoPrimeiro: '',
             textoSegundo: '',
@@ -106,6 +113,8 @@ class ResultApi {
             case 'Bardo':
                 resultado.textoPrimeiro = "Seu jogo deve focar em oferecer mundos dinâmicos e interativos, onde os jogadores possam se conectar e colaborar, criando narrativas coletivas e explorando experiências de forma orgânica, sem pressa por progressão ou metas fixas.";
                 break;
+            default:
+                break;
         }
         switch (nomeSegundoMaiorElemento) { 
             case 'Acrobata':
@@ -134,6 +143,8 @@ class ResultApi {
                 break;
             case 'Bardo':
                 resultado.textoSegundo = "Seu jogo deve focar em oferecer mundos dinâmicos e interativos, onde os jogadores possam se conectar e colaborar, criando narrativas coletivas e explorando experiências de forma orgânica, sem pressa por progressão ou metas fixas.";
+                break;
+            default:
                 break;
         }
         return resultado;
