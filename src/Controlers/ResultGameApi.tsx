@@ -104,7 +104,7 @@ class ResultApi {
             case 'Ninja':
                 resultado.textoPrimeiro = "Seu jogo deve focar em competitividade e ritmo rápido, onde estratégias e habilidades pessoais sejam fundamentais, sem ênfase na progressão acumulada.";
                 break;
-            case 'Caçador de Recompensas':
+            case 'Caçador \n de Recompensas':
                 resultado.textoPrimeiro = "Seu jogo deve focar em um mundo aberto para explorar, com opções de personalização e progressão, permitindo que os jogadores vejam seus personagens evoluírem e moldem sua experiência.";
                 break;
             case 'Arquiteto':
@@ -135,7 +135,7 @@ class ResultApi {
             case 'Ninja':
                 resultado.textoSegundo = "Seu jogo deve focar em competitividade e ritmo rápido, onde estratégias e habilidades pessoais sejam fundamentais, sem ênfase na progressão acumulada.";
                 break;
-            case 'Caçador de Recompensas':
+            case 'Caçador \n de Recompensas':
                 resultado.textoSegundo = "Seu jogo deve focar em um mundo aberto para explorar, com opções de personalização e progressão, permitindo que os jogadores vejam seus personagens evoluírem e moldem sua experiência.";
                 break;
             case 'Arquiteto':
