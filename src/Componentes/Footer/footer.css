@@ -25,7 +25,6 @@ footer img{
     margin: 0 auto;
     margin-bottom: 15px;
     
-
 }
 
 footer section{
@@ -91,4 +90,12 @@ footer section h3{
     height: auto;
     padding: 0%;
     margin-left: 15px;
+}
+footer section a{
+    color: white;
+    margin: 0;
+    height: auto;
+    padding: 0%;
+    margin-left: 15px;
+    font-weight: normal;
 }

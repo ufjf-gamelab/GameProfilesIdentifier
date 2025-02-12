@@ -68,9 +68,16 @@ class ResultApi {
        ordenados.sort((a:Perfil, b:Perfil) => {
             return b.agradabilidade - a.agradabilidade;
         });
-        const nomeMaiorElemento = ordenados[0].nome;
-        const nomeSegundoMaiorElemento = ordenados[1].nome;
-        let resultado = {
+        let nomeMaiorElemento = ordenados[0].nome;
+        let nomeSegundoMaiorElemento = ordenados[1].nome;
+        if(ordenados[0].agradabilidade==0){
+            nomeMaiorElemento = '';
+        }
+        if(ordenados[1].agradabilidade==0){
+            nomeSegundoMaiorElemento = '';
+        }
+        console.log(nomeMaiorElemento);
+        const resultado = {
             textoPrimeiro: '',
             textoSegundo: '',
             nomeMaiorElemento: '',
@@ -80,31 +87,64 @@ class ResultApi {
         resultado.nomeSegundoMaiorElemento = nomeSegundoMaiorElemento
         switch (nomeMaiorElemento) {
             case 'Acrobata':
-                resultado.textoPrimeiro = "Valoriza desafios solo, enfrentando missões difíceis com habilidade e prática ";
+                resultado.textoPrimeiro = "Seu jogo deve focar em oferecer desafios complexos e mecânicas profundas que recompensem a prática contínua, sem distrações com construção ou decoração.";
                 break;
             case 'Jardineiro':
-                resultado.textoPrimeiro = "Se dedica a acumular itens, recursos ou conquistas, visando completar coleções.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em oferecer tarefas simples e relaxantes, com uma jogabilidade direta e com recompensa, sem a complexidade de planejamento estratégico.";
                 break;
             case 'Caçador':
-                resultado.textoPrimeiro = "Busca intensa por ação e destruição, apreciando combates e explosões.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em narrativas envolventes e lineares, com uma jogabilidade acessível, sem a necessidade de planejar ou progressão de habilidades.";
                 break;
             case 'Brigão':
-                resultado.textoPrimeiro = "Jogadores que buscam ação rápida e combate tático em batalhas dinâmicas e interações diretas.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em ritmo rápido e acessíveis, com partidas emocionantes, onde a equipe e diversão superam a necessidade de planejamento ou progressão cumulativa.";
                 break;
             case 'Gladiador':
-                resultado.textoPrimeiro = "Jogadores hardcore que buscam experiências épicas e jogabilidade dinâmica em MMOs e shooters.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em oferecer uma jogabilidade variada, com desafios, progressão estratégica e que incentiva a exploração e customização, criando uma experiência envolvente de longo prazo. ";
                 break;
             case 'Ninja':
-                resultado.textoPrimeiro = " Jogadores que enfrentam desafios e competem, focando em decisões estratégicas e ritmo rápido em jogos de luta.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em competitividade e ritmo rápido, onde estratégias e habilidades pessoais sejam fundamentais, sem ênfase na progressão acumulada.";
                 break;
-            case 'Caçador de Recompensas':
-                resultado.textoPrimeiro = "Jogadores motivados por desafios e recompensas, que se dedicam a completar objetivos e coletar itens valiosos em ambientes competitivos";
+            case 'Caçador \n de Recompensas':
+                resultado.textoPrimeiro = "Seu jogo deve focar em um mundo aberto para explorar, com opções de personalização e progressão, permitindo que os jogadores vejam seus personagens evoluírem e moldem sua experiência.";
                 break;
             case 'Arquiteto':
-                resultado.textoPrimeiro = "Gosta de criar e personalizar mundos e sistemas dentro do jogo, exercendo sua criatividade.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em incentivar o planejamento estratégico e a construção a longo prazo, com cenários ricos e narrativas envolventes, proporcionando um ambiente sereno e controlado";
                 break;
             case 'Bardo':
-                resultado.textoPrimeiro = "Prioriza a interação social, formando comunidades e colaborando com outros jogadores.";
+                resultado.textoPrimeiro = "Seu jogo deve focar em oferecer mundos dinâmicos e interativos, onde os jogadores possam se conectar e colaborar, criando narrativas coletivas e explorando experiências de forma orgânica, sem pressa por progressão ou metas fixas.";
+                break;
+            default:
+                break;
+        }
+        switch (nomeSegundoMaiorElemento) { 
+            case 'Acrobata':
+                resultado.textoSegundo = "Seu jogo deve focar em oferecer desafios complexos e mecânicas profundas que recompensem a prática contínua, sem distrações com construção ou decoração";
+                break;
+            case 'Jardineiro':
+                resultado.textoSegundo = "Seu jogo deve focar em oferecer tarefas simples e relaxantes, com uma jogabilidade direta e com recompensa, sem a complexidade de planejamento estratégico.";
+                break;
+            case 'Caçador':
+                resultado.textoSegundo = "Seu jogo deve focar em narrativas envolventes e lineares, com uma jogabilidade acessível, sem a necessidade de planejar ou progressão de habilidades.";
+                break;
+            case 'Brigão':
+                resultado.textoSegundo = "Seu jogo deve focar em ritmo rápido e acessíveis, com partidas emocionantes, onde a equipe e diversão superam a necessidade de planejamento ou progressão cumulativa.";
+                break;
+            case 'Gladiador':
+                resultado.textoSegundo = "Seu jogo deve focar em oferecer uma jogabilidade variada, com desafios, progressão estratégica e que incentiva a exploração e customização, criando uma experiência envolvente de longo prazo. ";
+                break;
+            case 'Ninja':
+                resultado.textoSegundo = "Seu jogo deve focar em competitividade e ritmo rápido, onde estratégias e habilidades pessoais sejam fundamentais, sem ênfase na progressão acumulada.";
+                break;
+            case 'Caçador \n de Recompensas':
+                resultado.textoSegundo = "Seu jogo deve focar em um mundo aberto para explorar, com opções de personalização e progressão, permitindo que os jogadores vejam seus personagens evoluírem e moldem sua experiência.";
+                break;
+            case 'Arquiteto':
+                resultado.textoSegundo = "Seu jogo deve focar em incentivar o planejamento estratégico e a construção a longo prazo, com cenários ricos e narrativas envolventes, proporcionando um ambiente sereno e controlado";
+                break;
+            case 'Bardo':
+                resultado.textoSegundo = "Seu jogo deve focar em oferecer mundos dinâmicos e interativos, onde os jogadores possam se conectar e colaborar, criando narrativas coletivas e explorando experiências de forma orgânica, sem pressa por progressão ou metas fixas.";
+                break;
+            default:
                 break;
         }
         return resultado;
