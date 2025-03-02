@@ -69,16 +69,16 @@ function GameCreator() {
 
       <main>
         <aside className="DataInput">
-          <Tabs defaultValue="account" className="w-[400px]">
-            <TabsList>
-              <TabsTrigger value="account">Game</TabsTrigger>
+          <Tabs defaultValue="account" className="tabLayouyt">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="account">Game Values</TabsTrigger>
               <TabsTrigger value="password">Tree</TabsTrigger>
             </TabsList>
-            <TabsContent value="account">
+            <TabsContent className="space-y-2" value="account">
               <GameFeaturesPicker Features={gameFeature} />
             </TabsContent>
-            <TabsContent value="password">
-              tem que ter uma arvore aqui
+            <TabsContent className="space-y-2" value="password">
+                 tem que ter uma arvore aqui :)
             </TabsContent>
           </Tabs>
         </aside>
