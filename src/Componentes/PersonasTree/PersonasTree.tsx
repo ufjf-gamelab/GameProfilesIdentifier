@@ -61,14 +61,23 @@ function PersonasTree() {
 }
 
 function Node({ node, style, dragHandle }: { node:any, style: React.CSSProperties, dragHandle?: React.Ref<HTMLDivElement> }) {
-    return (
-      <div className='Node' ref={dragHandle} >
-          <Checkbox />
+  const [checked, setChecked] = useState(false);
+  const handleCheck = () => setChecked(!checked);  
+  return (
+      <div className='Node' onClick={handleCheck}  ref={dragHandle} >
+       
         <div style={style} >
           {"🙂"}
           {node.data.name}
 
         </div>
+        {
+          checked && (
+            <div className='checkbox'>
+              <Checkbox checked={checked} onChange={handleCheck} />
+            </div>
+          )
+        }
       </div>
      
     );
