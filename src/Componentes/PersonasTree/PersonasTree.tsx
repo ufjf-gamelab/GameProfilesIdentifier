@@ -8,9 +8,12 @@ function PersonasTree() {
   const data = [
     { id: "1", name: "Unread" },
     { id: "2", name: "Threads" },
+
+
+
     {
       id: "3",
-      name: "Chat Rooms",
+      name: "Jogo",
       children: [
         { id: "c1", name: "General" },
         { id: "c2", name: "Random" },
@@ -30,11 +33,15 @@ function PersonasTree() {
   return (
     <Tree className='Tree'
       initialData={data}
-      openByDefault={false}
+      openByDefault={true}
       height={1000}
       rowHeight={36}
       overscanCount={1}
       
+      indent={24}
+      paddingTop={30}
+      paddingBottom={10}
+      padding={25 /* sets both */}
     >
       {Node}
     </Tree>
@@ -42,6 +49,7 @@ function PersonasTree() {
 }
 
 function Node({ node, style, dragHandle }: { node:any, style: React.CSSProperties, dragHandle?: React.Ref<HTMLDivElement> }) {
+  
     return (
       <div style={style} ref={dragHandle}>
         {node.isLeaf ? "🙂" : "⬇️"}
