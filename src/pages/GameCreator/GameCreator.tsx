@@ -29,17 +29,22 @@ function GameCreator() {
   return (
     <div className='GameCreatorCtn'>
       <Header></Header>
+      
       <main>
-
-          <GameFeaturesPicker Features={gameFeature}/>
-          <Resultado  ação={ação}
-                      social={social}
-                      maestria={maestria}
-                      conquista={conquista}
-                      imersão={imersão}
-                      criatividade={criatividade}
-                      resultApi={resultApi}
-          />          
+            <aside className='DataInput'>
+              <GameFeaturesPicker Features={gameFeature}/>
+            </aside>
+            <div className='Results'>
+              <Resultado  ação={ação}
+                        social={social}
+                        maestria={maestria}
+                        conquista={conquista}
+                        imersão={imersão}
+                        criatividade={criatividade}
+                        resultApi={resultApi}
+            />    
+            </div>
+               
       </main>
       <Footer></Footer>
     </div>
