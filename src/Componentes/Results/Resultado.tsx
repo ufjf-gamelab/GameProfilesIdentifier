@@ -2,29 +2,13 @@
 import "./Resultado.css";
 import { Component } from "./Graphs/BarChart/BarChart";
 import { Button } from "@/components/ui/button";
-type gameValues = {
-  ação: number
-  social: number
-  maestria: number
-  conquista: number
-  imersão: number
-  criatividade: number
-}
+import { gameValtoData, Jogo } from "@/Controlers/AnalysisApi";
+
 type ResultadoProps = {
-  gameValues: gameValues
-  resultApi: any
+  jogo: Jogo
 }
-function gameValtoData(gameValues:gameValues){
-  return [
-    { month: "Ação", dataKey: gameValues.ação },
-    { month: "Social", dataKey: gameValues.social },
-    { month: "Maestria", dataKey: gameValues.maestria },
-    { month: "Conquista", dataKey: gameValues.conquista },
-    { month: "Imersão", dataKey: gameValues.imersão },
-    { month: "Criatividade", dataKey: gameValues.criatividade },
-  ]
-}
-function Resultado({gameValues,resultApi}: ResultadoProps) {
+
+function Resultado({jogo}: ResultadoProps) {
 
   
   return (
@@ -33,16 +17,16 @@ function Resultado({gameValues,resultApi}: ResultadoProps) {
       <div className="Graphs">
         <Component
           data={
-            gameValtoData(gameValues)
+            gameValtoData(jogo.Valores)
           }
           titulo="Resultado"
           descricao={"ResultadoTexto"}
         ></Component>
       </div>
       <div className="OperationsPanel">
-          <Button onClick={() => {resultApi.saveResult()}}>Salvar</Button>
-          <Button onClick={() => {resultApi.saveResult()}}>Salvar</Button>
-          <Button onClick={() => {resultApi.saveResult()}}>Salvar</Button>
+          <Button >Salvar</Button>
+          <Button >Salvar</Button>
+          <Button >Salvar</Button>
       </div>
     </div>
   );

@@ -10,23 +10,21 @@ import { DialogCloseButton } from './DialogCloseButton';
 function PersonasTree() {
  
   const [data, setData] = useState([
-    
     {
       id: "Jogo",
       name: "Jogo",
       children: [
-      
       ]
     },
   ]);
  
-  function addPersona( valor) {
+  function addPersona( valor: String) {
     data[0].children.push(
       {
       id: uuidv4(),
       name: valor,
       children:[]
-    }
+    }as never
     );
     setData([...data]);
     

@@ -5,7 +5,7 @@ import GameFeaturesPicker from "../../Componentes/gameFeaturesPicker/GameFeature
 import Resultado from "../../Componentes/Results/Resultado.js";
 import { useState } from "react";
 import ResultApi from "../../Controlers/ResultGameApi.js";
-import { GameFeatureProps } from "@/Controlers/Features/FeaturesData.js";
+import { GameFeatureProps } from "../../Controlers/Types.ts";
 import { Tree } from 'react-arborist';
 import {
   Tabs,
@@ -14,18 +14,12 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-type gameValues = {
-  ação: number;
-  social: number;
-  maestria: number;
-  conquista: number;
-  imersão: number;
-  criatividade: number;
-};
+import { Jogo, Motivações } from "@/Controlers/AnalysisApi.ts";
+
 function GameCreator() {
   const resultApi = new ResultApi();
   const [gameValues, setgameValues] = useState(resultApi.Inputs);
-  function setGameValues(valor: keyof gameValues, acrescimo: number) {
+  function setGameValues(valor: keyof Motivações, acrescimo: number) {
     const novoEstadoValues = { ...gameValues };
     novoEstadoValues[valor] = acrescimo;
     setgameValues(novoEstadoValues);
@@ -63,7 +57,15 @@ function GameCreator() {
       setValue: (value: number) => setGameValues("criatividade", value),
     },
   ];
- 
+  
+  const raiz:Jogo = {
+    nome: "Jogo",
+    imagem: "",
+    descricao: "",
+    categoria: "",
+    quantidade: 0,
+    Valores: gameValues
+  }
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
@@ -84,7 +86,7 @@ function GameCreator() {
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado gameValues={gameValues} resultApi={resultApi} />
+          <Resultado jogo={raiz}  />
         </div>
       </main>
       <Footer></Footer>
