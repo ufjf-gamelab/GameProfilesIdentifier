@@ -3,12 +3,9 @@ import CircularProgress from '@mui/joy/CircularProgress'
 import './gameFeature.css'
 import { Slider } from '@/components/ui/slider'
 import { useRef } from 'react'
+import { GameFeatureProps } from '@/Controlers/Features/FeaturesData'
 
-type GameFeatureProps = {
-  textLabel: string
-  textdescription: string
-  setValue: (value: number) => void
-}
+
 
 function GameFeature( {textLabel,textdescription,setValue }: GameFeatureProps) {
     const value = useRef(0)
