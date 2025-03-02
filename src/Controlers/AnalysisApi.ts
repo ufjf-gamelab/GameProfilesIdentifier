@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export type Categorias={
     Community: number,
     Competition: number,
@@ -48,11 +50,16 @@ export class treeData{
   pesos: Motivações;
   children: treeData[];
 
-  constructor(id: string, name: string, pesos: Motivações, children: treeData[]){
-    this.id = id;
+  nosSelecionados: treeData[] | undefined;
+
+  constructor( name: string, pesos: Motivações, children: treeData[]){
+    this.id= uuidv4(),
     this.name = name;
     this.pesos = pesos;
     this.children = children;
+  }
+  setNosSelecionados(nosSelecionados: treeData[]){
+    this.nosSelecionados = nosSelecionados;
   }
   gameValtoData(){
     return [
@@ -64,6 +71,18 @@ export class treeData{
       { subtitle: "Criatividade", dataKey: this.pesos.criatividade },
     ]
   }
+  
+  addPersona( valor: String) {
+      this.children.push(
+        {
+        id: uuidv4(),
+        name: valor,
+        children:[]
+      }as never
+      );      
+  } 
 }
+
+
 
 

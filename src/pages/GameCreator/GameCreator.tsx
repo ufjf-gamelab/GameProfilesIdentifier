@@ -22,6 +22,18 @@ import { randomUUID } from "crypto";
 function GameCreator() {
   const resultApi = new ResultApi();
   const [gameValues, setgameValues] = useState(resultApi.Inputs);
+  const [analisysTree, setanalisysTree] = useState( [new treeData(
+    "Jogo",
+    gameValues,
+    []
+  )]);
+  function addPersonaHandler(value: String) {
+    const novoEstadoTree = Object.assign({}, analisysTree);
+    novoEstadoTree[0].addPersona(
+      value
+    );
+    setanalisysTree(novoEstadoTree);
+  }
   function setGameValues(valor: keyof Motivações, acrescimo: number) {
     const novoEstadoValues = { ...gameValues };
     novoEstadoValues[valor] = acrescimo;
@@ -60,13 +72,6 @@ function GameCreator() {
       setValue: (value: number) => setGameValues("criatividade", value),
     },
   ];
-  const arvore: treeData = new treeData(
-    uuidv4(),
-    "Jogo",
-    gameValues,
-    []
-
-  );
  
 
   return (
@@ -84,12 +89,12 @@ function GameCreator() {
               <GameFeaturesPicker Features={gameFeature} />
             </TabsContent>
             <TabsContent className="space-y-2" value="password">
-              <PersonasTree />
+              <PersonasTree addPersonaHandler={addPersonaHandler} arvore={analisysTree}/>
             </TabsContent>
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado arvore={arvore}  />
+          <Resultado arvore={analisysTree[0]}  />
         </div>
       </main>
       <Footer></Footer>

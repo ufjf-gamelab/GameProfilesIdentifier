@@ -7,39 +7,23 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Dialog } from '@radix-ui/react-dialog';
 import { DialogCloseButton } from './DialogCloseButton';
-function PersonasTree() {
- 
-  const [data, setData] = useState([
-    {
-      id: "Jogo",
-      name: "Jogo",
-      children: [
-      ]
-    },
-  ]);
- 
-  function addPersona( valor: String) {
-    data[0].children.push(
-      {
-      id: uuidv4(),
-      name: valor,
-      children:[]
-    }as never
-    );
-    setData([...data]);
-    
-  } 
+import { treeData } from '@/Controlers/AnalysisApi';
+type PersonaProps = {
+  arvore: treeData[]
+  addPersonaHandler: (arvore: String) => void
+}
 
+function PersonasTree({arvore, addPersonaHandler}: PersonaProps) {
+  console
   return (
   
     <div>
       <div className='menuBotoes'>
-        <DialogCloseButton callback={addPersona}></DialogCloseButton>
+        <DialogCloseButton callback={addPersonaHandler}></DialogCloseButton>
       </div>
-     
-
+    
       <Tree className='Tree'
-            initialData={data}
+            initialData={arvore}
             openByDefault={true}
             height={1000}
             rowHeight={50}
@@ -52,9 +36,6 @@ function PersonasTree() {
             {Node}
     </Tree>
     </div>
-
-    
-    
   );
 }
 
