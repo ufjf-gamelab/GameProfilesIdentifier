@@ -47,7 +47,7 @@ function GameCreator() {
   }
 
   function setPesosValues(uuid: String, valor: keyof Motivações, acrescimo: number) {
-    const novoEstadoValues = { ...analisysTree };
+    const novoEstadoValues = [ ...analisysTree ];
     const no = findbyUUID(novoEstadoValues[0], uuid) as treeData;
     if (no) {
       no.pesos[valor] = acrescimo;

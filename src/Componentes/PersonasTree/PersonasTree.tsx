@@ -16,6 +16,7 @@ type PersonaProps = {
 }
 
 function PersonasTree({arvore, addPersonaHandler, pushNosSelecionados,removeNosSelecionados }: PersonaProps) {
+  console.log(arvore);
   return (
   
     <div>
