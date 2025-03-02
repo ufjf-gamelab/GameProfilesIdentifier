@@ -13,6 +13,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs.js";
+import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
 type gameValues = {
   ação: number;
   social: number;
@@ -62,28 +63,7 @@ function GameCreator() {
       setValue: (value: number) => setGameValues("criatividade", value),
     },
   ];
-  const data = [
-    { id: "1", name: "Unread" },
-    { id: "2", name: "Threads" },
-    {
-      id: "3",
-      name: "Chat Rooms",
-      children: [
-        { id: "c1", name: "General" },
-        { id: "c2", name: "Random" },
-        { id: "c3", name: "Open Source Projects" },
-      ],
-    },
-    {
-      id: "4",
-      name: "Direct Messages",
-      children: [
-        { id: "d1", name: "Alice" },
-        { id: "d2", name: "Bob" },
-        { id: "d3", name: "Charlie" },
-      ],
-    },
-  ];
+ 
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
@@ -99,7 +79,7 @@ function GameCreator() {
               <GameFeaturesPicker Features={gameFeature} />
             </TabsContent>
             <TabsContent className="space-y-2" value="password">
-            <Tree initialData={data} />
+              <PersonasTree />
             </TabsContent>
           </Tabs>
         </aside>
