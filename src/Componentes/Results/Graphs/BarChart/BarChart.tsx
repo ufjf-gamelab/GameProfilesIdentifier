@@ -22,7 +22,7 @@ const chartConfig = {
 } satisfies ChartConfig
 type chartData = {
   month: string
-  desktop: number
+  dataKey: number
 }
 type BarChartProps = {
     titulo: string
@@ -30,6 +30,7 @@ type BarChartProps = {
     data: chartData[]
 }
 export function Component({titulo, descricao,data}: BarChartProps) {
+    console.log(data)
   return (
     <Card>
       <CardHeader>
@@ -46,13 +47,13 @@ export function Component({titulo, descricao,data}: BarChartProps) {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) => value.slice(0, 6)}
             />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
+            <Bar dataKey="dataKey" fill="var(--color-desktop)" radius={8} />
           </BarChart>
         </ChartContainer>
       </CardContent>

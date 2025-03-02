@@ -2,23 +2,38 @@
 import "./Resultado.css";
 import { Component } from "./Graphs/BarChart/BarChart";
 import { Button } from "@/components/ui/button";
-function Resultado(props: any) {
-  const resultApi = props.resultApi;
+type gameValues = {
+  ação: number
+  social: number
+  maestria: number
+  conquista: number
+  imersão: number
+  criatividade: number
+}
+type ResultadoProps = {
+  gameValues: gameValues
+  resultApi: any
+}
+function gameValtoData(gameValues:gameValues){
+  return [
+    { month: "Ação", dataKey: gameValues.ação },
+    { month: "Social", dataKey: gameValues.social },
+    { month: "Maestria", dataKey: gameValues.maestria },
+    { month: "Conquista", dataKey: gameValues.conquista },
+    { month: "Imersão", dataKey: gameValues.imersão },
+    { month: "Criatividade", dataKey: gameValues.criatividade },
+  ]
+}
+function Resultado({gameValues,resultApi}: ResultadoProps) {
 
   
-  const ResultadoTexto = resultApi.getTextoResultado();
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
-      <div>
+      <div className="Graphs">
         <Component
           data={
-            [
-              { month: "Janeiro", desktop: 10 },
-              { month: "Fevereiro", desktop: 20 },
-              { month: "Março", desktop: 30 },
-              { month: "Abril", desktop: 40 },
-            ]
+            gameValtoData(gameValues)
           }
           titulo="Resultado"
           descricao={"ResultadoTexto"}

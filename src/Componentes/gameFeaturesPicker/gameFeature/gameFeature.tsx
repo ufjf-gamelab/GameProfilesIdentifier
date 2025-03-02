@@ -26,16 +26,7 @@ function GameFeature( {textLabel,textdescription,setValue }: GameFeatureProps) {
             </div>
                 
 
-            <label>
-                <CircularProgress
-                determinate
-                size="md"
-                value={value.current}
-                variant="solid"
-                >
-                <h2 style={{fontWeight:'700', fontSize:'small'}}> {value.current}</h2>
-                </CircularProgress>
-            </label>
+            
             </div>
         
     )

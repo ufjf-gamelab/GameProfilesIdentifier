@@ -17,9 +17,19 @@
         padding: 0%;
         
     }
+
+    
 }
 
-
+.Graphs{
+    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row;
+}
 .OperationsPanel{
     display: flex;
     
