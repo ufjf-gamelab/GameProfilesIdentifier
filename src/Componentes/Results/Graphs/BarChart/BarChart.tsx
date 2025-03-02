@@ -20,8 +20,9 @@ const chartConfig = {
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
+
 type chartData = {
-  month: string
+  subtitle: string
   dataKey: number
 }
 type BarChartProps = {
@@ -30,7 +31,6 @@ type BarChartProps = {
     data: chartData[]
 }
 export function Component({titulo, descricao,data}: BarChartProps) {
-    console.log(data)
   return (
     <Card>
       <CardHeader>
@@ -43,7 +43,7 @@ export function Component({titulo, descricao,data}: BarChartProps) {
           <BarChart accessibilityLayer data={data}>
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey="subtitle"
               tickLine={false}
               tickMargin={10}
               axisLine={false}

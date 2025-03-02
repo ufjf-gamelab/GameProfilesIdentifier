@@ -5,8 +5,9 @@ import GameFeaturesPicker from "../../Componentes/gameFeaturesPicker/GameFeature
 import Resultado from "../../Componentes/Results/Resultado.js";
 import { useState } from "react";
 import ResultApi from "../../Controlers/ResultGameApi.js";
-import { GameFeatureProps } from "@/Controlers/Features/FeaturesData.js";
-import { Tree } from 'react-arborist';
+import { GameFeatureProps } from "../../Controlers/Types.ts";
+
+
 import {
   Tabs,
   TabsContent,
@@ -14,56 +15,81 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-type gameValues = {
-  ação: number;
-  social: number;
-  maestria: number;
-  conquista: number;
-  imersão: number;
-  criatividade: number;
-};
+import { findbyUUID, Motivações, treeData } from "@/Controlers/TreeApi.ts";
+
 function GameCreator() {
   const resultApi = new ResultApi();
-  const [gameValues, setgameValues] = useState(resultApi.Inputs);
-  function setGameValues(valor: keyof gameValues, acrescimo: number) {
-    const novoEstadoValues = { ...gameValues };
-    novoEstadoValues[valor] = acrescimo;
-    setgameValues(novoEstadoValues);
+  const [analisysTree, setanalisysTree] = useState( [new treeData(
+    "Jogo",
+    resultApi.Inputs,
+    []
+  )]);
+  let nosSelecionados: treeData[] = [];
+
+
+  function addPersonaHandler(value: String) {
+    const novoEstadoTree = Object.assign({}, analisysTree);
+    novoEstadoTree[0].addPersona(
+      value
+    );
+    setanalisysTree(novoEstadoTree);
+  }
+  function addSelecedNode(uuid: String) {
+    const no = findbyUUID(analisysTree[0],uuid) as treeData;
+    nosSelecionados.push(no);
+    console.log(nosSelecionados);
+
+  }
+  function removeSelecedNode(uuid: String) {
+    nosSelecionados = nosSelecionados.filter((item) => {
+      return item.id !== uuid;
+    });
+  }
+
+  function setPesosValues(uuid: String, valor: keyof Motivações, acrescimo: number) {
+    const novoEstadoValues = [ ...analisysTree ];
+    const no = findbyUUID(novoEstadoValues[0], uuid) as treeData;
+    if (no) {
+      no.pesos[valor] = acrescimo;
+      console.log(novoEstadoValues);
+      setanalisysTree(novoEstadoValues);
+    }
   }
 
   const gameFeature: GameFeatureProps[] = [
     {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
-      setValue: (value: number) => setGameValues("ação", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"ação", value),
     },
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
-      setValue: (value: number) => setGameValues("social", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"social", value),
     },
     {
       textLabel: "Maestria",
       textdescription: "Desafio e desenvolvimento de estratégias",
-      setValue: (value: number) => setGameValues("maestria", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"maestria", value),
     },
     {
       textLabel: "Conquista",
       textdescription: "Completar objetivos e obter poder.",
-      setValue: (value: number) => setGameValues("conquista", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"conquista", value),
     },
     {
       textLabel: "Imersão",
       textdescription: "Exploração de fantasia e histórias profundas",
-      setValue: (value: number) => setGameValues("imersão", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"imersão", value),
     },
     {
       textLabel: "Criatividade",
       textdescription: "Personalização e descoberta de novidades.",
-      setValue: (value: number) => setGameValues("criatividade", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"criatividade", value),
     },
   ];
  
+
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
@@ -79,12 +105,20 @@ function GameCreator() {
               <GameFeaturesPicker Features={gameFeature} />
             </TabsContent>
             <TabsContent className="space-y-2" value="password">
-              <PersonasTree />
+              <PersonasTree 
+              addPersonaHandler={addPersonaHandler} 
+              pushNosSelecionados ={
+                addSelecedNode
+              } 
+              removeNosSelecionados={
+                removeSelecedNode
+              }
+              arvore={analisysTree}/>
             </TabsContent>
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado gameValues={gameValues} resultApi={resultApi} />
+          <Resultado arvore={analisysTree[0]}  />
         </div>
       </main>
       <Footer></Footer>
