@@ -35,7 +35,8 @@ function GameCreator() {
               <GameFeaturesPicker Features={gameFeature}/>
             </aside>
             <div className='Results'>
-              <Resultado  ação={ação}
+              <Resultado  
+                        ação={ação}
                         social={social}
                         maestria={maestria}
                         conquista={conquista}

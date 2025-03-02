@@ -11,7 +11,18 @@ function Resultado(props: any) {
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
       <div>
-        <Component></Component>
+        <Component
+          data={
+            [
+              { month: "Janeiro", desktop: 10 },
+              { month: "Fevereiro", desktop: 20 },
+              { month: "Março", desktop: 30 },
+              { month: "Abril", desktop: 40 },
+            ]
+          }
+          titulo="Resultado"
+          descricao={"ResultadoTexto"}
+        ></Component>
       </div>
       <div className="OperationsPanel">
           <Button onClick={() => {resultApi.saveResult()}}>Salvar</Button>
