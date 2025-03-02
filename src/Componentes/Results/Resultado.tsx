@@ -2,14 +2,14 @@
 import "./Resultado.css";
 import { Component } from "./Graphs/BarChart/BarChart";
 import { Button } from "@/components/ui/button";
-import { gameValtoData, Jogo } from "@/Controlers/AnalysisApi";
+import { treeData } from "@/Controlers/AnalysisApi";
 
 type ResultadoProps = {
-  jogo: Jogo
+  arvore: treeData
 }
 
-function Resultado({jogo}: ResultadoProps) {
-
+function Resultado({arvore}: ResultadoProps) {
+ 
   
   return (
     <div className="ResultadoCtn">
@@ -17,7 +17,7 @@ function Resultado({jogo}: ResultadoProps) {
       <div className="Graphs">
         <Component
           data={
-            gameValtoData(jogo.Valores)
+            arvore.gameValtoData()
           }
           titulo="Resultado"
           descricao={"ResultadoTexto"}

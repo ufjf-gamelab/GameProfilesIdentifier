@@ -12,7 +12,6 @@ export type Categorias={
     Discovery: number,
     Design: number,
   }
-  
 export type Motivações = {
     ação:number,
     social : number,
@@ -41,13 +40,30 @@ export type Data={
   subtitle: string,
   dataKey: number
 }
-export function gameValtoData(Jogo:Motivações){
+
+export class treeData{
+
+  id: string;
+  name: string;
+  pesos: Motivações;
+  children: treeData[];
+
+  constructor(id: string, name: string, pesos: Motivações, children: treeData[]){
+    this.id = id;
+    this.name = name;
+    this.pesos = pesos;
+    this.children = children;
+  }
+  gameValtoData(){
     return [
-      { subtitle: "Ação", dataKey: Jogo.ação },
-      { subtitle: "Social", dataKey: Jogo.social },
-      { subtitle: "Maestria", dataKey: Jogo.maestria },
-      { subtitle: "Conquista", dataKey: Jogo.conquista },
-      { subtitle: "Imersão", dataKey: Jogo.imersão },
-      { subtitle: "Criatividade", dataKey: Jogo.criatividade },
+      { subtitle: "Ação", dataKey: this.pesos.ação },
+      { subtitle: "Social", dataKey: this.pesos.social },
+      { subtitle: "Maestria", dataKey: this.pesos.maestria },
+      { subtitle: "Conquista", dataKey: this.pesos.conquista },
+      { subtitle: "Imersão", dataKey: this.pesos.imersão },
+      { subtitle: "Criatividade", dataKey: this.pesos.criatividade },
     ]
   }
+}
+
+

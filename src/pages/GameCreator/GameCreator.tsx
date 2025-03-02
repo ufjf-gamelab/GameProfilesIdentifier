@@ -7,6 +7,8 @@ import { useState } from "react";
 import ResultApi from "../../Controlers/ResultGameApi.js";
 import { GameFeatureProps } from "../../Controlers/Types.ts";
 import { Tree } from 'react-arborist';
+import { v4 as uuidv4 } from 'uuid';
+
 import {
   Tabs,
   TabsContent,
@@ -14,7 +16,8 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-import { Jogo, Motivações } from "@/Controlers/AnalysisApi.ts";
+import { Jogo, Motivações, treeData } from "@/Controlers/AnalysisApi.ts";
+import { randomUUID } from "crypto";
 
 function GameCreator() {
   const resultApi = new ResultApi();
@@ -57,15 +60,15 @@ function GameCreator() {
       setValue: (value: number) => setGameValues("criatividade", value),
     },
   ];
-  
-  const raiz:Jogo = {
-    nome: "Jogo",
-    imagem: "",
-    descricao: "",
-    categoria: "",
-    quantidade: 0,
-    Valores: gameValues
-  }
+  const arvore: treeData = new treeData(
+    uuidv4(),
+    "Jogo",
+    gameValues,
+    []
+
+  );
+ 
+
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
@@ -86,7 +89,7 @@ function GameCreator() {
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado jogo={raiz}  />
+          <Resultado arvore={arvore}  />
         </div>
       </main>
       <Footer></Footer>
