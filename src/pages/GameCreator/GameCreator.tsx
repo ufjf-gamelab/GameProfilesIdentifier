@@ -6,8 +6,7 @@ import Resultado from "../../Componentes/Results/Resultado.js";
 import { useState } from "react";
 import ResultApi from "../../Controlers/ResultGameApi.js";
 import { GameFeatureProps } from "../../Controlers/Types.ts";
-import { Tree } from 'react-arborist';
-import { v4 as uuidv4 } from 'uuid';
+
 
 import {
   Tabs,
@@ -16,19 +15,18 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-import { findbyUUID, Jogo, Motivações, treeData } from "@/Controlers/AnalysisApi.ts";
-import { randomUUID } from "crypto";
+import { findbyUUID, Motivações, treeData } from "@/Controlers/AnalysisApi.ts";
 
 function GameCreator() {
   const resultApi = new ResultApi();
-  const [gameValues, setgameValues] = useState(resultApi.Inputs);
-
   const [analisysTree, setanalisysTree] = useState( [new treeData(
     "Jogo",
-    gameValues,
+    resultApi.Inputs,
     []
   )]);
   let nosSelecionados: treeData[] = [];
+
+
   function addPersonaHandler(value: String) {
     const novoEstadoTree = Object.assign({}, analisysTree);
     novoEstadoTree[0].addPersona(
@@ -39,7 +37,8 @@ function GameCreator() {
   function addSelecedNode(uuid: String) {
     const no = findbyUUID(analisysTree[0],uuid) as treeData;
     nosSelecionados.push(no);
-   
+    console.log(nosSelecionados);
+
   }
   function removeSelecedNode(uuid: String) {
     nosSelecionados = nosSelecionados.filter((item) => {
@@ -47,42 +46,46 @@ function GameCreator() {
     });
   }
 
-  function setGameValues(valor: keyof Motivações, acrescimo: number) {
-    const novoEstadoValues = { ...gameValues };
-    novoEstadoValues[valor] = acrescimo;
-    setgameValues(novoEstadoValues);
+  function setPesosValues(uuid: String, valor: keyof Motivações, acrescimo: number) {
+    const novoEstadoValues = { ...analisysTree };
+    const no = findbyUUID(novoEstadoValues[0], uuid) as treeData;
+    if (no) {
+      no.pesos[valor] = acrescimo;
+      console.log(novoEstadoValues);
+      setanalisysTree(novoEstadoValues);
+    }
   }
 
   const gameFeature: GameFeatureProps[] = [
     {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
-      setValue: (value: number) => setGameValues("ação", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"ação", value),
     },
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
-      setValue: (value: number) => setGameValues("social", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"social", value),
     },
     {
       textLabel: "Maestria",
       textdescription: "Desafio e desenvolvimento de estratégias",
-      setValue: (value: number) => setGameValues("maestria", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"maestria", value),
     },
     {
       textLabel: "Conquista",
       textdescription: "Completar objetivos e obter poder.",
-      setValue: (value: number) => setGameValues("conquista", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"conquista", value),
     },
     {
       textLabel: "Imersão",
       textdescription: "Exploração de fantasia e histórias profundas",
-      setValue: (value: number) => setGameValues("imersão", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"imersão", value),
     },
     {
       textLabel: "Criatividade",
       textdescription: "Personalização e descoberta de novidades.",
-      setValue: (value: number) => setGameValues("criatividade", value),
+      setValue: (value: number) => setPesosValues(analisysTree[0].id,"criatividade", value),
     },
   ];
  
