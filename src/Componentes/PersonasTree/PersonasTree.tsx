@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Dialog } from '@radix-ui/react-dialog';
 import { DialogCloseButton } from './DialogCloseButton';
-import { treeData } from '@/Controlers/AnalysisApi';
+import { treeData } from '@/Controlers/TreeApi';
 type PersonaProps = {
   arvore: treeData[]
   addPersonaHandler: (arvore: String) => void

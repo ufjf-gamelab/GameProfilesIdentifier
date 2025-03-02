@@ -15,7 +15,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-import { findbyUUID, Motivações, treeData } from "@/Controlers/AnalysisApi.ts";
+import { findbyUUID, Motivações, treeData } from "@/Controlers/TreeApi.ts";
 
 function GameCreator() {
   const resultApi = new ResultApi();

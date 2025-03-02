@@ -76,18 +76,7 @@ export class treeData{
     this.pesos = pesos;
     this.children = children;
   }
-  // nosSelecionados: treeData[] | undefined;
 
-  // pushNosSelecionados(uuid: String){
-  //   if(this.nosSelecionados === undefined){
-  //     this.nosSelecionados = [];
-  //   }
-  //   const no = findbyUUID(this,uuid) as treeData;
-  //   this.nosSelecionados.push(no);
-  // }
-  // removeNosSelecionados(uuid: String){
-  //   this.nosSelecionados = this.nosSelecionados?.filter((item) => item.id !== uuid);
-  // }
   gameValtoData(){
     return [
       { subtitle: "Ação", dataKey: this.pesos.ação },

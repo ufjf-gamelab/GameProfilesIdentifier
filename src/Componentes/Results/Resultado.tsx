@@ -2,7 +2,7 @@
 import "./Resultado.css";
 import { Component } from "./Graphs/BarChart/BarChart";
 import { Button } from "@/components/ui/button";
-import { treeData } from "@/Controlers/AnalysisApi";
+import { treeData } from "@/Controlers/TreeApi";
 
 type ResultadoProps = {
   arvore: treeData
