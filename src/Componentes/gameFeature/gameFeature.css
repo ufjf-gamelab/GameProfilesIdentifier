@@ -1,0 +1,53 @@
+.GameFeature{
+    background-color: #87c1dab4;
+
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    width: 100%;
+    height: auto;
+
+    display: grid   ;
+    grid-template-columns: 4fr 1fr;
+    grid-row: 1fr;
+    justify-content:  space-between;
+    align-content: center;
+    align-items: center;
+
+    justify-content: center;
+    justify-items: center;
+    border-radius: 8px;
+    align-content: center;
+    box-shadow: 5px 5px 5px gainsboro;
+    align-items: center;
+    
+    
+
+    
+}
+.InputDescription{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    border-radius: 5px;
+}
+.InputDescription label{
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-size: medium;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    align-items: flex-start;
+}

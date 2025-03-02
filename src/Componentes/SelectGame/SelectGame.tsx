@@ -1,6 +1,7 @@
-import { Slider } from "@mui/joy";
 import "./SelectGame.css";
 import CircularProgress from "@mui/joy/CircularProgress";
+import { Slider } from "@/components/ui/slider"
+import GameFeature from "../gameFeature/gameFeature";
 function SelectGame(props: any) {
   const inputs = [
     {
@@ -51,35 +52,11 @@ function SelectGame(props: any) {
           <ul>
             {inputs.map((input, index) => (
               <li key={index}>
-                <div className="InputDescription">
-                  <Slider
-                    color="primary"
-                    disabled={false}
-                    marks={false}
-                    orientation="horizontal"
-                    size="md"
-                    value={input.value}
-                    onChange={(e) =>
-                      input.setValue((e.target as HTMLInputElement).value)
-                    }
-                    valueLabelDisplay="off"
-                    variant="soft"
-                  />
-                  <label>
-                    🛈 {input.label}: {input.description}
-                  </label>
-                </div>
-
-                <label>
-                  <CircularProgress
-                    determinate
-                    size="md"
-                    value={input.value}
-                    variant="solid"
-                  >
-                    <h2 style={{fontWeight:'700', fontSize:'small'}}> {input.value}</h2>
-                  </CircularProgress>
-                </label>
+                <GameFeature
+                  textLabel={input.label}
+                  textdescription={input.description}
+                  setValue={input.setValue}
+                />
               </li>
             ))}
           </ul>

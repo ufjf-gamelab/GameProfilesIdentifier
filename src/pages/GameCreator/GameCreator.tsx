@@ -2,7 +2,7 @@
 import './GameCreator.css'
 import Header from '../../Componentes/Header/Header.js'
 import Footer from '../../Componentes/Footer/Footer.js'
-import SelectGame from '../../Componentes/Legacy/SelectGame/SelectGame.js'
+import SelectGame from '../../Componentes/SelectGame/SelectGame.js'
 import Resultado from '../../Componentes/Legacy/Resultado/Resultado.js'
 import { useState } from 'react'
 import ResultApi from '../../Controlers/ResultGameApi.js'
