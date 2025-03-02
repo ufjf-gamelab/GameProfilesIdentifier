@@ -11,10 +11,11 @@ import { treeData } from '@/Controlers/AnalysisApi';
 type PersonaProps = {
   arvore: treeData[]
   addPersonaHandler: (arvore: String) => void
+  pushNosSelecionados: (uuid: String) => void
+  removeNosSelecionados: (uuid: String) => void
 }
 
-function PersonasTree({arvore, addPersonaHandler}: PersonaProps) {
-  console
+function PersonasTree({arvore, addPersonaHandler, pushNosSelecionados,removeNosSelecionados }: PersonaProps) {
   return (
   
     <div>
@@ -33,15 +34,39 @@ function PersonasTree({arvore, addPersonaHandler}: PersonaProps) {
             paddingBottom={10}
             padding={25 /* sets both */}
           >
-            {Node}
+            {(nodeProps) => <Node {...nodeProps} 
+            pushNosSelecionados={pushNosSelecionados} 
+            removeNosSelecionados={removeNosSelecionados} 
+            />}
     </Tree>
     </div>
   );
 }
 
-function Node({ node, style, dragHandle }: { node:any, style: React.CSSProperties, dragHandle?: React.Ref<HTMLDivElement> }) {
+function Node({ node, style, dragHandle, pushNosSelecionados, removeNosSelecionados }: { node:any, style: React.CSSProperties, dragHandle?: React.Ref<HTMLDivElement>, pushNosSelecionados: (uuid: String) => void, removeNosSelecionados: (uuid: String) => void }) {
   const [checked, setChecked] = useState(false);
-  const handleCheck = () => setChecked(!checked);  
+  // const handleCheck = () => setChecked(!checked);  
+  const handleCheck = () => {
+    if (checked) {
+      setChecked(
+        (checked) => {
+          removeNosSelecionados(node.id);
+          return !checked;
+        }
+      );
+      return;
+    } else {
+
+      setChecked(
+        (checked) => {
+          pushNosSelecionados(node.id);
+          return !checked;
+        }
+      );
+      return
+    }
+    
+  }
   return (
       <div className='Node' onClick={handleCheck}  ref={dragHandle} >
        
@@ -51,11 +76,11 @@ function Node({ node, style, dragHandle }: { node:any, style: React.CSSPropertie
 
         </div>
         {
-          checked && (
+          checked &&
             <div className='checkbox'>
               <Checkbox checked={checked} onChange={handleCheck} />
             </div>
-          )
+          
         }
       </div>
      

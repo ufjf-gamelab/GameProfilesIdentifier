@@ -31,7 +31,6 @@ type BarChartProps = {
     data: chartData[]
 }
 export function Component({titulo, descricao,data}: BarChartProps) {
-    console.log(data)
   return (
     <Card>
       <CardHeader>

@@ -43,6 +43,25 @@ export type Data={
   dataKey: number
 }
 
+export function findbyUUID(node:any, targetUUID:String) {
+  // Se o nó atual tiver o UUID que procuramos, retorna o nó
+  if (node.id === targetUUID) {
+
+    return node;
+  }
+  // Se o nó tiver filhos, percorre cada um
+  if (node.children) {
+    for (let child of node.children) {
+      const result = findbyUUID(child, targetUUID);
+      if (result) {
+        return result;
+      }
+    }
+  }
+
+  // Se não encontrar o UUID, retorna null
+  return null;
+}
 export class treeData{
 
   id: string;
@@ -50,7 +69,6 @@ export class treeData{
   pesos: Motivações;
   children: treeData[];
 
-  nosSelecionados: treeData[] | undefined;
 
   constructor( name: string, pesos: Motivações, children: treeData[]){
     this.id= uuidv4(),
@@ -58,9 +76,18 @@ export class treeData{
     this.pesos = pesos;
     this.children = children;
   }
-  setNosSelecionados(nosSelecionados: treeData[]){
-    this.nosSelecionados = nosSelecionados;
-  }
+  // nosSelecionados: treeData[] | undefined;
+
+  // pushNosSelecionados(uuid: String){
+  //   if(this.nosSelecionados === undefined){
+  //     this.nosSelecionados = [];
+  //   }
+  //   const no = findbyUUID(this,uuid) as treeData;
+  //   this.nosSelecionados.push(no);
+  // }
+  // removeNosSelecionados(uuid: String){
+  //   this.nosSelecionados = this.nosSelecionados?.filter((item) => item.id !== uuid);
+  // }
   gameValtoData(){
     return [
       { subtitle: "Ação", dataKey: this.pesos.ação },

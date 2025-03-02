@@ -16,17 +16,19 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-import { Jogo, Motivações, treeData } from "@/Controlers/AnalysisApi.ts";
+import { findbyUUID, Jogo, Motivações, treeData } from "@/Controlers/AnalysisApi.ts";
 import { randomUUID } from "crypto";
 
 function GameCreator() {
   const resultApi = new ResultApi();
   const [gameValues, setgameValues] = useState(resultApi.Inputs);
+
   const [analisysTree, setanalisysTree] = useState( [new treeData(
     "Jogo",
     gameValues,
     []
   )]);
+  let nosSelecionados: treeData[] = [];
   function addPersonaHandler(value: String) {
     const novoEstadoTree = Object.assign({}, analisysTree);
     novoEstadoTree[0].addPersona(
@@ -34,6 +36,17 @@ function GameCreator() {
     );
     setanalisysTree(novoEstadoTree);
   }
+  function addSelecedNode(uuid: String) {
+    const no = findbyUUID(analisysTree[0],uuid) as treeData;
+    nosSelecionados.push(no);
+   
+  }
+  function removeSelecedNode(uuid: String) {
+    nosSelecionados = nosSelecionados.filter((item) => {
+      return item.id !== uuid;
+    });
+  }
+
   function setGameValues(valor: keyof Motivações, acrescimo: number) {
     const novoEstadoValues = { ...gameValues };
     novoEstadoValues[valor] = acrescimo;
@@ -89,7 +102,15 @@ function GameCreator() {
               <GameFeaturesPicker Features={gameFeature} />
             </TabsContent>
             <TabsContent className="space-y-2" value="password">
-              <PersonasTree addPersonaHandler={addPersonaHandler} arvore={analisysTree}/>
+              <PersonasTree 
+              addPersonaHandler={addPersonaHandler} 
+              pushNosSelecionados ={
+                addSelecedNode
+              } 
+              removeNosSelecionados={
+                removeSelecedNode
+              }
+              arvore={analisysTree}/>
             </TabsContent>
           </Tabs>
         </aside>
