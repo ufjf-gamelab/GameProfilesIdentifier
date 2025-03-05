@@ -20,7 +20,6 @@ function PersonasTree({
   pushNosSelecionados,
   removeNosSelecionados,
 }: PersonaProps) {
-  console.log(arvore);
   return (
     <div>
       <div className="menuBotoes">
@@ -65,20 +64,14 @@ function Node({
   removeNosSelecionados: (uuid: String) => void;
 }) {
   const [checked, setChecked] = useState(false);
-
+  console.log(checked);
   const handleCheck = () => {
+    setChecked(!checked);
+
     if (checked) {
-      setChecked((checked) => {
-        removeNosSelecionados(node.id);
-        return !checked;
-      });
-      return;
-    } else {
-      setChecked((checked) => {
-        pushNosSelecionados(node.id);
-        return !checked;
-      });
-      return;
+      removeNosSelecionados(node.id);
+    }else{
+      pushNosSelecionados(node.id);
     }
   };
   return (

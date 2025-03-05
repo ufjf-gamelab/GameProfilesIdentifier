@@ -76,16 +76,19 @@ export class treeData{
       );      
   } 
 }
-export class PersonasTree {
+export class PersonasTreeApi{
   tree: treeData[] = [new treeData(
     "Jogo",
     { ação: 0, social: 0, maestria: 0, conquista: 0, imersão: 0, criatividade: 0 },
     []
   )];
   nosSelecionados: treeData[] = [];
-
+  constructor( ){
+  
+  }
   findbyUUID(node: any, targetUUID: String): any {
     // Se o nó atual tiver o UUID que procuramos, retorna o nó
+      
     if (node.id === targetUUID) {
   
       return node;

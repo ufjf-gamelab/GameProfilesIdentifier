@@ -14,40 +14,51 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs.js";
-import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-import { findbyUUID, Motivações, treeData } from "@/Controlers/TreeApi.ts";
+import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
+import {  Motivações, PersonasTreeApi, treeData } from "@/Controlers/TreeApi.ts";
 
 function GameCreator() {
-  const resultApi = new ResultApi();
-  const [analisysTree, setanalisysTree] = useState( );
+  
+  const [personasTreeApi, setPersonasTree] = useState<PersonasTreeApi>(new PersonasTreeApi());
 
 
   function addPersonaHandler(value: String) {
-    const novoEstadoTree = Object.assign({}, analisysTree);
-    novoEstadoTree[0].addPersona(
+    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
+    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    novoEstadoTree.tree[0].addPersona(
       value
     );
-    setanalisysTree(novoEstadoTree);
+    setPersonasTree(novoEstadoTree);
   }
   function addSelecedNode(uuid: String) {
-    const no = findbyUUID(analisysTree[0],uuid) as treeData;
-    nosSelecionados.push(no);
-    console.log(nosSelecionados);
+    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
+    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    const no = novoEstadoTree.findbyUUID(novoEstadoTree.tree[0],uuid) as treeData;
+    novoEstadoTree.nosSelecionados.push(no);
+    setPersonasTree(novoEstadoTree);
+    console.log(novoEstadoTree.nosSelecionados);
 
   }
   function removeSelecedNode(uuid: String) {
-    nosSelecionados = nosSelecionados.filter((item) => {
+    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
+    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    novoEstadoTree.nosSelecionados = novoEstadoTree.nosSelecionados.filter((item: { id: String; }) => {
       return item.id !== uuid;
     });
+    setPersonasTree(novoEstadoTree);
+    console.log(novoEstadoTree.nosSelecionados);
+
   }
 
   function setPesosValues(uuid: String, valor: keyof Motivações, acrescimo: number) {
-    const novoEstadoValues = [ ...analisysTree ];
-    const no = findbyUUID(novoEstadoValues[0], uuid) as treeData;
+    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
+    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    console.log(novoEstadoTree);
+    const no = novoEstadoTree.findbyUUID(personasTreeApi.tree[0], uuid) as treeData;
+    
     if (no) {
       no.pesos[valor] = acrescimo;
-      console.log(novoEstadoValues);
-      setanalisysTree(novoEstadoValues);
+      setPersonasTree(novoEstadoTree);
     }
   }
 
@@ -55,32 +66,32 @@ function GameCreator() {
     {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"ação", value),
+      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"ação", value),
     },
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"social", value),
+      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"social", value),
     },
     {
       textLabel: "Maestria",
       textdescription: "Desafio e desenvolvimento de estratégias",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"maestria", value),
+      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"maestria", value),
     },
     {
       textLabel: "Conquista",
       textdescription: "Completar objetivos e obter poder.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"conquista", value),
+      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"conquista", value),
     },
     {
       textLabel: "Imersão",
       textdescription: "Exploração de fantasia e histórias profundas",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"imersão", value),
+      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"imersão", value),
     },
     {
       textLabel: "Criatividade",
       textdescription: "Personalização e descoberta de novidades.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"criatividade", value),
+      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"criatividade", value),
     },
   ];
  
@@ -108,12 +119,12 @@ function GameCreator() {
               removeNosSelecionados={
                 removeSelecedNode
               }
-              arvore={analisysTree}/>
+              arvore={personasTreeApi.tree}/>
             </TabsContent>
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado arvore={analisysTree[0]}  />
+          <Resultado arvore={personasTreeApi.tree[0]}  />
         </div>
       </main>
       <Footer></Footer>
