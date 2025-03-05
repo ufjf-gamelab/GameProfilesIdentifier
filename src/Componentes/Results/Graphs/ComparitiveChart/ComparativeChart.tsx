@@ -17,14 +17,11 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
+type chartData = {
+    subtitle: string
+    dataKey: number
+  }
+ 
 
 const chartConfig = {
   desktop: {
@@ -37,7 +34,23 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ComparativeChart() {
+
+
+const chartData = [
+{ month: "January", desktop: 186, mobile: 80 },
+{ month: "February", desktop: 305, mobile: 200 },
+{ month: "March", desktop: 237, mobile: 120 },
+{ month: "April", desktop: 73, mobile: 190 },
+{ month: "May", desktop: 209, mobile: 130 },
+{ month: "June", desktop: 214, mobile: 140 },
+]
+
+type ComparativeChartProps = {
+    titulo: string
+    descricao: string
+    personasNomes: string[]
+}
+export function ComparativeChart({personasNomes}: ComparativeChartProps) {
   return (
     <Card>
       <CardHeader>
@@ -49,7 +62,7 @@ export function ComparativeChart() {
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey="legenda"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
@@ -59,8 +72,12 @@ export function ComparativeChart() {
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            {
+            personasNomes.map((key) => (
+                <Bar dataKey={key} fill="black" radius={4} />
+            ))
+            }
+           
           </BarChart>
         </ChartContainer>
       </CardContent>
