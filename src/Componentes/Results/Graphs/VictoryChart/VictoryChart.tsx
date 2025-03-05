@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { TrendingUp } from "lucide-react"
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
+import { TrendingUp } from "lucide-react";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 
 import {
   Card,
@@ -10,30 +10,29 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
+} from "@/components/ui/chart";
+import { Motivações } from "@/Controlers/TreeApi";
+import ResultApi from "@/Controlers/ResultGameApi";
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "hsl(var(--chart-1))",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
-export function VictoryChart({gameValues}: {gameValues: number[]}) {
+export function VictoryChart({ gameValues }: { gameValues: Motivações }) {
+  const resultApi = new ResultApi(gameValues);
+
+    
+  const chartData =resultApi.getDataSet();
+  console.log(chartData);
   return (
     <Card>
       <CardHeader className="items-center pb-4">
@@ -49,10 +48,15 @@ export function VictoryChart({gameValues}: {gameValues: number[]}) {
         >
           <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarAngleAxis dataKey="month" />
-            <PolarGrid />
+            <PolarAngleAxis dataKey="subtitle"
+                          tickFormatter={(value) => value.slice(0, 1000)}
+
+            />
+            <PolarGrid 
+            
+            />
             <Radar
-              dataKey="desktop"
+              dataKey="dataKey"
               fill="var(--color-desktop)"
               fillOpacity={0.6}
             />
@@ -68,5 +72,5 @@ export function VictoryChart({gameValues}: {gameValues: number[]}) {
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }
