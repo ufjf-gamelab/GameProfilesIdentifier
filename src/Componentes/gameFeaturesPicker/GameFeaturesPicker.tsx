@@ -21,6 +21,7 @@ function GameFeaturesPicker({ Features,disabled }: SelectGameProps) {
                   textLabel={feature.textLabel}
                   textdescription={feature.textdescription}
                   setValue={feature.setValue}
+                  valorProp={feature.valorProp}
                 />
               </li>
             ))}

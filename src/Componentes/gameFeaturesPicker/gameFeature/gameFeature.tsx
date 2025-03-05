@@ -8,8 +8,9 @@ function GameFeature({
   textLabel,
   textdescription,
   setValue,
+  valorProp,
 }: GameFeatureProps) {
-  const value = useRef(0);
+  const value = useRef(valorProp);
   return (
     <div className="GameFeature">
       <div className="InputDescription">
@@ -19,6 +20,7 @@ function GameFeature({
             setValue(valores[0]);
             value.current = valores[0];
           }}
+          value={[valorProp]}
         />
         <label>
           🛈 {textLabel}: {textdescription}

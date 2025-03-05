@@ -72,31 +72,43 @@ function GameCreator() {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
       setValue: (value: number) => setPesosValues(gameEditor!.id,"ação", value),
+          valorProp: gameEditor?.pesos.ação! ,
+
     },
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
       setValue: (value: number) => setPesosValues(gameEditor!.id,"social", value),
+        valorProp: gameEditor?.pesos.social !,
+
     },
     {
       textLabel: "Maestria",
       textdescription: "Desafio e desenvolvimento de estratégias",
       setValue: (value: number) => setPesosValues(gameEditor!.id,"maestria", value),
+      valorProp: gameEditor?.pesos.maestria!,
+
     },
     {
       textLabel: "Conquista",
       textdescription: "Completar objetivos e obter poder.",
       setValue: (value: number) => setPesosValues(gameEditor!.id,"conquista", value),
+      valorProp: gameEditor?.pesos.conquista! ,
+    
     },
     {
       textLabel: "Imersão",
       textdescription: "Exploração de fantasia e histórias profundas",
       setValue: (value: number) => setPesosValues(gameEditor!.id,"imersão", value),
+      valorProp: gameEditor?.pesos.imersão! ,
+
     },
     {
       textLabel: "Criatividade",
       textdescription: "Personalização e descoberta de novidades.",
       setValue: (value: number) => setPesosValues(gameEditor!.id,"criatividade", value),
+      valorProp: gameEditor?.pesos.criatividade! ,
+
     },
   ];
  

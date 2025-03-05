@@ -18,6 +18,7 @@ export type Categorias={
  export type GameFeatureProps = {
     textLabel: string
     textdescription: string
+    valorProp: number
     setValue: (value: number) => void
 }
 
