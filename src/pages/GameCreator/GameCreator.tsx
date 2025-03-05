@@ -19,12 +19,7 @@ import { findbyUUID, Motivações, treeData } from "@/Controlers/TreeApi.ts";
 
 function GameCreator() {
   const resultApi = new ResultApi();
-  const [analisysTree, setanalisysTree] = useState( [new treeData(
-    "Jogo",
-    resultApi.Inputs,
-    []
-  )]);
-  let nosSelecionados: treeData[] = [];
+  const [analisysTree, setanalisysTree] = useState( );
 
 
   function addPersonaHandler(value: String) {
