@@ -1,3 +1,4 @@
+import { actions } from 'react-arborist/dist/module/state/open-slice';
 import { v4 as uuidv4 } from 'uuid';
 
 export type Categorias={
@@ -66,15 +67,7 @@ export class treeData{
     ]
   }
   
-  addPersona( valor: String) {
-      this.children.push(
-        {
-        id: uuidv4(),
-        name: valor,
-        children:[]
-      }as never
-      );      
-  } 
+
 }
 export class PersonasTreeApi{
   tree: treeData[] = [new treeData(
@@ -109,6 +102,35 @@ export class PersonasTreeApi{
     // Se não encontrar o UUID, retorna null
     return null;
   }
+  compartiveDataSet(nodes : treeData[]):any{
+
+    const actions: (keyof Motivações)[] = ["ação", "social", "maestria", "conquista", "imersão", "criatividade"];
+    const dataSet = { dataKeys: [], data: [] };
+    actions.forEach((legenda) => {
+        const data: { [key: string]: any } = { subtitle: legenda };
+        let name = "";
+        nodes.forEach((node) => {
+          data[node.name] = node.pesos[legenda];
+          name = node.name;
+        });
+        dataSet["data"].push(data);
+        return data;
+    });
+    dataSet.dataKeys = nodes.map((node) => node.name);
+    console.log(dataSet);
+    return dataSet;
+
+  }
+  addPersona( valor: String) {
+    this.tree[0].children.push(
+      {
+      id: uuidv4(),
+      name: valor,
+      children:[],
+      pesos: { ação: 3, social: 3, maestria: 3, conquista: 3, imersão: 3, criatividade: 3 }
+    }as never
+    );      
+} 
 }
 
 

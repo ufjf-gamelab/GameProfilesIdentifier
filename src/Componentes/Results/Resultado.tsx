@@ -1,21 +1,20 @@
 
 import "./Resultado.css";
 import { Component } from "./Graphs/BarChart/BarChart";
-import { Button } from "@/components/ui/button";
-import { treeData } from "@/Controlers/TreeApi";
+import { PersonasTreeApi, treeData } from "@/Controlers/TreeApi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
-import gameFeature from "../gameFeaturesPicker/gameFeature/gameFeature";
-import GameFeaturesPicker from "../gameFeaturesPicker/GameFeaturesPicker";
-import PersonasTree from "../PersonasTree/PersonasTree";
+
 import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
 
 type ResultadoProps = {
-  arvore: treeData
+  personasTree: PersonasTreeApi
 }
 
-function Resultado({arvore}: ResultadoProps) {
+function Resultado({personasTree}: ResultadoProps) {
  
-  
+  const dataset = personasTree.compartiveDataSet(personasTree.nosSelecionados)
+  //const dataKeys = dataset.dataKeys;
+  console.log(dataset)
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
@@ -24,15 +23,22 @@ function Resultado({arvore}: ResultadoProps) {
         <div className="Graphs">
           <TabsContent className="space-y-2" value="SeeGame">
             <Component
-              data={arvore.gameValtoData()}
+              data={personasTree.tree[0].gameValtoData()}
               titulo="Resultado"
               descricao={"ResultadoTexto"}
             ></Component>
           </TabsContent>
           <TabsContent className="space-y-2" value="Comparative">
-            <ComparativeChart
-            
+            {
+              !!dataset &&
+          <ComparativeChart
+
+              chartData={dataset.data}
+              titulo="Comparativo"
+              personasNomes={dataset.dataKeys}
             ></ComparativeChart>
+            }
+         
           </TabsContent>
         </div>
           <TabsList className="OperationsPanel">

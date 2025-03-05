@@ -25,15 +25,16 @@ function GameCreator() {
 
 
   function addPersonaHandler(value: String) {
-    const novoEstadoTree = structuredClone(personasTreeApi);
-    novoEstadoTree.tree[0].addPersona(
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
+    personasTreeApi.addPersona(
       value
     );
     setPersonasTree(novoEstadoTree);
   }
   function addSelecedNode(uuid: String) {
     const novoEstadoTree = cloneWithMethods(personasTreeApi);
-    const no = novoEstadoTree.findbyUUID(novoEstadoTree.tree[0],uuid) as treeData;
+    const no = novoEstadoTree.findbyUUID(novoEstadoTree.tree[0],uuid) ;
+   
     novoEstadoTree.nosSelecionados.push(no);
     setPersonasTree(novoEstadoTree);
     console.log(novoEstadoTree.nosSelecionados);
@@ -121,7 +122,7 @@ function GameCreator() {
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado arvore={personasTreeApi.tree[0]}  />
+          <Resultado personasTree={personasTreeApi}  />
         </div>
       </main>
       <Footer></Footer>
