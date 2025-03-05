@@ -36,21 +36,23 @@ export function VictoryChart({ gameValues }: { gameValues: Motivações }) {
   return (
     <Card>
       <CardHeader className="items-center pb-4">
-        <CardTitle>qFoundry User Analysis</CardTitle>
+        <CardTitle>qFoundry Personas Analysis</CardTitle>
         <CardDescription>
-          Showing total visitors for the last 6 months
+        O grafico será gerado com o resultado da taxa de agradabilidade estimada para cada perfil de jogador definido pela Quantic Foundry
         </CardDescription>
       </CardHeader>
       <CardContent className="pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[300px]"
+          
         >
-          <RadarChart data={chartData}>
+          <RadarChart  data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <PolarAngleAxis dataKey="subtitle"
-                          tickFormatter={(value) => value.slice(0, 1000)}
-
+            orientation="outer"
+            
+            tickLine={false}
             />
             <PolarGrid 
             
@@ -58,17 +60,20 @@ export function VictoryChart({ gameValues }: { gameValues: Motivações }) {
             <Radar
               dataKey="dataKey"
               fill="var(--color-desktop)"
-              fillOpacity={0.6}
+              fillOpacity={0.6}                         
+
             />
           </RadarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+        {resultApi.getTextoResultado().nomeMaiorElemento}
+        <TrendingUp className="h-4 w-4" />
         </div>
         <div className="flex items-center gap-2 leading-none text-muted-foreground">
-          January - June 2024
+        {resultApi.getTextoResultado().textoPrimeiro}
+
         </div>
       </CardFooter>
     </Card>

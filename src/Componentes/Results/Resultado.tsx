@@ -41,7 +41,7 @@ function Resultado({ personasTree }: ResultadoProps) {
             Comparar Personas
           </TabsTrigger>
           <TabsTrigger className="TabBtn" value="qFoundry">
-            Jogo x QuanticFoundryPersonas
+            QuanticFoundryPersonas
           </TabsTrigger>
         </TabsList>
       </Tabs>
