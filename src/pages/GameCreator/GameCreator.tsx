@@ -18,7 +18,14 @@ import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
 import {  Motivações, PersonasTreeApi, treeData } from "@/Controlers/TreeApi.ts";
 import { cloneWithMethods } from "@/Componentes/utils/deepClone.ts";
 
-
+function selectEditedNode( personasTreeApi: PersonasTreeApi){ 
+  const justOne = personasTreeApi.nosSelecionados.length ==1
+  if(justOne){
+    return personasTreeApi.nosSelecionados[0];
+  }else{
+    return undefined;
+  }
+}
 function GameCreator() {
   
   const [personasTreeApi, setPersonasTree] = useState<PersonasTreeApi>(new PersonasTreeApi());
@@ -58,41 +65,54 @@ function GameCreator() {
       setPersonasTree(novoEstadoTree);
     }
   }
-
+  const gameEditor = selectEditedNode(personasTreeApi);
+ 
   const gameFeature: GameFeatureProps[] = [
     {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
-      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"ação", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"ação", value),
+          valorProp: gameEditor?.pesos.ação! ,
+
     },
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
-      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"social", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"social", value),
+        valorProp: gameEditor?.pesos.social !,
+
     },
     {
       textLabel: "Maestria",
       textdescription: "Desafio e desenvolvimento de estratégias",
-      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"maestria", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"maestria", value),
+      valorProp: gameEditor?.pesos.maestria!,
+
     },
     {
       textLabel: "Conquista",
       textdescription: "Completar objetivos e obter poder.",
-      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"conquista", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"conquista", value),
+      valorProp: gameEditor?.pesos.conquista! ,
+    
     },
     {
       textLabel: "Imersão",
       textdescription: "Exploração de fantasia e histórias profundas",
-      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"imersão", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"imersão", value),
+      valorProp: gameEditor?.pesos.imersão! ,
+
     },
     {
       textLabel: "Criatividade",
       textdescription: "Personalização e descoberta de novidades.",
-      setValue: (value: number) => setPesosValues(personasTreeApi.tree[0].id,"criatividade", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"criatividade", value),
+      valorProp: gameEditor?.pesos.criatividade! ,
+
     },
   ];
  
-
+  console.log(gameEditor);
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
@@ -101,11 +121,11 @@ function GameCreator() {
         <aside className="DataInput">
           <Tabs defaultValue="account" className="tabLayouyt">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="account">Game Values</TabsTrigger>
-              <TabsTrigger value="password">Tree</TabsTrigger>
+              <TabsTrigger value="account">Editar Valores</TabsTrigger>
+              <TabsTrigger value="password">Selecionar Elementos</TabsTrigger>
             </TabsList>
             <TabsContent className="space-y-2" value="account">
-              <GameFeaturesPicker Features={gameFeature} />
+              <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
             </TabsContent>
             <TabsContent className="space-y-2" value="password">
               <PersonasTree 

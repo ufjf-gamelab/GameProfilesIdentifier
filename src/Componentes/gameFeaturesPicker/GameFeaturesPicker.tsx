@@ -1,12 +1,12 @@
 import "./GameFeaturesPicker.css";
 
 import GameFeature from "./gameFeature/gameFeature";
-import {  SelectGameProps } from "@/Controlers/Features/FeaturesData";
+import {  SelectGameProps } from "@/Controlers/Types.ts";
 
 
 
-function GameFeaturesPicker({ Features }: SelectGameProps) {
-  
+function GameFeaturesPicker({ Features,disabled }: SelectGameProps) {
+  if(!disabled){
   return (
     (
       <div className="GameSelectCtn">
@@ -21,6 +21,7 @@ function GameFeaturesPicker({ Features }: SelectGameProps) {
                   textLabel={feature.textLabel}
                   textdescription={feature.textdescription}
                   setValue={feature.setValue}
+                  valorProp={feature.valorProp}
                 />
               </li>
             ))}
@@ -29,6 +30,18 @@ function GameFeaturesPicker({ Features }: SelectGameProps) {
       </div>
     )
   );
+  }else{
+    return (
+      (
+        <div className="GameSelectCtn">
+          <h2>
+              Selecione um nó no gráfico a esquerda para editar as motivações.
+              Apenas um nó pode ser editado por vez.
+          </h2>
+        </div>
+      )
+    );
+  }
 }
 
 export default GameFeaturesPicker;
