@@ -18,7 +18,7 @@ function Resultado({personasTree}: ResultadoProps) {
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
-      <Tabs defaultValue="account" className="tabLayouyt">
+      <Tabs defaultValue="Comparative" className="tabLayouyt">
        
         <div className="Graphs">
           <TabsContent className="space-y-2" value="SeeGame">
