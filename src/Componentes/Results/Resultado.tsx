@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import gameFeature from "../gameFeaturesPicker/gameFeature/gameFeature";
 import GameFeaturesPicker from "../gameFeaturesPicker/GameFeaturesPicker";
 import PersonasTree from "../PersonasTree/PersonasTree";
+import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
 
 type ResultadoProps = {
   arvore: treeData
@@ -21,17 +22,22 @@ function Resultado({arvore}: ResultadoProps) {
       <Tabs defaultValue="account" className="tabLayouyt">
        
         <div className="Graphs">
-          <TabsContent className="space-y-2" value="account">
+          <TabsContent className="space-y-2" value="SeeGame">
             <Component
               data={arvore.gameValtoData()}
               titulo="Resultado"
               descricao={"ResultadoTexto"}
             ></Component>
           </TabsContent>
+          <TabsContent className="space-y-2" value="Comparative">
+            <ComparativeChart
+            
+            ></ComparativeChart>
+          </TabsContent>
         </div>
           <TabsList className="OperationsPanel">
-            <TabsTrigger className="TabBtn" value="account">Ver Jogo</TabsTrigger>
-            <TabsTrigger className="TabBtn" value="password">Tree</TabsTrigger>
+            <TabsTrigger className="TabBtn" value="SeeGame">Ver Jogo</TabsTrigger>
+            <TabsTrigger className="TabBtn" value="Comparative">Tree</TabsTrigger>
           </TabsList>
      
       </Tabs>
