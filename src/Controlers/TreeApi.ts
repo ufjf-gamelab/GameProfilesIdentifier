@@ -55,6 +55,8 @@ export class treeData{
     this.name = name;
     this.pesos = pesos;
     this.children = children;
+
+
   }
   gameValtoData(){
     return [
@@ -77,7 +79,7 @@ export class PersonasTreeApi{
   )];
   nosSelecionados: treeData[] = [];
   constructor( ){
-  
+    this.nosSelecionados .push(this.tree[0]);
   }
   areSelected(uuid: String):boolean{
     return this.nosSelecionados.find((item) => item.id === uuid) ? true : false;
