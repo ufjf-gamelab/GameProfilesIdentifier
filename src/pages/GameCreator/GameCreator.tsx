@@ -121,8 +121,8 @@ function GameCreator() {
         <aside className="DataInput">
           <Tabs defaultValue="account" className="tabLayouyt">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="account">Game Values</TabsTrigger>
-              <TabsTrigger value="password">Tree</TabsTrigger>
+              <TabsTrigger value="account">Editar Valores</TabsTrigger>
+              <TabsTrigger value="password">Selecionar Elementos</TabsTrigger>
             </TabsList>
             <TabsContent className="space-y-2" value="account">
               <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
