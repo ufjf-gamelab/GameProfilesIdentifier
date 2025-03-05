@@ -1,6 +1,5 @@
 
 import "./Resultado.css";
-import { Component } from "./Graphs/BarChart/BarChart";
 import { PersonasTreeApi, treeData } from "@/Controlers/TreeApi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
@@ -21,13 +20,7 @@ function Resultado({personasTree}: ResultadoProps) {
       <Tabs defaultValue="Comparative" className="tabLayouyt">
        
         <div className="Graphs">
-          <TabsContent className="space-y-2" value="SeeGame">
-            <Component
-              data={personasTree.tree[0].gameValtoData()}
-              titulo="Resultado"
-              descricao={"ResultadoTexto"}
-            ></Component>
-          </TabsContent>
+          
           <TabsContent className="space-y-2" value="Comparative">
             {
               !!dataset &&
@@ -42,8 +35,7 @@ function Resultado({personasTree}: ResultadoProps) {
           </TabsContent>
         </div>
           <TabsList className="OperationsPanel">
-            <TabsTrigger className="TabBtn" value="SeeGame">Ver Jogo</TabsTrigger>
-            <TabsTrigger className="TabBtn" value="Comparative">Tree</TabsTrigger>
+            <TabsTrigger className="TabBtn" value="Comparative">Comparar Personas</TabsTrigger>
           </TabsList>
      
       </Tabs>
