@@ -7,8 +7,15 @@
     
     height: auto;
     flex-direction: column;
-    background-color: #f5f5f500;
     gap : 20px;
+
+    .tabLayouyt{
+        gap: 20px;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
     h2{
         color: black;
         width: auto;
@@ -18,20 +25,45 @@
         
     }
 
+    .TabBtn{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+    }
     
 }
 
 .Graphs{
-    min-width: 300px;
+    min-width: 500px;
     width: 100%;
     max-width: 600px;
+    min-height: 300px;
     justify-content: center;
     align-items: center;
     gap: 20px;
     flex-direction: row;
+
 }
 .OperationsPanel{
     display: flex;
-    
-    gap: 20px;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    .TabBtn{
+        min-width: 140px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: rgb(63, 58, 58);
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+    }
 }

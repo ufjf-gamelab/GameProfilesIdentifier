@@ -1,3 +1,4 @@
+import { actions } from 'react-arborist/dist/module/state/open-slice';
 import { v4 as uuidv4 } from 'uuid';
 
 export type Categorias={
@@ -43,40 +44,20 @@ export type Data={
   dataKey: number
 }
 
-export function findbyUUID(node:any, targetUUID:String) {
-  // Se o nó atual tiver o UUID que procuramos, retorna o nó
-  if (node.id === targetUUID) {
 
-    return node;
-  }
-  // Se o nó tiver filhos, percorre cada um
-  if (node.children) {
-    for (let child of node.children) {
-      const result = findbyUUID(child, targetUUID);
-      if (result) {
-        return result;
-      }
-    }
-  }
-
-  // Se não encontrar o UUID, retorna null
-  return null;
-}
 export class treeData{
-
   id: string;
   name: string;
   pesos: Motivações;
   children: treeData[];
-
-
   constructor( name: string, pesos: Motivações, children: treeData[]){
     this.id= uuidv4(),
     this.name = name;
     this.pesos = pesos;
     this.children = children;
-  }
 
+
+  }
   gameValtoData(){
     return [
       { subtitle: "Ação", dataKey: this.pesos.ação },
@@ -88,17 +69,72 @@ export class treeData{
     ]
   }
   
-  addPersona( valor: String) {
-      this.children.push(
-        {
-        id: uuidv4(),
-        name: valor,
-        children:[]
-      }as never
-      );      
-  } 
-}
 
+}
+export class PersonasTreeApi{
+  tree: treeData[] = [new treeData(
+    "Jogo",
+    { ação: 0, social: 0, maestria: 0, conquista: 0, imersão: 0, criatividade: 0 },
+    []
+  )];
+  nosSelecionados: treeData[] = [];
+  constructor( ){
+    this.nosSelecionados .push(this.tree[0]);
+  }
+  areSelected(uuid: String):boolean{
+    return this.nosSelecionados.find((item) => item.id === uuid) ? true : false;
+  }
+  findbyUUID(node: any, targetUUID: String): any {
+    // Se o nó atual tiver o UUID que procuramos, retorna o nó
+
+    if (node.id === targetUUID) {
+  
+      return node;
+    }
+    // Se o nó tiver filhos, percorre cada um
+    if (node.children) {
+      for (let child of node.children) {
+        const result = this.findbyUUID(child, targetUUID);
+        if (result) {
+          return result;
+        }
+      }
+    }
+  
+    // Se não encontrar o UUID, retorna null
+    return null;
+  }
+  compartiveDataSet():any{
+
+    const actions: (keyof Motivações)[] = ["ação", "social", "maestria", "conquista", "imersão", "criatividade"];
+    const dataSet: { dataKeys: string[], data: { [key: string]: any }[] } = { dataKeys: [], data: [] };
+    actions.forEach((legenda) => {
+        const data: { [key: string]: any } = { subtitle: legenda };
+        let name = "";
+        this.nosSelecionados.forEach((node,index) => {
+          
+          data[node.name] = node.pesos[legenda];
+          name = node.name;
+        });
+        dataSet["data"].push(data);
+        return data;
+    });
+    dataSet.dataKeys =  this.nosSelecionados.map((node) => node.name);
+    console.log(dataSet);
+    return dataSet;
+
+  }
+  addPersona( valor: String) {
+    this.tree[0].children.push(
+      {
+      id: uuidv4(),
+      name: valor,
+      children:[],
+      pesos: { ação: 3, social: 3, maestria: 3, conquista: 3, imersão: 3, criatividade: 3 }
+    }as never
+    );      
+} 
+}
 
 
 

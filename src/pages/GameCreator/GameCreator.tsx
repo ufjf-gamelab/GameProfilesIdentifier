@@ -14,82 +14,105 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs.js";
-import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.js";
-import { findbyUUID, Motivações, treeData } from "@/Controlers/TreeApi.ts";
+import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
+import {  Motivações, PersonasTreeApi, treeData } from "@/Controlers/TreeApi.ts";
+import { cloneWithMethods } from "@/Componentes/utils/deepClone.ts";
 
+function selectEditedNode( personasTreeApi: PersonasTreeApi){ 
+  const justOne = personasTreeApi.nosSelecionados.length ==1
+  if(justOne){
+    return personasTreeApi.nosSelecionados[0];
+  }else{
+    return undefined;
+  }
+}
 function GameCreator() {
-  const resultApi = new ResultApi();
-  const [analisysTree, setanalisysTree] = useState( [new treeData(
-    "Jogo",
-    resultApi.Inputs,
-    []
-  )]);
-  let nosSelecionados: treeData[] = [];
+  
+  const [personasTreeApi, setPersonasTree] = useState<PersonasTreeApi>(new PersonasTreeApi());
 
 
   function addPersonaHandler(value: String) {
-    const novoEstadoTree = Object.assign({}, analisysTree);
-    novoEstadoTree[0].addPersona(
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
+    personasTreeApi.addPersona(
       value
     );
-    setanalisysTree(novoEstadoTree);
+    setPersonasTree(novoEstadoTree);
   }
   function addSelecedNode(uuid: String) {
-    const no = findbyUUID(analisysTree[0],uuid) as treeData;
-    nosSelecionados.push(no);
-    console.log(nosSelecionados);
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
+    const no = novoEstadoTree.findbyUUID(novoEstadoTree.tree[0],uuid) ;
+   
+    novoEstadoTree.nosSelecionados.push(no);
+    setPersonasTree(novoEstadoTree);
+    console.log(novoEstadoTree.nosSelecionados);
 
   }
   function removeSelecedNode(uuid: String) {
-    nosSelecionados = nosSelecionados.filter((item) => {
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
+    novoEstadoTree.nosSelecionados = novoEstadoTree.nosSelecionados.filter((item: { id: String; }) => {
       return item.id !== uuid;
     });
+    setPersonasTree(novoEstadoTree);
+    console.log(novoEstadoTree.nosSelecionados);
+
   }
 
   function setPesosValues(uuid: String, valor: keyof Motivações, acrescimo: number) {
-    const novoEstadoValues = [ ...analisysTree ];
-    const no = findbyUUID(novoEstadoValues[0], uuid) as treeData;
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
+    const no = personasTreeApi.findbyUUID(personasTreeApi.tree[0], uuid) as treeData;
     if (no) {
       no.pesos[valor] = acrescimo;
-      console.log(novoEstadoValues);
-      setanalisysTree(novoEstadoValues);
+      setPersonasTree(novoEstadoTree);
     }
   }
-
+  const gameEditor = selectEditedNode(personasTreeApi);
+ 
   const gameFeature: GameFeatureProps[] = [
     {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"ação", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"ação", value),
+          valorProp: gameEditor?.pesos.ação! ,
+
     },
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"social", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"social", value),
+        valorProp: gameEditor?.pesos.social !,
+
     },
     {
       textLabel: "Maestria",
       textdescription: "Desafio e desenvolvimento de estratégias",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"maestria", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"maestria", value),
+      valorProp: gameEditor?.pesos.maestria!,
+
     },
     {
       textLabel: "Conquista",
       textdescription: "Completar objetivos e obter poder.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"conquista", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"conquista", value),
+      valorProp: gameEditor?.pesos.conquista! ,
+    
     },
     {
       textLabel: "Imersão",
       textdescription: "Exploração de fantasia e histórias profundas",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"imersão", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"imersão", value),
+      valorProp: gameEditor?.pesos.imersão! ,
+
     },
     {
       textLabel: "Criatividade",
       textdescription: "Personalização e descoberta de novidades.",
-      setValue: (value: number) => setPesosValues(analisysTree[0].id,"criatividade", value),
+      setValue: (value: number) => setPesosValues(gameEditor!.id,"criatividade", value),
+      valorProp: gameEditor?.pesos.criatividade! ,
+
     },
   ];
  
-
+  console.log(gameEditor);
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
@@ -98,11 +121,11 @@ function GameCreator() {
         <aside className="DataInput">
           <Tabs defaultValue="account" className="tabLayouyt">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="account">Game Values</TabsTrigger>
-              <TabsTrigger value="password">Tree</TabsTrigger>
+              <TabsTrigger value="account">Editar Valores</TabsTrigger>
+              <TabsTrigger value="password">Selecionar Elementos</TabsTrigger>
             </TabsList>
             <TabsContent className="space-y-2" value="account">
-              <GameFeaturesPicker Features={gameFeature} />
+              <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
             </TabsContent>
             <TabsContent className="space-y-2" value="password">
               <PersonasTree 
@@ -113,12 +136,13 @@ function GameCreator() {
               removeNosSelecionados={
                 removeSelecedNode
               }
-              arvore={analisysTree}/>
+              
+              arvoreApi={personasTreeApi}/>
             </TabsContent>
           </Tabs>
         </aside>
         <div className="Results">
-          <Resultado arvore={analisysTree[0]}  />
+          <Resultado personasTree={personasTreeApi}  />
         </div>
       </main>
       <Footer></Footer>
