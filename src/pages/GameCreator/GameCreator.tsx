@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
 import {  Motivações, PersonasTreeApi, treeData } from "@/Controlers/TreeApi.ts";
+import { cloneWithMethods } from "@/Componentes/utils/deepClone.ts";
+
 
 function GameCreator() {
   
@@ -23,16 +25,14 @@ function GameCreator() {
 
 
   function addPersonaHandler(value: String) {
-    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
-    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    const novoEstadoTree = structuredClone(personasTreeApi);
     novoEstadoTree.tree[0].addPersona(
       value
     );
     setPersonasTree(novoEstadoTree);
   }
   function addSelecedNode(uuid: String) {
-    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
-    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
     const no = novoEstadoTree.findbyUUID(novoEstadoTree.tree[0],uuid) as treeData;
     novoEstadoTree.nosSelecionados.push(no);
     setPersonasTree(novoEstadoTree);
@@ -40,8 +40,7 @@ function GameCreator() {
 
   }
   function removeSelecedNode(uuid: String) {
-    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
-    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
     novoEstadoTree.nosSelecionados = novoEstadoTree.nosSelecionados.filter((item: { id: String; }) => {
       return item.id !== uuid;
     });
@@ -51,11 +50,8 @@ function GameCreator() {
   }
 
   function setPesosValues(uuid: String, valor: keyof Motivações, acrescimo: number) {
-    let novoEstadoTree = Object.create(Object.getPrototypeOf(personasTreeApi));
-    novoEstadoTree = Object.assign(novoEstadoTree, personasTreeApi);
-    console.log(novoEstadoTree);
-    const no = novoEstadoTree.findbyUUID(personasTreeApi.tree[0], uuid) as treeData;
-    
+    const novoEstadoTree = cloneWithMethods(personasTreeApi);
+    const no = personasTreeApi.findbyUUID(personasTreeApi.tree[0], uuid) as treeData;
     if (no) {
       no.pesos[valor] = acrescimo;
       setPersonasTree(novoEstadoTree);
