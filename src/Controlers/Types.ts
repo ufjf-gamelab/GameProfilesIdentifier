@@ -23,4 +23,5 @@ export type Categorias={
 
 export type SelectGameProps = {
     Features: GameFeatureProps[];
+    disabled : boolean;
   }
