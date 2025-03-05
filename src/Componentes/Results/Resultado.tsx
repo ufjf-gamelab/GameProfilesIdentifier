@@ -11,7 +11,7 @@ type ResultadoProps = {
 
 function Resultado({personasTree}: ResultadoProps) {
  
-  const dataset = personasTree.compartiveDataSet(personasTree.nosSelecionados)
+  const dataset = personasTree.compartiveDataSet();
   //const dataKeys = dataset.dataKeys;
   console.log(dataset)
   return (

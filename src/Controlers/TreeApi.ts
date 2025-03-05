@@ -102,21 +102,22 @@ export class PersonasTreeApi{
     // Se não encontrar o UUID, retorna null
     return null;
   }
-  compartiveDataSet(nodes : treeData[]):any{
+  compartiveDataSet():any{
 
     const actions: (keyof Motivações)[] = ["ação", "social", "maestria", "conquista", "imersão", "criatividade"];
-    const dataSet = { dataKeys: [], data: [] };
+    const dataSet: { dataKeys: string[], data: { [key: string]: any }[] } = { dataKeys: [], data: [] };
     actions.forEach((legenda) => {
         const data: { [key: string]: any } = { subtitle: legenda };
         let name = "";
-        nodes.forEach((node) => {
+        this.nosSelecionados.forEach((node,index) => {
+          
           data[node.name] = node.pesos[legenda];
           name = node.name;
         });
         dataSet["data"].push(data);
         return data;
     });
-    dataSet.dataKeys = nodes.map((node) => node.name);
+    dataSet.dataKeys =  this.nosSelecionados.map((node) => node.name);
     console.log(dataSet);
     return dataSet;
 
