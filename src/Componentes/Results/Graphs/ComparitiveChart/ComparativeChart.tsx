@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -51,14 +51,22 @@ export function ComparativeChart({personasNomes, chartData}: ComparativeChartPro
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <CartesianGrid vertical={false} />
+            <CartesianGrid vertical={true} />
             <XAxis
               dataKey="subtitle"
-              tickLine={false}
-              tickMargin={10}
+              tickLine={true}
+              tickMargin={0}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 6)}
+
+              tickFormatter={(value) => value.slice(0, 20)}
             />
+            <YAxis
+                tickLine={true}
+                tickMargin={0}
+                axisLine={false}
+                domain={[0, 100]}
+                tickFormatter={(value) => `${value}%`}
+            ></YAxis>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
@@ -72,34 +80,7 @@ export function ComparativeChart({personasNomes, chartData}: ComparativeChartPro
            
           </BarChart>
 
-          <AreaChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="dot" hideLabel />}
-            />
-            <Area
-              dataKey="desktop"
-              type="linear"
-              fill="var(--color-desktop)"
-              fillOpacity={0.4}
-              stroke="var(--color-desktop)"
-            />
-          </AreaChart>
+          
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
