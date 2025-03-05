@@ -119,7 +119,8 @@ function GameCreator() {
               removeNosSelecionados={
                 removeSelecedNode
               }
-              arvore={personasTreeApi.tree}/>
+              
+              arvoreApi={personasTreeApi}/>
             </TabsContent>
           </Tabs>
         </aside>

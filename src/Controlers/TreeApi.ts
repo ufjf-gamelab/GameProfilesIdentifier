@@ -86,9 +86,12 @@ export class PersonasTreeApi{
   constructor( ){
   
   }
+  areSelected(uuid: String):boolean{
+    return this.nosSelecionados.find((item) => item.id === uuid) ? true : false;
+  }
   findbyUUID(node: any, targetUUID: String): any {
     // Se o nó atual tiver o UUID que procuramos, retorna o nó
-      
+
     if (node.id === targetUUID) {
   
       return node;

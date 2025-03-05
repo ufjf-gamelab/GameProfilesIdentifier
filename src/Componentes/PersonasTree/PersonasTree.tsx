@@ -2,20 +2,20 @@ import { Tree } from "react-arborist";
 import "./PersonasTree.css";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Dialog } from "@radix-ui/react-dialog";
 import { DialogCloseButton } from "./DialogCloseButton";
-import { treeData } from "@/Controlers/TreeApi";
+import { PersonasTreeApi, treeData } from "@/Controlers/TreeApi";
 type PersonaProps = {
-  arvore: treeData[];
+  arvoreApi: PersonasTreeApi;
   addPersonaHandler: (arvore: String) => void;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
 };
 
 function PersonasTree({
-  arvore,
+  arvoreApi,
   addPersonaHandler,
   pushNosSelecionados,
   removeNosSelecionados,
@@ -27,7 +27,7 @@ function PersonasTree({
       </div>
       <Tree
         className="Tree"
-        initialData={arvore}
+        initialData={arvoreApi.tree}
         openByDefault={true}
         height={1000}
         rowHeight={50}
@@ -42,6 +42,7 @@ function PersonasTree({
             {...nodeProps}
             pushNosSelecionados={pushNosSelecionados}
             removeNosSelecionados={removeNosSelecionados}
+            arvoreApi={arvoreApi}
           />
         )}
       </Tree>
@@ -55,6 +56,7 @@ function Node({
   dragHandle,
   pushNosSelecionados,
   removeNosSelecionados,
+  arvoreApi,
   
 }: {
   node: any;
@@ -62,17 +64,17 @@ function Node({
   dragHandle?: React.Ref<HTMLDivElement>;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
+  arvoreApi:PersonasTreeApi
 }) {
-  const [checked, setChecked] = useState(false);
-  console.log(checked);
+  const  selected = arvoreApi.areSelected(node.id)
   const handleCheck = () => {
-    setChecked(!checked);
+    if(selected){
+      removeNosSelecionados(node.id)
 
-    if (checked) {
-      removeNosSelecionados(node.id);
     }else{
-      pushNosSelecionados(node.id);
+      pushNosSelecionados(node.id)
     }
+    
   };
   return (
     <div className="Node" onClick={handleCheck} ref={dragHandle}>
@@ -80,9 +82,9 @@ function Node({
         {"🙂"}
         {node.data.name}
       </div>
-      {checked && (
+      {selected && (
         <div className="checkbox">
-          <Checkbox checked={checked} onChange={handleCheck} />
+          <Checkbox checked={selected} onChange={handleCheck} />
         </div>
       )}
     </div>
