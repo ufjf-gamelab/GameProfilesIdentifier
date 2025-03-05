@@ -49,18 +49,28 @@ class ResultApi {
         new Perfil(this.Inputs,{ação:15+23, social : 20+23, maestria : 63+35, conquista : 59+52, imersão : 59+59, criatividade : 51+51},'Arquiteto'),
         new Perfil(this.Inputs,{ação:35+34, social : 68+37, maestria : 52+32, conquista : 26+18, imersão : 62+67, criatividade : 66+69},'Bardo')
     ];
-    
+    getDataSet(){
+        const data = this.Agradabilidades.map((p) => {
+            return {
+                subtitle: p.nome,
+                dataKey: p.agradabilidade
+            }
+        }
+        );
+        return data;
+    }
     get Nomes(){
         return this.Agradabilidades.map((p) => p.nome);
     }
-    get Resultados(){
-        // Array.prototype.sort.call(this.Agradabilidades, (a:Perfil, b:Perfil) => {
-        //     return b.agradabilidade - a.agradabilidade;
-        // } );
+    getResultados(){
         return this.Agradabilidades
     }
-    constructor() {
-        
+    constructor(Inputs:Motivações) {
+        Inputs = Inputs;
+        this.Agradabilidades = this.Agradabilidades.map((p) => {
+            p.Inputs = Inputs;
+            return p;
+        });
     }
 
     getTextoResultado(){
