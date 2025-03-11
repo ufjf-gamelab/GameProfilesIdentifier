@@ -17,6 +17,7 @@ import {
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
 import {  Motivações, PersonasTreeApi, treeData } from "@/Controlers/TreeApi.ts";
 import { cloneWithMethods } from "@/Componentes/utils/deepClone.ts";
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar.tsx";
 
 function selectEditedNode( personasTreeApi: PersonasTreeApi){ 
   const justOne = personasTreeApi.nosSelecionados.length ==1
@@ -74,7 +75,7 @@ function GameCreator() {
       setValue: (value: number) => setPesosValues(gameEditor!.id,"ação", value),
           valorProp: gameEditor?.pesos.ação! ,
 
-    },
+    },  
     {
       textLabel: "Social",
       textdescription: " Competição e interação em comunidade.",
@@ -116,18 +117,45 @@ function GameCreator() {
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
+      <SidebarProvider>
+        <Sidebar side="left" >
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Application</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                    <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+        </Sidebar>
+        <main>
+          <SidebarTrigger />
+          <div className="Results">
+            <Resultado personasTree={personasTreeApi}  />
+          </div>
+        </main>
+        <Sidebar side="right">
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Application</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                    <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+        </Sidebar>
+        <SidebarTrigger />
+      </SidebarProvider>
+      <Footer></Footer>
+    </div>
+  );
+}
 
-      <main>
-        <aside className="DataInput">
-          <Tabs defaultValue="account" className="tabLayouyt">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="account">Editar Valores</TabsTrigger>
-              <TabsTrigger value="password">Selecionar Elementos</TabsTrigger>
-            </TabsList>
-            <TabsContent className="space-y-2" value="account">
-              <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
-            </TabsContent>
-            <TabsContent className="space-y-2" value="password">
+/*
               <PersonasTree 
               addPersonaHandler={addPersonaHandler} 
               pushNosSelecionados ={
@@ -138,16 +166,6 @@ function GameCreator() {
               }
               
               arvoreApi={personasTreeApi}/>
-            </TabsContent>
-          </Tabs>
-        </aside>
-        <div className="Results">
-          <Resultado personasTree={personasTreeApi}  />
-        </div>
-      </main>
-      <Footer></Footer>
-    </div>
-  );
-}
+*/
 
 export default GameCreator;
