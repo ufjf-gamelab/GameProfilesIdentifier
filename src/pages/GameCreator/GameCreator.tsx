@@ -28,35 +28,38 @@ function selectEditedNode(personasTreeApi: PersonasTreeApi) {
 }
 
 function reducer(state: any, action: any) {
+  const novoEstado = cloneWithMethods(state);
+  const no = novoEstado.findbyUUID(state.tree[0], selectEditedNode(state)?.id);
   switch (action.type) {
     case "ADD_PERSONA":
-      const newTreeAddPersona = cloneWithMethods(state.personasTreeApi);
-      state.personasTreeApi.addPersona(action.value);
-      return {
-        ...state,
-        personasTreeApi: newTreeAddPersona,
-      };
+      state.addPersona(action.value);
+      return novoEstado
     case "ADD_SELECTED_NODE":
-      const newTreeAddSelected = cloneWithMethods(state.personasTreeApi);
-      const node = newTreeAddSelected.findbyUUID(newTreeAddSelected.tree[0], action.uuid);
-      newTreeAddSelected.nosSelecionados.push(node);
-      return {
-        ...state,
-        personasTreeApi: newTreeAddSelected,
-      };
+      const node = novoEstado.findbyUUID(novoEstado.tree[0], action.uuid);
+      novoEstado.nosSelecionados.push(node);
+      return  novoEstado
     case "REMOVE_SELECTED_NODE":
-      const newTreeRemoveSelected = cloneWithMethods(state.personasTreeApi);
-      newTreeRemoveSelected.nosSelecionados = newTreeRemoveSelected.nosSelecionados.filter(
+      novoEstado.nosSelecionados = novoEstado.nosSelecionados.filter(
         (item: any) => item.id !== action.uuid
       );
-      return {
-        ...state,
-        personasTreeApi: newTreeRemoveSelected,
-      };
-    case "SET_PESOS_VALUES_ACTION":
-      const novoEstado = cloneWithMethods(state);
-      const no = novoEstado.findbyUUID(state.tree[0], selectEditedNode(state)?.id);
+      return novoEstado
+    case "SET_ACTION":
       no.pesos['ação'] = action.value; 
+      return novoEstado;
+    case "SET_SOCIAL":
+      no.pesos['social'] = action.value; 
+      return novoEstado;
+      case "SET_MAESTRIA":
+        no.pesos['maestria'] = action.value; 
+        return novoEstado;
+    case "SET_CONQUISTA":
+      no.pesos['conquista'] = action.value; 
+      return novoEstado;
+    case "SET_IMERSÃO":
+      no.pesos['imersão'] = action.value;
+      return novoEstado;
+    case "SET_CRIATIVIDADE":
+      no.pesos['criatividade'] = action.value;
       return novoEstado;
     default:
       return state;
@@ -69,14 +72,45 @@ function GameCreator() {
     {
       textLabel: "Ação",
       textdescription: "Foco em destruição e excitação intensa.",
-      setValue: (value: number) => {
-        dispatch({ type: "SET_PESOS_VALUES_ACTION", value })
-      },
+      setValue: (value: number) => {dispatch({ type: "SET_ACTION", value })},
       valorProp: gameEditor?.pesos.ação!,
+    },
+    {
+      textLabel: "Social",
+      textdescription: "Competição e interação em comunidade.",
+      setValue: (value: number) => {dispatch({ type: "SET_SOCIAL", value })},
+      valorProp: gameEditor?.pesos.social!,
+    },
+    {
+      textLabel: "Maestria",
+      textdescription: "Desafio e desenvolvimento de estratégias",
+      setValue: (value: number) => {dispatch({ type: "SET_MAESTRIA", value })},
+      valorProp: gameEditor?.pesos.maestria!,
+
+    },
+    {
+      textLabel: "Conquista",
+      textdescription: "Completar objetivos e obter poder.",
+      setValue: (value: number) => {dispatch({ type: "SET_CONQUISTA", value })},
+      valorProp: gameEditor?.pesos.conquista!,
+
+    },
+    {
+      textLabel: "Imersão",
+      textdescription: "Exploração de fantasia e histórias profundas",
+      setValue: (value: number) => {dispatch({ type: "SET_IMERSÃO", value })},
+      valorProp: gameEditor?.pesos.imersão!,
+
+    },
+    {
+      textLabel: "Criatividade",
+      textdescription: "Personalização e descoberta de novidades.",
+      setValue: (value: number) => {dispatch({ type: "SET_CRIATIVIDADE", value })},
+      valorProp: gameEditor?.pesos.criatividade!,
 
     },
   ];
-  
+ 
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
