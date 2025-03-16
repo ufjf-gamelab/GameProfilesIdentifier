@@ -1,6 +1,7 @@
 import { cloneWithMethods } from '@/Componentes/utils/deepClone';
 import { actions } from 'react-arborist/dist/module/state/open-slice';
 import { v4 as uuidv4 } from 'uuid';
+import { GameFeatureProps } from './Types';
 
 export type Categorias={
     Community: number,
@@ -184,3 +185,56 @@ export function TreeReducer(state: any, action: any) {
 }
 
 
+export function getActions(selectedNode:treeData,dispatch:React.Dispatch<any>):GameFeatureProps[]{
+  const gameFeature: GameFeatureProps[] = [
+    {
+      textLabel: "Ação",
+      textdescription: "Foco em destruição e excitação intensa.",
+      setValue: (value: number) => {
+        dispatch({ type: "SET_ACTION", value });
+      },
+      valorProp: selectedNode?.pesos.ação!,
+    },
+    {
+      textLabel: "Social",
+      textdescription: "Competição e interação em comunidade.",
+      setValue: (value: number) => {
+        dispatch({ type: "SET_SOCIAL", value });
+      },
+      valorProp: selectedNode?.pesos.social!,
+    },
+    {
+      textLabel: "Maestria",
+      textdescription: "Desafio e desenvolvimento de estratégias",
+      setValue: (value: number) => {
+        dispatch({ type: "SET_MAESTRIA", value });
+      },
+      valorProp: selectedNode?.pesos.maestria!,
+    },
+    {
+      textLabel: "Conquista",
+      textdescription: "Completar objetivos e obter poder.",
+      setValue: (value: number) => {
+        dispatch({ type: "SET_CONQUISTA", value });
+      },
+      valorProp: selectedNode?.pesos.conquista!,
+    },
+    {
+      textLabel: "Imersão",
+      textdescription: "Exploração de fantasia e histórias profundas",
+      setValue: (value: number) => {
+        dispatch({ type: "SET_IMERSÃO", value });
+      },
+      valorProp: selectedNode?.pesos.imersão!,
+    },
+    {
+      textLabel: "Criatividade",
+      textdescription: "Personalização e descoberta de novidades.",
+      setValue: (value: number) => {
+        dispatch({ type: "SET_CRIATIVIDADE", value });
+      },
+      valorProp: selectedNode?.pesos.criatividade!,
+    },
+  ];
+  return gameFeature;
+}
