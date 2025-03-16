@@ -10,10 +10,9 @@ type ResultadoProps = {
 };
 
 function Resultado({ personasTree }: ResultadoProps) {
-  const dataset = personasTree.compartiveDataSet();
+  console.log("personasTree",personasTree) 
+  const dataset = personasTree.getDataSet();
   const gameValues = personasTree.tree[0].pesos;	
-  //const dataKeys = dataset.dataKeys;
-  console.log(dataset);
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>

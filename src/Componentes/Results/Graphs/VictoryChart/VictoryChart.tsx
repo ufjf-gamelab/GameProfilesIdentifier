@@ -18,7 +18,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Motivações } from "@/Controlers/TreeApi";
-import ResultApi from "@/Controlers/ResultGameApi";
+import ResultApi from "@/Controlers/QFoundryApi";
 
 const chartConfig = {
   desktop: {
