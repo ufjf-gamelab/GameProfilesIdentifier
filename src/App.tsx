@@ -2,7 +2,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import ResultApi from './Controlers/ResultGameApi.js'
+import ResultApi from './Controlers/QFoundryApi.js'
 import GameCreator from './pages/GameCreator/GameCreator.js'
 
 function App() {
