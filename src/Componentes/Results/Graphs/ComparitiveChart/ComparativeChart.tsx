@@ -17,11 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-type chartData = {
-    subtitle: string
-    dataKey: number
-  }
- 
+
 
 const chartConfig = {
   desktop: {
@@ -73,7 +69,6 @@ export function ComparativeChart({personasNomes, chartData}: ComparativeChartPro
             />
             {
             personasNomes.map((key) => {
-                console.log(key,chartData);
                 return (<Bar dataKey={key} fill="black" radius={4} />);
             })
             }

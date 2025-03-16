@@ -22,6 +22,7 @@ function GameCreator() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());
   const selectedNode = selectEditedNode(estado);
   const actions =  getActions(selectedNode!, dispatch);
+  console.log(estado);
   return (
     <div className="GameCreatorCtn">
       <Header></Header>

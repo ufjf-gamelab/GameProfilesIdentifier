@@ -95,12 +95,15 @@ export function TreeReducer(state: any, action: any) {
       state.addPersona(action.value);
       return novoEstado;
     case "ADD_SELECTED_NODE":
-      const node = novoEstado.findbyUUID(novoEstado.tree[0], action.uuid);
+      const node = novoEstado.findbyUUID(novoEstado.tree[0], action.value);
       if (node) novoEstado.nosSelecionados.push(node);
       return novoEstado;
     case "REMOVE_SELECTED_NODE":
+      console.log(action);
+
       novoEstado.nosSelecionados = novoEstado.nosSelecionados.filter(
-        (item: any) => item.id !== action.uuid
+        (item: any) => {
+          item.id !== action.value}
       );
       return novoEstado;
     case "SET_AÇÃO":

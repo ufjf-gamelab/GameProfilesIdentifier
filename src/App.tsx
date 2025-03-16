@@ -12,10 +12,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<GameCreator />}>
-        
-        </Route>
-        <Route path="/Personas" element={<GameCreator />}>
-        
         </Route>
       </Routes>
     </BrowserRouter>
