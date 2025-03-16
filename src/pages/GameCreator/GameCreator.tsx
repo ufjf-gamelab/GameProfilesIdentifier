@@ -17,7 +17,7 @@ import {
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
 import {  Motivações, PersonasTreeApi, treeData } from "@/Controlers/TreeApi.ts";
 import { cloneWithMethods } from "@/Componentes/utils/deepClone.ts";
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar.tsx";
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInset, SidebarMenu, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar.tsx";
 
 function selectEditedNode( personasTreeApi: PersonasTreeApi){ 
   const justOne = personasTreeApi.nosSelecionados.length ==1
@@ -117,55 +117,53 @@ function GameCreator() {
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
-      <SidebarProvider>
-        <Sidebar side="left" >
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Application</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                    <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
-        </Sidebar>
         <main>
-          <SidebarTrigger />
-          <div className="Results">
-            <Resultado personasTree={personasTreeApi}  />
-          </div>
+          <SidebarProvider>
+
+            <Sidebar side="left">
+              <SidebarHeader>Seleção de Personas</SidebarHeader>
+              <SidebarContent>
+                <SidebarGroup>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      <PersonasTree 
+                      addPersonaHandler={addPersonaHandler} 
+                      pushNosSelecionados ={
+                        addSelecedNode
+                      } 
+                      removeNosSelecionados={
+                        removeSelecedNode
+                      }
+                      
+                      arvoreApi={personasTreeApi}/>
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              </SidebarContent>
+            </Sidebar>
+
+            <div className="Results">
+              <Resultado personasTree={personasTreeApi}  />
+            </div>
+
+            <Sidebar side="right">
+              <SidebarHeader>Editar Persona</SidebarHeader>
+              <SidebarContent>
+                <SidebarGroup>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                        <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              </SidebarContent>
+            </Sidebar>
+
+          </SidebarProvider>
         </main>
-        <Sidebar side="right">
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Application</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                    <GameFeaturesPicker Features={gameFeature}  disabled={ gameEditor===undefined}/>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
-        </Sidebar>
-        <SidebarTrigger />
-      </SidebarProvider>
       <Footer></Footer>
     </div>
   );
 }
-
-/*
-              <PersonasTree 
-              addPersonaHandler={addPersonaHandler} 
-              pushNosSelecionados ={
-                addSelecedNode
-              } 
-              removeNosSelecionados={
-                removeSelecedNode
-              }
-              
-              arvoreApi={personasTreeApi}/>
-*/
 
 export default GameCreator;
