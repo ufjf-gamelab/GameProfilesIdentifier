@@ -14,16 +14,15 @@ import {
 } from "@/components/ui/tabs.js";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
 import {
-  getActions,
   PersonasTreeApi,
   selectEditedNode,
   TreeReducer,
 } from "@/Controlers/TreeApi.ts";
+import { getActions } from "@/Controlers/ActionsApi.tsx";
 function GameCreator() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());
   const selectedNode = selectEditedNode(estado);
   const actions =  getActions(selectedNode!, dispatch);
-  
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
