@@ -125,5 +125,4 @@ export function TreeReducer(state: any, action: any) {
       return state;
   }
 }
-export {  TreeData };
 
