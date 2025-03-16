@@ -1,3 +1,4 @@
+import { cloneWithMethods } from '@/Componentes/utils/deepClone';
 import { actions } from 'react-arborist/dist/module/state/open-slice';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -135,6 +136,51 @@ export class PersonasTreeApi{
     );      
 } 
 }
-
+export function selectEditedNode(personasTreeApi: PersonasTreeApi) {
+  const justOne = personasTreeApi.nosSelecionados.length == 1
+  if (justOne) {
+    return personasTreeApi.nosSelecionados[0];
+  } else {
+    return undefined;
+  }
+}
+export function TreeReducer(state: any, action: any) {
+  const novoEstado = cloneWithMethods(state);
+  const no = novoEstado.findbyUUID(state.tree[0], selectEditedNode(state)?.id);
+  switch (action.type) {
+    case "ADD_PERSONA":
+      state.addPersona(action.value);
+      return novoEstado
+    case "ADD_SELECTED_NODE":
+      const node = novoEstado.findbyUUID(novoEstado.tree[0], action.uuid);
+      novoEstado.nosSelecionados.push(node);
+      return  novoEstado
+    case "REMOVE_SELECTED_NODE":
+      novoEstado.nosSelecionados = novoEstado.nosSelecionados.filter(
+        (item: any) => item.id !== action.uuid
+      );
+      return novoEstado
+    case "SET_ACTION":
+      no.pesos['ação'] = action.value; 
+      return novoEstado;
+    case "SET_SOCIAL":
+      no.pesos['social'] = action.value; 
+      return novoEstado;
+      case "SET_MAESTRIA":
+        no.pesos['maestria'] = action.value; 
+        return novoEstado;
+    case "SET_CONQUISTA":
+      no.pesos['conquista'] = action.value; 
+      return novoEstado;
+    case "SET_IMERSÃO":
+      no.pesos['imersão'] = action.value;
+      return novoEstado;
+    case "SET_CRIATIVIDADE":
+      no.pesos['criatividade'] = action.value;
+      return novoEstado;
+    default:
+      return state;
+  }
+}
 
 
