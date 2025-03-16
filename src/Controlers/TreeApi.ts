@@ -86,9 +86,9 @@ export class PersonasTreeApi{
   }
   findbyUUID(node: any, targetUUID: String): any {
     // Se o nó atual tiver o UUID que procuramos, retorna o nó
+    console.log("achei",node.id,targetUUID)
 
     if (node.id === targetUUID) {
-  
       return node;
     }
     // Se o nó tiver filhos, percorre cada um
