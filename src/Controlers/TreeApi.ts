@@ -103,7 +103,7 @@ export function TreeReducer(state: any, action: any) {
         (item: any) => item.id !== action.uuid
       );
       return novoEstado;
-    case "SET_ACAO":
+    case "SET_AÇÃO":
       updatePesos("ação", action.value);
       return novoEstado;
     case "SET_SOCIAL":
