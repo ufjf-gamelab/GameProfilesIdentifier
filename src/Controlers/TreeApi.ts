@@ -99,11 +99,11 @@ export function TreeReducer(state: any, action: any) {
       if (node) novoEstado.nosSelecionados.push(node);
       return novoEstado;
     case "REMOVE_SELECTED_NODE":
-      console.log(action);
 
       novoEstado.nosSelecionados = novoEstado.nosSelecionados.filter(
         (item: any) => {
-          item.id !== action.value}
+          return item.id !== action.value
+        }
       );
       return novoEstado;
     case "SET_AÇÃO":
