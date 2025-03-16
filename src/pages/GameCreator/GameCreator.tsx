@@ -3,7 +3,7 @@ import Header from "../../Componentes/Header/Header.js";
 import Footer from "../../Componentes/Footer/Footer.js";
 import GameFeaturesPicker from "../../Componentes/gameFeaturesPicker/GameFeaturesPicker.js";
 import Resultado from "../../Componentes/Results/Resultado.js";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import ResultApi from "../../Controlers/ResultGameApi.js";
 import { GameFeatureProps } from "../../Controlers/Types.ts";
 
@@ -26,9 +26,50 @@ function selectEditedNode( personasTreeApi: PersonasTreeApi){
     return undefined;
   }
 }
+
+function reducer(state:any, action:any) {
+  switch (action.type) {
+    case "ADD_PERSONA":
+      const newTreeAddPersona = cloneWithMethods(state.personasTreeApi);
+      state.personasTreeApi.addPersona(action.value);
+      return {
+        ...state,
+        personasTreeApi: newTreeAddPersona,
+      };
+    case "ADD_SELECTED_NODE":
+      const newTreeAddSelected = cloneWithMethods(state.personasTreeApi);
+      const node = newTreeAddSelected.findbyUUID(newTreeAddSelected.tree[0], action.uuid);
+      newTreeAddSelected.nosSelecionados.push(node);
+      return {
+        ...state,
+        personasTreeApi: newTreeAddSelected,
+      };
+    case "REMOVE_SELECTED_NODE":
+      const newTreeRemoveSelected = cloneWithMethods(state.personasTreeApi);
+      newTreeRemoveSelected.nosSelecionados = newTreeRemoveSelected.nosSelecionados.filter(
+        (item:any) => item.id !== action.uuid
+      );
+      return {
+        ...state,
+        personasTreeApi: newTreeRemoveSelected,
+      };
+    case "SET_PESOS_VALUES":
+      const newPesosValuesTree = cloneWithMethods(state.personasTreeApi);
+      const no = state.personasTreeApi.findbyUUID(state.personasTreeApi.tree[0], action.uuid);
+      if (no) {
+        no.pesos[action.valor] = action.acrescimo;
+        return {
+          ...state,
+          personasTreeApi: newPesosValuesTree,
+        };
+      }
+      return state;
+    default:
+      return state;
+  }
+}
 function GameCreator() {
-  
-  const [personasTreeApi, setPersonasTree] = useState<PersonasTreeApi>(new PersonasTreeApi());
+  const [personasTreeApi, dispatch] = useReducer(reducer,new PersonasTreeApi(),);
 
 
   function addPersonaHandler(value: String) {
@@ -112,7 +153,7 @@ function GameCreator() {
     },
   ];
  
-  console.log(gameEditor);
+  //console.log(gameEditor);
   return (
     <div className="GameCreatorCtn">
       <Header></Header>
