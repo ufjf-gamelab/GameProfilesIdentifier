@@ -4,8 +4,6 @@ import Footer from "../../Componentes/Footer/Footer.js";
 import GameFeaturesPicker from "../../Componentes/gameFeaturesPicker/GameFeaturesPicker.js";
 import Resultado from "../../Componentes/Results/Resultado.js";
 import { useReducer, useState } from "react";
-import ResultApi from "../../Controlers/ResultGameApi.js";
-import { GameFeatureProps } from "../../Controlers/Types.ts";
 import {
   Tabs,
   TabsContent,
@@ -19,6 +17,7 @@ import {
   TreeReducer,
 } from "@/Controlers/TreeApi.ts";
 import { getActions } from "@/Controlers/ActionsApi.tsx";
+
 function GameCreator() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());
   const selectedNode = selectEditedNode(estado);

@@ -1,4 +1,4 @@
-import { TreeData } from "./TreeApi";
+import { TreeData } from "./Types";
 import { GameFeatureProps, Motivações } from "./Types";
 
 export function getActions(selectedNode: TreeData, dispatch: React.Dispatch<any>): GameFeatureProps[] {
