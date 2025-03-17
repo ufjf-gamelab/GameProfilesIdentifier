@@ -129,3 +129,5 @@ export function TreeReducer(state: any, action: any) {
   }
 }
 
+
+export type { Motivações };
