@@ -34,10 +34,20 @@ function Resultado({ personasTree }: ResultadoProps) {
               ></VictoryChart>
             )}
           </TabsContent>
+          <TabsContent className="space-y-2" value="Media">
+            {!!dataset && (
+              <VictoryChart
+                gameValues={gameValues}
+              ></VictoryChart>
+            )}
+          </TabsContent>
         </div>
         <TabsList className="OperationsPanel">
           <TabsTrigger className="TabBtn" value="Comparative">
             Comparar Personas
+          </TabsTrigger>
+          <TabsTrigger className="TabBtn" value="qFoundry">
+          Media
           </TabsTrigger>
           <TabsTrigger className="TabBtn" value="qFoundry">
             QuanticFoundryPersonas
