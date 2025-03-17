@@ -85,7 +85,7 @@ export class PersonasTreeApi {
 // }
 export function TreeReducer(state: any, action: any) {
   const novoEstado = cloneWithMethods(state);
-  const no = novoEstado.findbyUUID(state.tree[0], state.noEmEdicao);
+  const no = state.noEmEdicao;
 
   const updatePesos = (key: keyof Motivações, value: number) => {
     if (no) {
