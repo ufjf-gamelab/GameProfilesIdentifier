@@ -88,6 +88,7 @@ function Node({
           <Checkbox checked={selected} onChange={handleCheck} />
         </div>
       )}
+      <Button onClick={editarPersona}>🖋️</Button>
     </div>
   );
 }
