@@ -12,6 +12,7 @@ type PersonaProps = {
   addPersonaHandler: (arvore: String) => void;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
+  mudaNoEditavel: (uuid: String) => void;
 };
 
 function PersonasTree({
@@ -19,6 +20,7 @@ function PersonasTree({
   addPersonaHandler,
   pushNosSelecionados,
   removeNosSelecionados,
+  mudaNoEditavel,
 }: PersonaProps) {
   return (
     <div>
@@ -42,6 +44,7 @@ function PersonasTree({
             {...nodeProps}
             pushNosSelecionados={pushNosSelecionados}
             removeNosSelecionados={removeNosSelecionados}
+            mudaNoEditavel={mudaNoEditavel}
             arvoreApi={arvoreApi}
           />
         )}
@@ -56,6 +59,7 @@ function Node({
   dragHandle,
   pushNosSelecionados,
   removeNosSelecionados,
+  mudaNoEditavel,
   arvoreApi,
   
 }: {
@@ -64,6 +68,7 @@ function Node({
   dragHandle?: React.Ref<HTMLDivElement>;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
+  mudaNoEditavel: (uuid: string) => void;
   arvoreApi:PersonasTreeApi
 }) {
   const  selected = arvoreApi.areSelected(node.id)
@@ -88,7 +93,7 @@ function Node({
           <Checkbox checked={selected} onChange={handleCheck} />
         </div>
       )}
-      <Button onClick={editarPersona}>🖋️</Button>
+      <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
     </div>
   );
 }

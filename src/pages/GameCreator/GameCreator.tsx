@@ -7,7 +7,6 @@ import { useReducer } from "react";
 import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
 import {
   PersonasTreeApi,
-  selectEditedNode,
   TreeReducer,
 } from "@/Controlers/TreeApi.ts";
 import { getActions } from "@/Controlers/ActionsApi.tsx";
@@ -15,9 +14,10 @@ import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHead
 
 function GameCreator() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());
-  const selectedNode = selectEditedNode(estado);
+  const selectedNode = estado.noEmEdicao;
   const actions =  getActions(selectedNode!, dispatch);
   console.log(estado);
+  console.log("aaaaaaaaaaaaaaaah")
   //console.log(gameEditor);
   return (
         <div className="GameCreatorCtn">
@@ -33,6 +33,9 @@ function GameCreator() {
                   }}
                   removeNosSelecionados={(value) => {
                     dispatch({ type: "REMOVE_SELECTED_NODE", value });
+                  }}
+                  mudaNoEditavel={(value) => {
+                    dispatch({ type: "MUDA_EDITABLE_NODE", value})
                   }}
                   arvoreApi={estado}
                 />
