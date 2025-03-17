@@ -12,24 +12,30 @@ interface Game {
 interface Genre {
   id: string;
   name: string;
+  genre: string;
 }
 
 const GENRES: Genre[] = [
-  { id: "19", name: "Action" },      // ação
-  { id: "9", name: "Strategy" },     // maestria
-  { id: "122", name: "RPG" },        // imersão
-  { id: "3810", name: "Simulação" }, // social
-  { id: "3790", name: "SandBox" },   // criatividade  
-  { id: "21", name: "Adventure" },   // conquista   
+  { id: "19", name: "ação", genre: "Action"},      
+  { id: "9", name: "maestria", genre: "Strategy"},     
+  { id: "122", name: "imersão", genre:"RPG"},        
+  { id: "3810", name: "social", genre:"Simulate" }, 
+  { id: "3790", name: "criatividade", genre:"Sandbox"},     
+  { id: "21", name: "conquista", genre:"Adventure"},      
 ];
 
 function GameList({jogo}:{jogo:TreeData}){
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [selectedGenre, setSelectedGenre] = useState<string>(GENRES[0].id);
-
   const entries = Object.entries(jogo.pesos);
   const maiores = entries.sort((a, b) => b[1] - a[1]).slice(0, 3);
+  
+  const selectedGenres = GENRES.filter(genre => 
+    maiores.some((name) => name[0] === genre.name) 
+).map(genre => genre.id); 
+
+console.log(selectedGenres);
+  const [selectedGenre, setSelectedGenre] = useState<string[]>(selectedGenres);
 
   useEffect(() => {
     const fetchGamesByGenre = async () => {
