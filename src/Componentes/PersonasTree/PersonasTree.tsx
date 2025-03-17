@@ -83,16 +83,16 @@ function Node({
     
   };
   return (
-    <div className="Node" onClick={handleCheck} ref={dragHandle}>
-      <div style={style}>
-        {"🙂"}
-        {node.data.name}
-      </div>
-      {selected && (
-        <div className="checkbox">
-          <Checkbox checked={selected} onChange={handleCheck} />
+    <div className="Node" ref={dragHandle}>
+      <div className="flex-row" onClick={handleCheck}>
+          <div className="checkbox">
+            <Checkbox checked={selected} onChange={handleCheck} />
+          </div>
+        <div style={style}>
+          {"🙂"}
+          {node.data.name}
         </div>
-      )}
+      </div>
       <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
     </div>
   );
