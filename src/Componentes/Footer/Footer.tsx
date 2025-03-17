@@ -10,7 +10,8 @@ function App() {
             <h2>Desenvolvido por:</h2>
             <h3>Estêvão Fiorilo</h3>
             <h3>Miguel Dias</h3> 
-            <h3> Isabela Coelho</h3>        
+            <h3>Isabela Coelho</h3> 
+            <h3>Eduarda Nunes</h3>       
         </section>
         <section >
           <h2>Referências:</h2>
