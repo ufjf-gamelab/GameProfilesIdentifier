@@ -15,9 +15,11 @@ export class PersonasTreeApi {
       criatividade: 0,
     }),
   ];
+  noEmEdicao: TreeData;
   nosSelecionados: TreeData[] = [];
   constructor() {
     this.nosSelecionados.push(this.tree[0]);
+    this.noEmEdicao = this.tree[0];
   }
   areSelected(uuid: string): boolean {
     return this.nosSelecionados.some((item) => item.id === uuid);
@@ -110,14 +112,15 @@ export class PersonasTreeApi {
   }
 }
 
-export function selectEditedNode(personasTreeApi: PersonasTreeApi) {
-  return personasTreeApi.nosSelecionados.length === 1
-    ? personasTreeApi.nosSelecionados[0]
-    : undefined;
-}
+// export function selectEditedNode(personasTreeApi: PersonasTreeApi) {
+//   // return personasTreeApi.nosSelecionados.length === 1
+//   //   ? personasTreeApi.nosSelecionados[0]
+//   //   : undefined;
+
+// }
 export function TreeReducer(state: any, action: any) {
   const novoEstado = cloneWithMethods(state);
-  const no = novoEstado.findbyUUID(state.tree[0], selectEditedNode(state)?.id);
+  const no = state.noEmEdicao;
 
   const updatePesos = (key: keyof Motivações, value: number) => {
     if (no) {
@@ -140,6 +143,9 @@ export function TreeReducer(state: any, action: any) {
           return item.id !== action.value
         }
       );
+      return novoEstado;
+    case "MUDA_EDITABLE_NODE":
+      novoEstado.noEmEdicao = novoEstado.findbyUUID(novoEstado.tree[0], action.value);
       return novoEstado;
     case "SET_AÇÃO":
       updatePesos("ação", action.value);

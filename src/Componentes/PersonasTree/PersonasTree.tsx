@@ -12,6 +12,7 @@ type PersonaProps = {
   addPersonaHandler: (arvore: String) => void;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
+  mudaNoEditavel: (uuid: String) => void;
 };
 
 function PersonasTree({
@@ -19,6 +20,7 @@ function PersonasTree({
   addPersonaHandler,
   pushNosSelecionados,
   removeNosSelecionados,
+  mudaNoEditavel,
 }: PersonaProps) {
   return (
     <div>
@@ -42,6 +44,7 @@ function PersonasTree({
             {...nodeProps}
             pushNosSelecionados={pushNosSelecionados}
             removeNosSelecionados={removeNosSelecionados}
+            mudaNoEditavel={mudaNoEditavel}
             arvoreApi={arvoreApi}
           />
         )}
@@ -56,6 +59,7 @@ function Node({
   dragHandle,
   pushNosSelecionados,
   removeNosSelecionados,
+  mudaNoEditavel,
   arvoreApi,
   
 }: {
@@ -64,6 +68,7 @@ function Node({
   dragHandle?: React.Ref<HTMLDivElement>;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
+  mudaNoEditavel: (uuid: string) => void;
   arvoreApi:PersonasTreeApi
 }) {
   const  selected = arvoreApi.areSelected(node.id)
@@ -78,16 +83,17 @@ function Node({
     
   };
   return (
-    <div className="Node" onClick={handleCheck} ref={dragHandle}>
-      <div style={style}>
-        {"🙂"}
-        {node.data.name}
-      </div>
-      {selected && (
-        <div className="checkbox">
-          <Checkbox checked={selected} onChange={handleCheck} />
+    <div className="Node" ref={dragHandle}>
+      <div className="flex-row" onClick={handleCheck}>
+          <div className="checkbox">
+            <Checkbox checked={selected} onChange={handleCheck} />
+          </div>
+        <div style={style}>
+          {"🙂"}
+          {node.data.name}
         </div>
-      )}
+      </div>
+      <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
     </div>
   );
 }
