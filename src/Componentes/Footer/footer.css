@@ -1,6 +1,7 @@
 footer{
+    position: relative;
     width: 100%;
-    height: auto;
+    height: 10vh;
     border-top: 4px solid #000;
     display: flex;
     justify-content: flex-end !important;
@@ -11,16 +12,15 @@ footer{
     align-self: center;
 
     background-color: #59565c;
-opacity: 1;
-background-image: radial-gradient(#1d1d1d 0.35000000000000003px, #131313    0.35000000000000003px);
-background-size: 7px 7px;
-    min-height: 200px;
-    padding-bottom: 20px;
-
+    opacity: 1;
+    background-image: radial-gradient(#1d1d1d 0.35000000000000003px, #131313    0.35000000000000003px);
+    background-size: 7px 7px;
 }
 
 footer img{
-    width: 150px;
+    align-self: flex-start;
+    position: absolute;
+    width: 75px;
     border-radius: 10px;
     margin: 0 auto;
     margin-bottom: 15px;
