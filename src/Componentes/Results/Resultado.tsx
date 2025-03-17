@@ -46,7 +46,7 @@ function Resultado({ personasTree }: ResultadoProps) {
             )}
           </TabsContent>
           <TabsContent className="space-y-2" value="steamGames">
-            <SteamGameApi />
+            <SteamGameApi jogo={personasTree.tree[0]}/>
           </TabsContent>
         </div>
         <TabsList className="OperationsPanel">
