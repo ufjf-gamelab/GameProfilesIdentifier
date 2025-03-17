@@ -51,8 +51,9 @@
     padding: 10px;
     border-radius: 10px;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: .5em;
     .TabBtn{
         min-width: 140px;
         display: flex;

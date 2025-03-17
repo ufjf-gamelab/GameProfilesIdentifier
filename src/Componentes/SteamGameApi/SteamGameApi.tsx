@@ -27,20 +27,21 @@ const GENRES: Genre[] = [
 function GameList({jogo}:{jogo:TreeData}){
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
   const entries = Object.entries(jogo.pesos);
   const maiores = entries.sort((a, b) => b[1] - a[1]).slice(0, 3);
-  
-  const selectedGenres = GENRES.filter(genre => 
-    maiores.some((name) => name[0] === genre.name) 
-).map(genre => genre.id); 
-
-console.log(selectedGenres);
-  const [selectedGenre, setSelectedGenre] = useState<string[]>(selectedGenres);
-
+  const selectedGenre = GENRES.filter(genre => 
+      maiores.some((name) => name[0] === genre.name) 
+  ).map(genre => genre.id); 
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaa",selectedGenre)
   useEffect(() => {
     const fetchGamesByGenre = async () => {
-      setLoading(true);
+      
       try {
+        GENRES.filter(genre => 
+            maiores.some((name) => name[0] === genre.name) 
+        ).map(genre => genre.id);
+        
         const response = await fetch(
           `https://api.allorigins.win/get?url=${encodeURIComponent(
             `https://api.steampowered.com/IStoreQueryService/Query/v1/?input_json=${JSON.stringify({
@@ -61,7 +62,7 @@ console.log(selectedGenres);
             })}`
           )}`
         );
-
+        
         const json = await response.json();
         const data = JSON.parse(json.contents);
 
