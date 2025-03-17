@@ -61,7 +61,36 @@ export class PersonasTreeApi {
 
     return dataSet;
   }
+  getAvaregeDataSet() {
+    const actions: (keyof Motivações)[] = [
+      "ação",
+      "social",
+      "maestria",
+      "conquista",
+      "imersão",
+      "criatividade",
+    ];
+    const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
+      dataKeys: [],
+      data: [],
+    };
 
+    actions.forEach((legenda) => {
+      const data: { [key: string]: any } = { subtitle: legenda };
+      let total = 0;
+      this.nosSelecionados.forEach((node) => {
+        console.log(node.pesos[legenda]);
+        total += node.pesos[legenda];
+      });
+      data["media"] = total / this.nosSelecionados.length;
+      dataSet.data.push(data);
+    });
+    
+    dataSet.dataKeys = ["jogo","media"]
+    console.log(dataSet);
+
+    return dataSet;
+  }
   addPersona(valor: string) {
     const newPersona = new TreeData(valor, {
       ação: 3,

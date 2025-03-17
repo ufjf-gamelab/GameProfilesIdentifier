@@ -12,6 +12,7 @@ type ResultadoProps = {
 function Resultado({ personasTree }: ResultadoProps) {
   console.log("personasTree",personasTree) 
   const dataset = personasTree.getDataSet();
+  const avaregeDataSet = personasTree.getAvaregeDataSet();
   const gameValues = personasTree.tree[0].pesos;	
   return (
     <div className="ResultadoCtn">
@@ -36,9 +37,11 @@ function Resultado({ personasTree }: ResultadoProps) {
           </TabsContent>
           <TabsContent className="space-y-2" value="Media">
             {!!dataset && (
-              <VictoryChart
-                gameValues={gameValues}
-              ></VictoryChart>
+              <ComparativeChart
+                chartData={avaregeDataSet.data}
+                titulo="Comparativo"
+                personasNomes={avaregeDataSet.dataKeys}
+              ></ComparativeChart>
             )}
           </TabsContent>
         </div>
@@ -46,8 +49,8 @@ function Resultado({ personasTree }: ResultadoProps) {
           <TabsTrigger className="TabBtn" value="Comparative">
             Comparar Personas
           </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="qFoundry">
-          Media
+          <TabsTrigger className="TabBtn" value="Media">
+          Média
           </TabsTrigger>
           <TabsTrigger className="TabBtn" value="qFoundry">
             QuanticFoundryPersonas
