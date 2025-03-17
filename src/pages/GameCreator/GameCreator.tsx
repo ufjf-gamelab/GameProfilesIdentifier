@@ -11,7 +11,7 @@ import {
   TreeReducer,
 } from "@/Controlers/TreeApi.ts";
 import { getActions } from "@/Controlers/ActionsApi.tsx";
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarProvider } from "@/components/ui/sidebar.tsx";
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarInset, SidebarMenu, SidebarProvider } from "@/components/ui/sidebar.tsx";
 
 function GameCreator() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());
@@ -23,51 +23,31 @@ function GameCreator() {
         <div className="GameCreatorCtn">
           <Header></Header>
             <main>
-              <SidebarProvider>
-                <Sidebar side="left">
-                  <SidebarHeader>Seleção de Personas</SidebarHeader>
-                  <SidebarContent>
-                    <SidebarGroup>
-                      <SidebarGroupContent>
-                        <SidebarMenu>
-                        <PersonasTree
-                          addPersonaHandler={(value) => {
-                            dispatch({ type: "ADD_PERSONA", value });
-                          }}
-                          pushNosSelecionados={(value) => {
-                            dispatch({ type: "ADD_SELECTED_NODE", value });
-                          }}
-                          removeNosSelecionados={(value) => {
-                            dispatch({ type: "REMOVE_SELECTED_NODE", value });
-                          }}
-                          arvoreApi={estado}
-                        />
-                        </SidebarMenu>
-                      </SidebarGroupContent>
-                    </SidebarGroup>
-                  </SidebarContent>
-                </Sidebar>
-                <div className="Results">
-                  <Resultado personasTree={estado} />
-                </div>
+              <aside>
+                <PersonasTree
+                  addPersonaHandler={(value) => {
+                    dispatch({ type: "ADD_PERSONA", value });
+                  }}
+                  pushNosSelecionados={(value) => {
+                    dispatch({ type: "ADD_SELECTED_NODE", value });
+                  }}
+                  removeNosSelecionados={(value) => {
+                    dispatch({ type: "REMOVE_SELECTED_NODE", value });
+                  }}
+                  arvoreApi={estado}
+                />
+              </aside>
+                
+              <div className="Results">
+                <Resultado personasTree={estado} />
+              </div>
 
-                <Sidebar side="right">
-                  <SidebarHeader>Editar Persona</SidebarHeader>
-                  <SidebarContent>
-                    <SidebarGroup>
-                      <SidebarGroupContent>
-                        <SidebarMenu>
-                        <GameFeaturesPicker
-                          Features={actions}
-                          disabled={selectedNode === undefined}
-                        />
-                        </SidebarMenu>
-                      </SidebarGroupContent>
-                    </SidebarGroup>
-                  </SidebarContent>
-                </Sidebar>
-
-              </SidebarProvider>
+              <aside>
+                <GameFeaturesPicker
+                  Features={actions}
+                  disabled={selectedNode === undefined}
+                />
+              </aside>
             </main>
             <Footer></Footer>
         </div> 
