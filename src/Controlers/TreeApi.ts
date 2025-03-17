@@ -1,5 +1,6 @@
 import { cloneWithMethods } from "@/Componentes/utils/deepClone";
 import {  Motivações, TreeData } from "./Types";
+import { data } from "react-router-dom";
 
 
 
@@ -78,14 +79,19 @@ export class PersonasTreeApi {
     actions.forEach((legenda) => {
       const data: { [key: string]: any } = { subtitle: legenda };
       let total = 0;
-      this.nosSelecionados.forEach((node) => {
+      data["jogo"] = this.tree[0].pesos[legenda];
+      const nosSelecionadosFiltrados = this.nosSelecionados.filter((node) => {
+        if (node.name === "Jogo") return false;
+        return true;
+      });
+     nosSelecionadosFiltrados.forEach((node) => {
         console.log(node.pesos[legenda]);
         total += node.pesos[legenda];
       });
-      data["media"] = total / this.nosSelecionados.length;
+      data["media"] = total /nosSelecionadosFiltrados.length;
+      
       dataSet.data.push(data);
     });
-    
     dataSet.dataKeys = ["jogo","media"]
     console.log(dataSet);
 
