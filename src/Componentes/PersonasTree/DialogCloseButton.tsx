@@ -27,9 +27,9 @@ export function DialogCloseButton({callback}: {callback: (valor:String) => void}
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Dialog Temporario</DialogTitle>
+          <DialogTitle>Criação de Persona</DialogTitle>
           <DialogDescription>
-           Eu vou ser delatado pror uma tela nova
+           Insira o nome da persona que você deseja criar:
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
