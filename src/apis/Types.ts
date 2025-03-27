@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { Motivações } from "./TreeApi";
 
  export type GameFeatureProps = {
@@ -16,21 +15,3 @@ export type SelectGameProps = {
   
  
   
-  export type Data = {
-    subtitle: string;
-    dataKey: number;
-  };
-  
-  export class TreeData {
-    id: string;
-    name: string;
-    pesos: Motivações;
-    children: TreeData[];
-  
-    constructor(name: string, pesos: Motivações, children: TreeData[] = []) {
-      this.id = uuidv4();
-      this.name = name;
-      this.pesos = pesos;
-      this.children = children;
-    }
-  }

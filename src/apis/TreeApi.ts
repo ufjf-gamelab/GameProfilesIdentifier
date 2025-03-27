@@ -1,9 +1,18 @@
-import PersonasTree from "@/components/created/PersonasTree/PersonasTree";
 import { Motivações } from "./Types/MotivacaoType";
 import { PersonasTreeInterface, TreeData } from "./Types/PersonasTreeType";
 
 
 export class PersonasTreeApi implements PersonasTreeInterface {
+  #motivacoes: (keyof Motivações)[] =  [
+    "ação",
+    "social",
+    "maestria",
+    "conquista",
+    "imersão",
+    "criatividade",
+  ];
+  noEmEdicao: TreeData;
+  nosSelecionados: TreeData[] = [];
   tree: TreeData[] = [
     new TreeData("Jogo", {
       ação: 0,
@@ -14,8 +23,7 @@ export class PersonasTreeApi implements PersonasTreeInterface {
       criatividade: 0,
     }),
   ];
-  noEmEdicao: TreeData;
-  nosSelecionados: TreeData[] = [];
+  
   constructor() {
     this.nosSelecionados.push(this.tree[0]);
     this.noEmEdicao = this.tree[0];
@@ -37,20 +45,12 @@ export class PersonasTreeApi implements PersonasTreeInterface {
     return null;
   }
   getDataSet() {
-    const actions: (keyof Motivações)[] = [
-      "ação",
-      "social",
-      "maestria",
-      "conquista",
-      "imersão",
-      "criatividade",
-    ];
     const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
       dataKeys: [],
       data: [],
     };
 
-    actions.forEach((legenda) => {
+    this.#motivacoes.forEach((legenda) => {
       const data: { [key: string]: any } = { subtitle: legenda };
       this.nosSelecionados.forEach((node) => {
         data[node.name] = node.pesos[legenda];
@@ -64,20 +64,13 @@ export class PersonasTreeApi implements PersonasTreeInterface {
     return dataSet;
   }
   getAvaregeDataSet() {
-    const actions: (keyof Motivações)[] = [
-      "ação",
-      "social",
-      "maestria",
-      "conquista",
-      "imersão",
-      "criatividade",
-    ];
+    
     const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
       dataKeys: [],
       data: [],
     };
 
-    actions.forEach((legenda) => {
+    this.#motivacoes.forEach((legenda) => {
       const data: { [key: string]: any } = { subtitle: legenda };
       let total = 0;
       data["jogo"] = this.tree[0].pesos[legenda];

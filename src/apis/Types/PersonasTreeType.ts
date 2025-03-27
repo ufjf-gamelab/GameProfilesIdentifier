@@ -20,7 +20,6 @@ export class TreeData {
     }
 }
 
-
 export interface PersonasTreeInterface {
   tree: TreeData[] ;
   areSelected(uuid: string): boolean;
