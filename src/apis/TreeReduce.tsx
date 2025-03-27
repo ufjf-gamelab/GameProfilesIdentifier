@@ -16,7 +16,7 @@ export function TreeReducer(state: any, action: any) {
         state.addPersona(action.value);
         return novoEstado;
       case "ADD_SELECTED_NODE":
-        const node = novoEstado.findbyUUID(novoEstado.tree[0], action.value);
+        const node = novoEstado.findbyUUID(novoEstado.arvorePersonas[0], action.value);
         if (node) novoEstado.nosSelecionados.push(node);
         return novoEstado;
       case "REMOVE_SELECTED_NODE":
@@ -28,7 +28,7 @@ export function TreeReducer(state: any, action: any) {
         );
         return novoEstado;
       case "MUDA_EDITABLE_NODE":
-        novoEstado.noEmEdicao = novoEstado.findbyUUID(novoEstado.tree[0], action.value);
+        novoEstado.noEmEdicao = novoEstado.findbyUUID(novoEstado.arvorePersonas[0], action.value);
         return novoEstado;
       case "SET_AÇÃO":
         updatePesos("ação", action.value);
