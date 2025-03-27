@@ -47,6 +47,11 @@ function App() {
               <aside>
                 <GameFeaturesPicker
                   Features={actions}
+                  editPersonaName={(value) => {
+                      dispatch({ type: "SET_PERSONA_NAME", value });
+                    }
+                  }
+                  namePersona={selectedNode?.name}
                   disabled={selectedNode === undefined}
                 />
               </aside>

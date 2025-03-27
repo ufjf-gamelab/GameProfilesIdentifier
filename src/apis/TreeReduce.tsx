@@ -33,6 +33,10 @@ export function TreeReducer(state: any, action: any) {
       case "CLONA_PERSONA":
         novoEstado.clonePersona(action.value);
         return novoEstado;
+      case "SET_PERSONA_NAME":
+        console.log(action.value);
+        state.changePersonaNamee(no.id, action.value);
+        return novoEstado;
       case "SET_AÇÃO":
         updatePesos("ação", action.value);
         return novoEstado;

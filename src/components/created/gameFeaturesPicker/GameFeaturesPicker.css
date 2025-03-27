@@ -36,6 +36,7 @@
         gap: 20px;
         background:none;
     }
+    
     .GameSelectCtn section {
         padding: 5px;
         border-radius: 5px;
@@ -57,6 +58,7 @@
     }
 
   }
+
 .GameSelectCtn h2{
     color: black;
     width: 80%;
@@ -70,7 +72,29 @@
     width: 80%;
     padding: 0%;
 }
-
+.GameSelectCtn .editPersonaName{
+    color: black;
+    width: 90%;
+    margin: 0;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align:left;
+    font-weight: 100;
+    font-size: large;
+    gap: 10px;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+    h1{
+        margin: 0;
+        height: auto;
+        font-size: x-large;
+        text-wrap: wrap;
+        padding: 0;
+    }
+}
 .GameSelectCtn section{
     display: flex;
     justify-content: space-evenly;
