@@ -6,13 +6,13 @@ import Resultado from "./components/created/Results/Resultado.tsx";
 import { useReducer } from "react";
 import PersonasTree from "@/components/created/PersonasTree/PersonasTree.tsx";
 import {
-  PersonasTreeApi,
-  TreeReducer,
-} from "@/apis/TreeApi.ts";
+  PersonasApi,
+} from "@/apis/PersonasApi.ts";
 import { getActions } from "@/apis/ActionsApi.tsx";
+import { TreeReducer } from "./apis/TreeReduce.tsx";
 
 function App() {
-  const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());
+  const [estado, dispatch] = useReducer(TreeReducer, new PersonasApi());
   const selectedNode = estado.noEmEdicao;
   const actions =  getActions(selectedNode!, dispatch);
   return (

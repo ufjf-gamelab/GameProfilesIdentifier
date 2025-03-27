@@ -6,9 +6,9 @@ import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Dialog } from "@radix-ui/react-dialog";
 import { DialogCloseButton } from "./DialogCloseButton";
-import { PersonasTreeApi } from "@/apis/TreeApi";
+import { PersonasApi } from "@/apis/PersonasApi";
 type PersonaProps = {
-  arvoreApi: PersonasTreeApi;
+  arvoreApi: PersonasApi;
   addPersonaHandler: (arvore: String) => void;
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
@@ -29,7 +29,7 @@ function PersonasTree({
       </div>
       <Tree
         className="Tree"
-        initialData={arvoreApi.tree}
+        initialData={arvoreApi.arvorePersonas}
         openByDefault={true}
         height={1000}
         rowHeight={50}
@@ -69,7 +69,7 @@ function Node({
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: string) => void;
-  arvoreApi:PersonasTreeApi
+  arvoreApi:PersonasApi
 }) {
   const  selected = arvoreApi.areSelected(node.id)
   const handleCheck = () => {
