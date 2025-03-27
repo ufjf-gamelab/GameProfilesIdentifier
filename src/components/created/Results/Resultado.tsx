@@ -1,5 +1,5 @@
 import "./Resultado.css";
-import { PersonasTreeApi } from "@/apis/TreeApi";
+import { DataGenerator, PersonasTreeApi } from "@/apis/TreeApi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
@@ -11,9 +11,10 @@ type ResultadoProps = {
 };
 
 function Resultado({ personasTree }: ResultadoProps) {
-  console.log("personasTree",personasTree) 
-  const dataset = personasTree.getDataSet();
-  const avaregeDataSet = personasTree.getAvaregeDataSet();
+  const dataGenerator = new DataGenerator();
+
+  const dataset = dataGenerator.getAbsoluteDataSet(personasTree.nosSelecionados);
+  const avaregeDataSet = dataGenerator.getAvaregeDataSet(personasTree)
   const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (
     <div className="ResultadoCtn">
