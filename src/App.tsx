@@ -1,10 +1,10 @@
 import "./App.css";
-import Header from "./Componentes/Header/Header.tsx";
-import Footer from "./Componentes/Footer/Footer.tsx"
-import GameFeaturesPicker from "./Componentes/gameFeaturesPicker/GameFeaturesPicker.tsx";
-import Resultado from "./Componentes/Results/Resultado.tsx";
+import Header from "./components/created/Header/Header.tsx";
+import Footer from "./components/created/Footer/Footer.tsx"
+import GameFeaturesPicker from "./components/created/gameFeaturesPicker/GameFeaturesPicker.tsx";
+import Resultado from "./components/created/Results/Resultado.tsx";
 import { useReducer } from "react";
-import PersonasTree from "@/Componentes/PersonasTree/PersonasTree.tsx";
+import PersonasTree from "@/components/created/PersonasTree/PersonasTree.tsx";
 import {
   PersonasTreeApi,
   TreeReducer,

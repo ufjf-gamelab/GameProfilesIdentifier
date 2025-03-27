@@ -1,4 +1,4 @@
-import { cloneWithMethods } from "@/Componentes/utils/deepClone";
+import { cloneWithMethods } from "@/components/created/utils/deepClone";
 import {  Motivações, TreeData } from "./Types";
 import { data } from "react-router-dom";
 
