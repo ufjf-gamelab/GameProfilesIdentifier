@@ -1,17 +1,25 @@
+import { Button } from "@/components/ui/button";
 import "./GameFeaturesPicker.css";
 
 import GameFeature from "./gameFeature/gameFeature";
 import {  SelectGameProps } from "@/apis/Types/TypesProps";
+import { DialogCloseButton } from "../PersonasTree/DialogCloseButton";
+import { DialogNameButton } from "./DialogNameButton";
 
 
 
-function GameFeaturesPicker({ Features,disabled }: SelectGameProps) {
+function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName}: SelectGameProps) {
   if(!disabled){
   return (
     (
       <div className="GameSelectCtn">
+        <section className="editPersonaName">
+          <h1>nó em edição: {namePersona}</h1>
+          
+          <DialogNameButton callback={editPersonaName}></DialogNameButton>
+        </section>
+
         <h2>
-            Ao selecionar os Motivações do seu jogo abaixo, um grafico será gerado com o resultado da taxa de agradabilidade estimada para cada perfil de jogador.
         </h2>
         <section>
           <ul>
