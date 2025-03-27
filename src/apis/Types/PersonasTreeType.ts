@@ -25,7 +25,6 @@ export interface PersonasTreeInterface {
   areSelected(uuid: string): boolean;
   findbyUUID(node: TreeData, targetUUID: string): TreeData | null;
   addPersona(valor: string):void;
-
 }
 
 

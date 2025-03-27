@@ -1,9 +1,8 @@
 import { Motivações } from "./Types/MotivacaoType";
 import { PersonasTreeInterface, TreeData } from "./Types/PersonasTreeType";
 
-
-export class PersonasTreeApi implements PersonasTreeInterface {
-  #motivacoes: (keyof Motivações)[] =  [
+export class DataGenerator{
+  #motivacoesKeywords: (keyof Motivações)[] =  [
     "ação",
     "social",
     "maestria",
@@ -11,6 +10,55 @@ export class PersonasTreeApi implements PersonasTreeInterface {
     "imersão",
     "criatividade",
   ];
+  getAbsoluteDataSet() {
+    const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
+      dataKeys: [],
+      data: [],
+    };
+
+    this.#motivacoesKeywords.forEach((legenda) => {
+      const data: { [key: string]: any } = { subtitle: legenda };
+      this.nosSelecionados.forEach((node) => {
+        data[node.name] = node.pesos[legenda];
+      });
+      dataSet.data.push(data);
+    });
+
+    dataSet.dataKeys = this.nosSelecionados.map((node) => node.name);
+    console.log(dataSet);
+
+    return dataSet;
+  }
+  getAvaregeDataSet() {
+  
+    const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
+      dataKeys: [],
+      data: [],
+    };
+    this.#motivacoesKeywords.forEach((legenda) => {
+      const data: { [key: string]: any } = { subtitle: legenda };
+      let total = 0;
+      data["jogo"] = this.arvorePersonas[0].pesos[legenda];
+      const nosSelecionadosFiltrados = this.nosSelecionados.filter((node) => {
+        if (node.name === "Jogo") return false;
+        return true;
+      });
+     nosSelecionadosFiltrados.forEach((node) => {
+        console.log(node.pesos[legenda]);
+        total += node.pesos[legenda];
+      });
+      data["media"] = total /nosSelecionadosFiltrados.length;
+      
+      dataSet.data.push(data);
+    });
+    dataSet.dataKeys = ["jogo","media"]
+    console.log(dataSet);
+
+    return dataSet;
+  }
+}
+export class PersonasTreeApi implements PersonasTreeInterface {
+  
   noEmEdicao: TreeData;
   nosSelecionados: TreeData[] = [];
   arvorePersonas: TreeData[] = [
@@ -44,52 +92,7 @@ export class PersonasTreeApi implements PersonasTreeInterface {
 
     return null;
   }
-  getDataSet() {
-    const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
-      dataKeys: [],
-      data: [],
-    };
-
-    this.#motivacoes.forEach((legenda) => {
-      const data: { [key: string]: any } = { subtitle: legenda };
-      this.nosSelecionados.forEach((node) => {
-        data[node.name] = node.pesos[legenda];
-      });
-      dataSet.data.push(data);
-    });
-
-    dataSet.dataKeys = this.nosSelecionados.map((node) => node.name);
-    console.log(dataSet);
-
-    return dataSet;
-  }
-  getAvaregeDataSet() {
-  
-    const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
-      dataKeys: [],
-      data: [],
-    };
-    this.#motivacoes.forEach((legenda) => {
-      const data: { [key: string]: any } = { subtitle: legenda };
-      let total = 0;
-      data["jogo"] = this.arvorePersonas[0].pesos[legenda];
-      const nosSelecionadosFiltrados = this.nosSelecionados.filter((node) => {
-        if (node.name === "Jogo") return false;
-        return true;
-      });
-     nosSelecionadosFiltrados.forEach((node) => {
-        console.log(node.pesos[legenda]);
-        total += node.pesos[legenda];
-      });
-      data["media"] = total /nosSelecionadosFiltrados.length;
-      
-      dataSet.data.push(data);
-    });
-    dataSet.dataKeys = ["jogo","media"]
-    console.log(dataSet);
-
-    return dataSet;
-  }
+ 
   addPersona(valor: string) {
     const newPersona = new TreeData(valor, {
       ação: 3,
