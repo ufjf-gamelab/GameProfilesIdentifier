@@ -1,5 +1,5 @@
-import {   TreeData } from "./Types";
 import { Motivações } from "./Types/MotivacaoType";
+import { TreeData } from "./Types/TreeData";
 
 
 export class PersonasTreeApi {
