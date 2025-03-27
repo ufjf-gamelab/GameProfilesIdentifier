@@ -10,7 +10,7 @@ export class DataGenerator{
     "imersão",
     "criatividade",
   ];
-  getAbsoluteDataSet() {
+  getAbsoluteDataSet(nosSelecionados:TreeData[] ) {
     const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
       dataKeys: [],
       data: [],
@@ -18,19 +18,24 @@ export class DataGenerator{
 
     this.#motivacoesKeywords.forEach((legenda) => {
       const data: { [key: string]: any } = { subtitle: legenda };
-      this.nosSelecionados.forEach((node) => {
+      nosSelecionados.forEach((node) => {
         data[node.name] = node.pesos[legenda];
       });
       dataSet.data.push(data);
     });
 
-    dataSet.dataKeys = this.nosSelecionados.map((node) => node.name);
+    dataSet.dataKeys = nosSelecionados.map((node) => node.name);
     console.log(dataSet);
 
     return dataSet;
   }
-  getAvaregeDataSet() {
-  
+  getAvaregeDataSet(PersonasTree: PersonasTreeApi) {
+    const jogo = PersonasTree.jogo
+    const nosSelecionados = PersonasTree.nosSelecionados
+    const nosAnalisados = nosSelecionados.filter((node) => {
+      if (node.name === "Jogo") return false;
+      return true;
+    });
     const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
       dataKeys: [],
       data: [],
@@ -38,16 +43,13 @@ export class DataGenerator{
     this.#motivacoesKeywords.forEach((legenda) => {
       const data: { [key: string]: any } = { subtitle: legenda };
       let total = 0;
-      data["jogo"] = this.arvorePersonas[0].pesos[legenda];
-      const nosSelecionadosFiltrados = this.nosSelecionados.filter((node) => {
-        if (node.name === "Jogo") return false;
-        return true;
-      });
-     nosSelecionadosFiltrados.forEach((node) => {
-        console.log(node.pesos[legenda]);
-        total += node.pesos[legenda];
-      });
-      data["media"] = total /nosSelecionadosFiltrados.length;
+
+      data["jogo"] = jogo[legenda]
+      nosAnalisados.forEach((node) => {
+          console.log(node.pesos[legenda]);
+          total += node.pesos[legenda];
+        });
+      data["media"] = total/nosAnalisados.length;
       
       dataSet.data.push(data);
     });
@@ -76,6 +78,9 @@ export class PersonasTreeApi implements PersonasTreeInterface {
     this.nosSelecionados.push(this.arvorePersonas[0]);
     this.noEmEdicao = this.arvorePersonas[0];
   }
+  get jogo(){
+    return this.arvorePersonas[0].pesos;
+  }
   areSelected(uuid: string): boolean {
     return this.nosSelecionados.some((item) => item.id === uuid);
   }
@@ -89,10 +94,8 @@ export class PersonasTreeApi implements PersonasTreeInterface {
         if (result) return result;
       }
     }
-
     return null;
   }
- 
   addPersona(valor: string) {
     const newPersona = new TreeData(valor, {
       ação: 3,
