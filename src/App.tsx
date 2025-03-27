@@ -8,8 +8,8 @@ import PersonasTree from "@/components/created/PersonasTree/PersonasTree.tsx";
 import {
   PersonasTreeApi,
   TreeReducer,
-} from "@/Controlers/TreeApi.ts";
-import { getActions } from "@/Controlers/ActionsApi.tsx";
+} from "@/apis/TreeApi.ts";
+import { getActions } from "@/apis/ActionsApi.tsx";
 
 function App() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());

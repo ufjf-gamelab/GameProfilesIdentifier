@@ -1,7 +1,7 @@
 import "./GameFeaturesPicker.css";
 
 import GameFeature from "./gameFeature/gameFeature";
-import {  SelectGameProps } from "@/Controlers/Types.ts";
+import {  SelectGameProps } from "@/apis/Types";
 
 
 
