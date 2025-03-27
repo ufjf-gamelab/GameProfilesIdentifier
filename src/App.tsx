@@ -7,9 +7,9 @@ import { useReducer } from "react";
 import PersonasTree from "@/components/created/PersonasTree/PersonasTree.tsx";
 import {
   PersonasTreeApi,
-  TreeReducer,
 } from "@/apis/TreeApi.ts";
 import { getActions } from "@/apis/ActionsApi.tsx";
+import { TreeReducer } from "./apis/TreeReduce.tsx";
 
 function App() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasTreeApi());

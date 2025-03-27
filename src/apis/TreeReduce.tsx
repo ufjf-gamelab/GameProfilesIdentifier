@@ -1,5 +1,5 @@
 import { cloneWithMethods } from "@/components/created/utils/deepClone";
-import { Motivações } from "./Types";
+import { Motivações } from "./TreeApi";
 
 export function TreeReducer(state: any, action: any) {
     const novoEstado = cloneWithMethods(state);

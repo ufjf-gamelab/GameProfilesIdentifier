@@ -1,10 +1,9 @@
-import { cloneWithMethods } from "@/components/created/utils/deepClone";
-import {  Motivações, TreeData } from "./Types";
-import { data } from "react-router-dom";
+import PersonasTree from "@/components/created/PersonasTree/PersonasTree";
+import { Motivações } from "./Types/MotivacaoType";
+import { PersonasTreeInterface, TreeData } from "./Types/PersonasTreeType";
 
 
-
-export class PersonasTreeApi {
+export class PersonasTreeApi implements PersonasTreeInterface {
   tree: TreeData[] = [
     new TreeData("Jogo", {
       ação: 0,
@@ -111,13 +110,6 @@ export class PersonasTreeApi {
     this.tree[0].children.push(newPersona);
   }
 }
-
-// export function selectEditedNode(personasTreeApi: PersonasTreeApi) {
-//   // return personasTreeApi.nosSelecionados.length === 1
-//   //   ? personasTreeApi.nosSelecionados[0]
-//   //   : undefined;
-
-// }
 
 
 
