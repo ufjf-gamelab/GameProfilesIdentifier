@@ -30,6 +30,9 @@ export function TreeReducer(state: any, action: any) {
       case "MUDA_EDITABLE_NODE":
         novoEstado.noEmEdicao = novoEstado.findbyUUID(novoEstado.arvorePersonas[0], action.value);
         return novoEstado;
+      case "CLONA_PERSONA":
+        novoEstado.clonePersona(action.value);
+        return novoEstado;
       case "SET_AÇÃO":
         updatePesos("ação", action.value);
         return novoEstado;

@@ -33,6 +33,9 @@ function App() {
                   mudaNoEditavel={(value) => {
                     dispatch({ type: "MUDA_EDITABLE_NODE", value})
                   }}
+                  clonaNo={(value) => {
+                    dispatch({ type: "CLONA_PERSONA", value})
+                  }}
                   arvoreApi={estado}
                 />
               </aside>
