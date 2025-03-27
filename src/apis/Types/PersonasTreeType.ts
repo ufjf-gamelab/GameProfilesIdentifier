@@ -24,10 +24,7 @@ export interface PersonasTreeInterface {
   arvorePersonas: TreeData[] ;
   areSelected(uuid: string): boolean;
   findbyUUID(node: TreeData, targetUUID: string): TreeData | null;
-  getDataSet():any;
-  getAvaregeDataSet():any
   addPersona(valor: string):void;
-
 }
 
 

@@ -1,4 +1,4 @@
-import { Motivações } from "./TreeApi";
+import { Motivações } from "./PersonasApi";
 import { GameFeatureProps } from "./Types";
 import { TreeData } from "./Types/PersonasTreeType";
 

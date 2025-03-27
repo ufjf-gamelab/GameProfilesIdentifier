@@ -1,19 +1,20 @@
 import "./Resultado.css";
-import { PersonasTreeApi } from "@/apis/TreeApi";
+import {  PersonasApi } from "@/apis/PersonasApi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
 import { VictoryChart } from "./Graphs/VictoryChart/VictoryChart";
 import SteamGameApi from "../SteamGameApi/SteamGameApi";
+import { DataGenerator } from "@/apis/DataGeneratorApi";
 
 type ResultadoProps = {
-  personasTree: PersonasTreeApi;
+  personasTree: PersonasApi;
 };
 
 function Resultado({ personasTree }: ResultadoProps) {
-  console.log("personasTree",personasTree) 
-  const dataset = personasTree.getDataSet();
-  const avaregeDataSet = personasTree.getAvaregeDataSet();
+  const dataGenerator = new DataGenerator(personasTree);
+  const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
+  const avaregeDataSet = dataGenerator.getAvaregeDataSet();
   const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (
     <div className="ResultadoCtn">
@@ -21,23 +22,23 @@ function Resultado({ personasTree }: ResultadoProps) {
       <Tabs defaultValue="Comparative" className="tabLayouyt">
         <div className="Graphs">
           <TabsContent className="space-y-2" value="Comparative">
-            {!!dataset && (
+            {!!abosoluteDataset && (
               <ComparativeChart
-                chartData={dataset.data}
+                chartData={abosoluteDataset.data}
                 titulo="Comparativo"
-                personasNomes={dataset.dataKeys}
+                personasNomes={abosoluteDataset.dataKeys}
               ></ComparativeChart>
             )}
           </TabsContent>
           <TabsContent className="space-y-2" value="qFoundry">
-            {!!dataset && (
+            {!!abosoluteDataset && (
               <VictoryChart
                 gameValues={gameValues}
               ></VictoryChart>
             )}
           </TabsContent>
           <TabsContent className="space-y-2" value="Media">
-            {!!dataset && (
+            {!!abosoluteDataset && (
               <ComparativeChart
                 chartData={avaregeDataSet.data}
                 titulo="Comparativo"

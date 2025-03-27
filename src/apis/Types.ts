@@ -1,4 +1,4 @@
-import { Motivações } from "./TreeApi";
+import { Motivações } from "./PersonasApi";
 
  export type GameFeatureProps = {
     textLabel: string
