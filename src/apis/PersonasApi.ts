@@ -2,8 +2,8 @@ import { Motivações } from "./Types/MotivacaoType";
 import { PersonasTreeInterface, TreeData } from "./Types/PersonasTreeType";
 
 
-export class PersonasTreeApi implements PersonasTreeInterface {
-  
+export class PersonasApi implements PersonasTreeInterface {
+
   noEmEdicao: TreeData;
   nosSelecionados: TreeData[] = [];
   arvorePersonas: TreeData[] = [
@@ -16,12 +16,11 @@ export class PersonasTreeApi implements PersonasTreeInterface {
       criatividade: 0,
     }),
   ];
-  
   constructor() {
     this.nosSelecionados.push(this.arvorePersonas[0]);
     this.noEmEdicao = this.arvorePersonas[0];
   }
-  get jogo(){
+  get jogo() {
     return this.arvorePersonas[0].pesos;
   }
   areSelected(uuid: string): boolean {

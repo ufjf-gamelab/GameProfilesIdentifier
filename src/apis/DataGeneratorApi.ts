@@ -1,10 +1,10 @@
-import { Motivações, PersonasTreeApi } from "./TreeApi";
+import { Motivações, PersonasApi } from "./PersonasApi";
 type dataSet ={
     dataKeys:string[]
     data : { [key: string]: any } 
 }
 export class DataGenerator {
-    #arvoreAnalisada: PersonasTreeApi;
+    #arvoreAnalisada: PersonasApi;
     #motivacoesKeywords: (keyof Motivações)[] = [
         "ação",
         "social",
@@ -13,7 +13,7 @@ export class DataGenerator {
         "imersão",
         "criatividade",
     ];
-    constructor(PersonasTree: PersonasTreeApi) {
+    constructor(PersonasTree: PersonasApi) {
         this.#arvoreAnalisada = PersonasTree
     }
     getAbsoluteDataSet() {
