@@ -1,5 +1,5 @@
 import "./Resultado.css";
-import { PersonasTreeApi } from "@/Controlers/TreeApi";
+import { PersonasTreeApi } from "@/apis/TreeApi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";

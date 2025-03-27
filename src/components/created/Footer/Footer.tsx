@@ -1,4 +1,4 @@
-import inova from '../../assets/inova.png'
+import inova from '../../../assets/inova.png'
 import './footer.css'
 
 function App() {
