@@ -2,9 +2,6 @@ import { Tree } from "react-arborist";
 import "./PersonasTree.css";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { Dialog } from "@radix-ui/react-dialog";
 import { DialogCloseButton } from "./DialogCloseButton";
 import { PersonasApi } from "@/apis/PersonasApi";
 type PersonaProps = {
@@ -13,6 +10,7 @@ type PersonaProps = {
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: String) => void;
+  clonaNo: (uuid: String) => void;
 };
 
 function PersonasTree({
@@ -21,6 +19,7 @@ function PersonasTree({
   pushNosSelecionados,
   removeNosSelecionados,
   mudaNoEditavel,
+  clonaNo,
 }: PersonaProps) {
   return (
     <div>
@@ -45,6 +44,7 @@ function PersonasTree({
             pushNosSelecionados={pushNosSelecionados}
             removeNosSelecionados={removeNosSelecionados}
             mudaNoEditavel={mudaNoEditavel}
+            clonaNo = {clonaNo}
             arvoreApi={arvoreApi}
           />
         )}
@@ -60,6 +60,7 @@ function Node({
   pushNosSelecionados,
   removeNosSelecionados,
   mudaNoEditavel,
+  clonaNo,
   arvoreApi,
   
 }: {
@@ -69,6 +70,7 @@ function Node({
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: string) => void;
+  clonaNo: (uuid: string) => void;
   arvoreApi:PersonasApi
 }) {
   const  selected = arvoreApi.areSelected(node.id)
@@ -94,6 +96,8 @@ function Node({
         </div>
       </div>
       <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
+      <Button onClick={() => clonaNo(node.id)}>🟥</Button>
+
     </div>
   );
 }
