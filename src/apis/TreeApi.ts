@@ -1,7 +1,5 @@
-import { cloneWithMethods } from "@/components/created/utils/deepClone";
-import {  Motivações, TreeData } from "./Types";
-import { data } from "react-router-dom";
-
+import {   TreeData } from "./Types";
+import { Motivações } from "./Types/MotivacaoType";
 
 
 export class PersonasTreeApi {
@@ -111,13 +109,6 @@ export class PersonasTreeApi {
     this.tree[0].children.push(newPersona);
   }
 }
-
-// export function selectEditedNode(personasTreeApi: PersonasTreeApi) {
-//   // return personasTreeApi.nosSelecionados.length === 1
-//   //   ? personasTreeApi.nosSelecionados[0]
-//   //   : undefined;
-
-// }
 
 
 

@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { Motivações } from "./TreeApi";
 
  export type GameFeatureProps = {
     textLabel: string
