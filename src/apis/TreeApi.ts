@@ -1,8 +1,9 @@
+import PersonasTree from "@/components/created/PersonasTree/PersonasTree";
 import { Motivações } from "./Types/MotivacaoType";
-import { TreeData } from "./Types/TreeData";
+import { PersonasTreeInterface, TreeData } from "./Types/PersonasTreeType";
 
 
-export class PersonasTreeApi {
+export class PersonasTreeApi implements PersonasTreeInterface {
   tree: TreeData[] = [
     new TreeData("Jogo", {
       ação: 0,
