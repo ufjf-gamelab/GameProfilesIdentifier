@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRef, useState } from "react"
 
-export function DialogNameButton({callback}: {callback: (valor:String) => void}) {
+export function DialogNameButton({callback}: {callback: (valor:string) => void}) {
   const [inputValue, setInputValue] = useState('');
   const handleInputChange = (e:any) => {
     setInputValue(e.target.value);

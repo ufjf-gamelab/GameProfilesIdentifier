@@ -9,7 +9,7 @@ import { Motivações } from "../PersonasApi";
 
 export type SelectGameProps = {
     Features: GameFeatureProps[];
-    editPersonaName: (value: string) => void;
+    editPersonaName: (valor: string) => void;
     namePersona: string;
     disabled : boolean;
   }
