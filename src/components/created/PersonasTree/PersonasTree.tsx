@@ -30,13 +30,11 @@ function PersonasTree({
         className="Tree"
         initialData={arvoreApi.arvorePersonas}
         openByDefault={true}
-        height={1000}
         rowHeight={50}
         overscanCount={1}
         indent={24}
-        paddingTop={30}
-        paddingBottom={10}
-        padding={25 /* sets both */}
+        width={'100%'}
+ 
       >
         {(nodeProps) => (
           <Node

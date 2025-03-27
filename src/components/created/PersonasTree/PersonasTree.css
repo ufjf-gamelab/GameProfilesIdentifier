@@ -6,17 +6,22 @@
     border-bottom: 3px solid gainsboro;
 }
 .Tree{
-    margin-left: 15px;
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
+
 }
 .Node{
     display: flex;
     justify-content: space-between;
-    gap: 3rem;
     align-items: center;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid gainsboro;
+
     .NodeContent{
         display: flex;
         gap: 10px;
