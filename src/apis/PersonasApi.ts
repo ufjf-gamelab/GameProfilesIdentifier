@@ -51,7 +51,7 @@ export class PersonasApi implements PersonasTreeInterface {
   }
   clonePersona(uuid: string): void {
     const nodeToClone = this.findbyUUID(this.arvorePersonas[0], uuid);
-    
+    if(nodeToClone?.name === "Jogo") return;
     const cloneNode = (node: TreeData): TreeData => {
       const clonedNode = new TreeData(node.name, { ...node.pesos });
       if (node.children) {
