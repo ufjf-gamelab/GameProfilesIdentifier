@@ -86,17 +86,17 @@ function Node({
   };
   return (
     <div className="Node" ref={dragHandle}>
-      <div className="flex-row" onClick={handleCheck}>
-          <div className="checkbox">
-            <Checkbox checked={selected} onChange={handleCheck} />
+        <section className="NodeContent">
+          <Checkbox className="checkbox" checked={selected} onClick={handleCheck} />
+          <div style={style}>
+            {"🙂"}
+            {node.data.name}
           </div>
-        <div style={style}>
-          {"🙂"}
-          {node.data.name}
-        </div>
-      </div>
-      <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
-      <Button onClick={() => clonaNo(node.id)}>🟥</Button>
+        </section>
+      <section className="NodeButtons">
+        <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
+        <Button onClick={() => clonaNo(node.id)}>🟥</Button>
+      </section>
 
     </div>
   );
