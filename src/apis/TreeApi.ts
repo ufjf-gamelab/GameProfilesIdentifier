@@ -13,7 +13,7 @@ export class PersonasTreeApi implements PersonasTreeInterface {
   ];
   noEmEdicao: TreeData;
   nosSelecionados: TreeData[] = [];
-  tree: TreeData[] = [
+  arvorePersonas: TreeData[] = [
     new TreeData("Jogo", {
       ação: 0,
       social: 0,
@@ -25,8 +25,8 @@ export class PersonasTreeApi implements PersonasTreeInterface {
   ];
   
   constructor() {
-    this.nosSelecionados.push(this.tree[0]);
-    this.noEmEdicao = this.tree[0];
+    this.nosSelecionados.push(this.arvorePersonas[0]);
+    this.noEmEdicao = this.arvorePersonas[0];
   }
   areSelected(uuid: string): boolean {
     return this.nosSelecionados.some((item) => item.id === uuid);
@@ -64,16 +64,15 @@ export class PersonasTreeApi implements PersonasTreeInterface {
     return dataSet;
   }
   getAvaregeDataSet() {
-    
+  
     const dataSet: { dataKeys: string[]; data: { [key: string]: any }[] } = {
       dataKeys: [],
       data: [],
     };
-
     this.#motivacoes.forEach((legenda) => {
       const data: { [key: string]: any } = { subtitle: legenda };
       let total = 0;
-      data["jogo"] = this.tree[0].pesos[legenda];
+      data["jogo"] = this.arvorePersonas[0].pesos[legenda];
       const nosSelecionadosFiltrados = this.nosSelecionados.filter((node) => {
         if (node.name === "Jogo") return false;
         return true;
@@ -100,7 +99,7 @@ export class PersonasTreeApi implements PersonasTreeInterface {
       imersão: 3,
       criatividade: 3,
     });
-    this.tree[0].children.push(newPersona);
+    this.arvorePersonas[0].children.push(newPersona);
   }
 }
 

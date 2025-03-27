@@ -14,7 +14,7 @@ function Resultado({ personasTree }: ResultadoProps) {
   console.log("personasTree",personasTree) 
   const dataset = personasTree.getDataSet();
   const avaregeDataSet = personasTree.getAvaregeDataSet();
-  const gameValues = personasTree.tree[0].pesos;	
+  const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
@@ -46,7 +46,7 @@ function Resultado({ personasTree }: ResultadoProps) {
             )}
           </TabsContent>
           <TabsContent className="space-y-2" value="steamGames">
-            <SteamGameApi jogo={personasTree.tree[0]}/>
+            <SteamGameApi jogo={personasTree.arvorePersonas[0]}/>
           </TabsContent>
         </div>
         <TabsList className="OperationsPanel">

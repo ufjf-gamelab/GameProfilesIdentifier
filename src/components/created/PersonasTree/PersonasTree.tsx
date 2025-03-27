@@ -29,7 +29,7 @@ function PersonasTree({
       </div>
       <Tree
         className="Tree"
-        initialData={arvoreApi.tree}
+        initialData={arvoreApi.arvorePersonas}
         openByDefault={true}
         height={1000}
         rowHeight={50}

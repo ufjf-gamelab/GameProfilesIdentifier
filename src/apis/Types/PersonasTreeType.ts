@@ -21,7 +21,7 @@ export class TreeData {
 }
 
 export interface PersonasTreeInterface {
-  tree: TreeData[] ;
+  arvorePersonas: TreeData[] ;
   areSelected(uuid: string): boolean;
   findbyUUID(node: TreeData, targetUUID: string): TreeData | null;
   getDataSet():any;
