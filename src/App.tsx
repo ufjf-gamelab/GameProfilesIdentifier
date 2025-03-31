@@ -13,10 +13,9 @@ import { TreeReducer } from "./apis/TreeReduce.tsx";
 
 function App() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasApi());
-  type Results = "Comparative" | "Media" | "qFoundry" | "steamGames"| "AbsoluteValue";
+  type Results = "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode";
   const [actualResult, setActualResult] = useReducer<(state: Results, action: React.SetStateAction<Results>) => Results>(
     (state, action) => {
-      
       return action as Results;
     },
 

@@ -53,7 +53,7 @@ function Resultado({ personasTree, actualResult, setActualResult }: ResultadoPro
             {actualResult === "SelectedNode" && (
               <ComparativeChart
                 chartData={selectedDataset.data}
-                titulo="Comparativo"
+                titulo="Nó Selecionado"
                 personasNomes={selectedDataset.dataKeys}
               ></ComparativeChart>
             )}
