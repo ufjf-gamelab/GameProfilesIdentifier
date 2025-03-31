@@ -46,17 +46,18 @@ function App() {
                     dispatch({ type: "CLONA_PERSONA", value})
                   }}
                   arvoreApi={estado}
+                  setActualResult={
+                    (value) => {
+                      setActualResult(value);
+                    }
+                  }
                 />
               </aside>
                 
               <div className="Results">
                 <Resultado personasTree={estado}
                   actualResult={actualResult}
-                  setActualResult={
-                    (value) => {
-                      setActualResult(value);
-                    }
-                  }>
+                  >
                 </Resultado>
               </div>
 

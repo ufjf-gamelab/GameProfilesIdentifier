@@ -11,6 +11,8 @@ type PersonaProps = {
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: String) => void;
   clonaNo: (uuid: String) => void;
+  setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
+
 };
 
 function PersonasTree({
@@ -20,11 +22,34 @@ function PersonasTree({
   removeNosSelecionados,
   mudaNoEditavel,
   clonaNo,
+  setActualResult,
 }: PersonaProps) {
   return (
     <div>
+      <h1>Ações em bloco</h1>
       <div className="menuBotoes">
         <DialogCloseButton callback={addPersonaHandler}></DialogCloseButton>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("Comparative");
+        }}>
+          Comparar Nós
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("Media");
+        }}>
+          Média dos Nós
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("qFoundry");
+        }}>
+          Analisar Jogo (Quantic Foundry)
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("steamGames");
+        }
+        }>
+          Jogos Semelhantes(Steam)
+        </Button>
       </div>
       <Tree
         className="Tree"

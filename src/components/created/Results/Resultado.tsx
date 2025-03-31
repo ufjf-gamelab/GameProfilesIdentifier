@@ -11,10 +11,9 @@ import { Button } from "@/components/ui/button";
 type ResultadoProps = {
   personasTree: PersonasApi;
   actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode";
-  setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
 };
 
-function Resultado({ personasTree, actualResult, setActualResult }: ResultadoProps) {
+function Resultado({ personasTree, actualResult }: ResultadoProps) {
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
   const selectedDataset = dataGenerator.getSelectedDataSet();
@@ -65,27 +64,7 @@ function Resultado({ personasTree, actualResult, setActualResult }: ResultadoPro
         )}
       </div>
       <div className="OperationsPanel">
-        <Button className="TabBtn" variant="outline" onClick={() => {
-          setActualResult("Comparative");
-        }}>
-          Comparativo
-        </Button>
-        <Button className="TabBtn" variant="outline" onClick={() => {
-          setActualResult("Media");
-        }}>
-          Média
-        </Button>
-        <Button className="TabBtn" variant="outline" onClick={() => {
-          setActualResult("qFoundry");
-        }}>
-          Quantic Foundry
-        </Button>
-        <Button className="TabBtn" variant="outline" onClick={() => {
-          setActualResult("steamGames");
-        }
-        }>
-          Steam Games
-        </Button>
+        
       </div>
 
     </div>
