@@ -9,13 +9,19 @@ import { DataGenerator } from "@/apis/DataGeneratorApi";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
+  actualResult:"Comparative" | "Media" | "qFoundry" | "steamGames";
+  setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
 };
 
-function Resultado({ personasTree }: ResultadoProps) {
+function Resultado({ personasTree, actualResult,setActualResult }: ResultadoProps) {
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
   const avaregeDataSet = dataGenerator.getAvaregeDataSet();
   const gameValues = personasTree.arvorePersonas[0].pesos;	
+
+  
+  
+   
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
@@ -50,6 +56,7 @@ function Resultado({ personasTree }: ResultadoProps) {
             <SteamGameApi jogo={personasTree.arvorePersonas[0]}/>
           </TabsContent>
         </div>
+
         <TabsList className="OperationsPanel">
           <TabsTrigger className="TabBtn" value="Comparative">
             Comparar Personas
