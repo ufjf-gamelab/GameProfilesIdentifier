@@ -26,28 +26,29 @@ function PersonasTree({
 }: PersonaProps) {
   return (
     <div>
+      <h1>Ações em bloco</h1>
       <div className="menuBotoes">
         <DialogCloseButton callback={addPersonaHandler}></DialogCloseButton>
         <Button className="TabBtn" variant="outline" onClick={() => {
           setActualResult("Comparative");
         }}>
-          Comparativo
+          Comparar Nós
         </Button>
         <Button className="TabBtn" variant="outline" onClick={() => {
           setActualResult("Media");
         }}>
-          Média
+          Média dos Nós
         </Button>
         <Button className="TabBtn" variant="outline" onClick={() => {
           setActualResult("qFoundry");
         }}>
-          Quantic Foundry
+          Analisar Jogo (Quantic Foundry)
         </Button>
         <Button className="TabBtn" variant="outline" onClick={() => {
           setActualResult("steamGames");
         }
         }>
-          Steam Games
+          Jogos Semelhantes(Steam)
         </Button>
       </div>
       <Tree
