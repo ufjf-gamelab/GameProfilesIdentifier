@@ -32,6 +32,15 @@ export class DataGenerator {
         dataSet.dataKeys = nosSelecionados.map((node) => node.name);
         return dataSet;
     }
+    getSelectedDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: [noEmEdicao.name],
+            data: [noEmEdicao.pesos],
+        };
+        
+        return dataSet;
+    }
     getAvaregeDataSet() {
         const jogo = this.#arvoreAnalisada.jogo
         const nosSelecionados = this.#arvoreAnalisada.nosSelecionados

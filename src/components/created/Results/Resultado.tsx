@@ -10,16 +10,16 @@ import { Button } from "@/components/ui/button";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
-  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames";
+  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode";
   setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
 };
 
 function Resultado({ personasTree, actualResult, setActualResult }: ResultadoProps) {
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
+  const selectedDataset = dataGenerator.getSelectedDataSet();
   const avaregeDataSet = dataGenerator.getAvaregeDataSet();
   const gameValues = personasTree.arvorePersonas[0].pesos;	
-
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
@@ -49,6 +49,13 @@ function Resultado({ personasTree, actualResult, setActualResult }: ResultadoPro
               <SteamGameApi
                 jogo={personasTree.arvorePersonas[0]}
               ></SteamGameApi>
+            )}
+            {actualResult === "SelectedNode" && (
+              <ComparativeChart
+                chartData={selectedDataset.data}
+                titulo="Comparativo"
+                personasNomes={selectedDataset.dataKeys}
+              ></ComparativeChart>
             )}
 
           </div>
