@@ -8,15 +8,21 @@ import { DialogNameButton } from "./DialogNameButton";
 
 
 
-function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName}: SelectGameProps) {
+function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,mostrarNoEmEdicao}: SelectGameProps) {
   if(!disabled){
   return (
     (
       <div className="GameSelectCtn">
         <section className="editPersonaName">
           <h1>nó em edição: {namePersona}</h1>
-          
-          <DialogNameButton callback={editPersonaName}></DialogNameButton>
+          <section style={
+            {display: "flex", flexDirection: "row",gap:'10px',justifyContent: "flex-end", alignItems: "center"} 
+          } >
+
+            <DialogNameButton callback={editPersonaName}></DialogNameButton>
+            <Button onClick={() => mostrarNoEmEdicao()}>👀</Button>
+          </section>
+
         </section>
 
         <h2>
