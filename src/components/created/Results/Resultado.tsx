@@ -18,6 +18,9 @@ function Resultado({ personasTree, actualResult, setActualResult }: ResultadoPro
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
   const selectedDataset = dataGenerator.getSelectedDataSet();
+  console.log("abosoluteDataset", abosoluteDataset);
+  console.log("selectedDataset", selectedDataset);
+  console.log("avaregeDataSet", dataGenerator.getAvaregeDataSet());
   const avaregeDataSet = dataGenerator.getAvaregeDataSet();
   const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (

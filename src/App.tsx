@@ -67,8 +67,8 @@ function App() {
                       dispatch({ type: "SET_PERSONA_NAME", value });
                     }
                   }
-                  mostrarNoEmEdicao={(value) => {
-                      dispatch({ type: "SET_NODE_NAME", value });
+                  mostrarNoEmEdicao={() => {
+                    setActualResult('SelectedNode');
                     }
                   }
                   namePersona={selectedNode?.name}

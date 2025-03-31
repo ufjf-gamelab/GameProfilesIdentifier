@@ -36,9 +36,14 @@ export class DataGenerator {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
         const dataSet:dataSet = {
             dataKeys: [noEmEdicao.name],
-            data: [noEmEdicao.pesos],
+            data: [],
         };
-        
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            dataSet.data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            dataSet.data.push(data);
+        });
         return dataSet;
     }
     getAvaregeDataSet() {
