@@ -13,6 +13,14 @@ import { TreeReducer } from "./apis/TreeReduce.tsx";
 
 function App() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasApi());
+  type Results = "Comparative" | "Media" | "qFoundry" | "steamGames";
+  const [actualResult, setActualResult] = useReducer<(state: Results, action: React.SetStateAction<Results>) => Results>(
+    (state, action) => {
+      return action as Results;
+    },
+    "Comparative" // Initial state
+  );
+
   const selectedNode = estado.noEmEdicao;
   const actions =  getActions(selectedNode!, dispatch);
   return (
@@ -41,7 +49,14 @@ function App() {
               </aside>
                 
               <div className="Results">
-                <Resultado personasTree={estado} />
+                <Resultado personasTree={estado}
+                  actualResult={actualResult}
+                  setActualResult={
+                    (value) => {
+                      setActualResult(value);
+                    }
+                  }>
+                </Resultado>
               </div>
 
               <aside>
