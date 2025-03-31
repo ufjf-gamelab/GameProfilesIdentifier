@@ -32,6 +32,20 @@ export class DataGenerator {
         dataSet.dataKeys = nosSelecionados.map((node) => node.name);
         return dataSet;
     }
+    getSelectedDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: [noEmEdicao.name],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            dataSet.data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            dataSet.data.push(data);
+        });
+        return dataSet;
+    }
     getAvaregeDataSet() {
         const jogo = this.#arvoreAnalisada.jogo
         const nosSelecionados = this.#arvoreAnalisada.nosSelecionados
