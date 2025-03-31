@@ -6,6 +6,7 @@ import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
 import { VictoryChart } from "./Graphs/VictoryChart/VictoryChart";
 import SteamGameApi from "../SteamGameApi/SteamGameApi";
 import { DataGenerator } from "@/apis/DataGeneratorApi";
+import { Button } from "@/components/ui/button";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
@@ -25,53 +26,66 @@ function Resultado({ personasTree, actualResult,setActualResult }: ResultadoProp
   return (
     <div className="ResultadoCtn">
       <h2>Resultado</h2>
-      <Tabs defaultValue="Comparative" className="tabLayouyt">
-        <div className="Graphs">
-          <TabsContent className="space-y-2" value="Comparative">
-            {!!abosoluteDataset && (
-              <ComparativeChart
-                chartData={abosoluteDataset.data}
-                titulo="Comparativo"
-                personasNomes={abosoluteDataset.dataKeys}
-              ></ComparativeChart>
-            )}
-          </TabsContent>
-          <TabsContent className="space-y-2" value="qFoundry">
-            {!!abosoluteDataset && (
-              <VictoryChart
-                gameValues={gameValues}
-              ></VictoryChart>
-            )}
-          </TabsContent>
-          <TabsContent className="space-y-2" value="Media">
-            {!!abosoluteDataset && (
-              <ComparativeChart
-                chartData={avaregeDataSet.data}
-                titulo="Comparativo"
-                personasNomes={avaregeDataSet.dataKeys}
-              ></ComparativeChart>
-            )}
-          </TabsContent>
-          <TabsContent className="space-y-2" value="steamGames">
-            <SteamGameApi jogo={personasTree.arvorePersonas[0]}/>
-          </TabsContent>
-        </div>
+      <div className="TabLayout">
+          {!!abosoluteDataset && (
+            <div className="=graphs">
+              {actualResult === "Comparative" && (
+                <ComparativeChart
+                  chartData={abosoluteDataset.data}
+                  titulo="Comparativo"
+                  personasNomes={abosoluteDataset.dataKeys}
+                ></ComparativeChart>
+              )}
+              {actualResult === "Media" && (
+                <ComparativeChart
+                  chartData={avaregeDataSet.data}
+                  titulo="Comparativo"
+                  personasNomes={avaregeDataSet.dataKeys}
+                ></ComparativeChart>
+              )}
+              {actualResult === "qFoundry" && (
+                <ComparativeChart
+                  chartData={abosoluteDataset.data}
+                  titulo="Comparativo"
+                  personasNomes={abosoluteDataset.dataKeys}
+                ></ComparativeChart>
+              )}
+              {actualResult === "steamGames" && (
+                <SteamGameApi
+                   jogo={personasTree.arvorePersonas[0]}
+                ></SteamGameApi>
+              )}
 
-        <TabsList className="OperationsPanel">
-          <TabsTrigger className="TabBtn" value="Comparative">
-            Comparar Personas
-          </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="Media">
-            Média
-          </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="qFoundry">
-            QuanticFoundryPersonas
-          </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="steamGames">
-            Steam Games
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
+            </div>
+            )}
+      </div>
+         
+        
+    
+        <div className="OperationsPanel">
+            <Button className="TabBtn" variant="outline" onClick={() => {
+              setActualResult("Comparative");
+            }}>
+              Comparativo
+            </Button>
+            <Button className="TabBtn" variant="outline" onClick={() => {
+              setActualResult("Media");
+            }}>
+              Média
+            </Button>
+            <Button className="TabBtn" variant="outline" onClick={() => {
+              setActualResult("qFoundry");
+            }}>
+              Quantic Foundry
+            </Button>
+            <Button className="TabBtn" variant="outline" onClick={() => {
+              setActualResult("steamGames");
+            }
+            }>
+              Steam Games
+            </Button>
+        </div>
+        
     </div>
   );
 }
