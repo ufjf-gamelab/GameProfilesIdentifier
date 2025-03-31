@@ -25,6 +25,27 @@ function PersonasTree({
     <div>
       <div className="menuBotoes">
         <DialogCloseButton callback={addPersonaHandler}></DialogCloseButton>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("Comparative");
+        }}>
+          Comparativo
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("Media");
+        }}>
+          Média
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("qFoundry");
+        }}>
+          Quantic Foundry
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("steamGames");
+        }
+        }>
+          Steam Games
+        </Button>
       </div>
       <Tree
         className="Tree"
