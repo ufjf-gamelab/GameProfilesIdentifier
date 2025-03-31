@@ -11,6 +11,8 @@ type PersonaProps = {
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: String) => void;
   clonaNo: (uuid: String) => void;
+  setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
+
 };
 
 function PersonasTree({
@@ -20,6 +22,7 @@ function PersonasTree({
   removeNosSelecionados,
   mudaNoEditavel,
   clonaNo,
+  setActualResult,
 }: PersonaProps) {
   return (
     <div>

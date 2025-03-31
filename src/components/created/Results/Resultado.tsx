@@ -11,10 +11,9 @@ import { Button } from "@/components/ui/button";
 type ResultadoProps = {
   personasTree: PersonasApi;
   actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode";
-  setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
 };
 
-function Resultado({ personasTree, actualResult, setActualResult }: ResultadoProps) {
+function Resultado({ personasTree, actualResult }: ResultadoProps) {
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
   const selectedDataset = dataGenerator.getSelectedDataSet();
