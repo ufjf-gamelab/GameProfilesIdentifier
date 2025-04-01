@@ -24,26 +24,16 @@
         
     }
 
-    .TabBtn{
-        display: flex;
-        justify-content: center;
-        background-color: black;
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
-    }
-    
+  
 }
 
 .Graphs{
-    min-width: 500px;
     width: 100%;
-    max-width: 600px;
-    min-height: 300px;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-
+    display: flex;
+    overflow: scroll;
 }
 .OperationsPanel{
     display: flex;

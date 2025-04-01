@@ -14,12 +14,8 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
     (
       <div className="GameSelectCtn">
         <section className="editPersonaName">
-          <h1>nó em edição: {namePersona}</h1>
-          <section 
-           >
-
-            <DialogNameButton callback={editPersonaName}></DialogNameButton>
-          </section>
+          <h1>Nó em edição: {namePersona}</h1>
+         
 
         </section>
         <section className="GameSelectCtn__btns">
@@ -27,19 +23,21 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
           <Button  variant={"outline"} onClick={
             () => mostrarMediaFilhos()
           }>
-            media dos filhos
+            Média dos filhos
           </Button>
           <Button  variant={"outline"}onClick={
             () => mostrarSomaFilhos()
           }>
-            soma dos filhos
+            Soma dos filhos
           </Button>
           <Button  variant={"outline"}onClick={
             () => mostrarDifFilhos()
           }>
-            comparar filhos
+            Comparar filhos
           </Button>
           <Button  variant={"outline"}onClick={() => mostrarNoEmEdicao()}>valores absolutos</Button>
+          <DialogNameButton callback={editPersonaName}></DialogNameButton>
+
         </section>
 
         <section>

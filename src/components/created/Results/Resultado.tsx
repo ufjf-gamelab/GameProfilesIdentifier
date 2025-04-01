@@ -24,21 +24,19 @@ function Resultado({ personasTree, actualResult }: ResultadoProps) {
   const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (
     <div className="ResultadoCtn">
-      <h2>Resultado</h2>
-      <div className="TabLayout">
         {!!abosoluteDataset && (
-          <div className="=graphs">
+          <div className="Graphs">
             {actualResult === "Comparative" && (
               <ComparativeChart
                 chartData={abosoluteDataset.data}
-                titulo="Comparativo"
+                titulo="Comparativo dos Nós Selecionados"
                 personasNomes={abosoluteDataset.dataKeys}
               ></ComparativeChart>
             )}
             {actualResult === "Media" && (
               <ComparativeChart
                 chartData={avaregeDataSet.data}
-                titulo="Comparativo"
+                titulo="Média dos Nós Selecionados" 
                 personasNomes={avaregeDataSet.dataKeys}
               ></ComparativeChart>
             )}
@@ -82,10 +80,6 @@ function Resultado({ personasTree, actualResult }: ResultadoProps) {
             )}
           </div>
         )}
-      </div>
-      <div className="OperationsPanel">
-        
-      </div>
 
     </div>
   );

@@ -26,7 +26,7 @@ function PersonasTree({
 }: PersonaProps) {
   return (
     <div>
-      <h1>Ações em bloco</h1>
+      <h1 className="PersonasTreeH1">Arvore de Personas</h1>
       <div className="menuBotoes">
         <DialogCloseButton callback={addPersonaHandler}></DialogCloseButton>
         <Button className="TabBtn" variant="outline" onClick={() => {
