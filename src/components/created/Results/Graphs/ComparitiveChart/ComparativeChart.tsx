@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import {  Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -35,11 +35,11 @@ type ComparativeChartProps = {
     personasNomes: string[]
     chartData:any
 }
-export function ComparativeChart({personasNomes, chartData}: ComparativeChartProps) {
+export function ComparativeChart({titulo,personasNomes, chartData}: ComparativeChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Compare as Personas</CardTitle>
+        <CardTitle>{titulo}</CardTitle>
         <CardDescription>{
             personasNomes==null?"":personasNomes.join(", ")
             }</CardDescription>
