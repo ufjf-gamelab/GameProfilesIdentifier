@@ -38,7 +38,7 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
           <Button onClick={
             () => mostrarDifFilhos()
           }>
-            diferença dos filhos
+            comparar filhos
           </Button>
           <Button onClick={() => mostrarNoEmEdicao()}>valores absolutos</Button>
         </section>

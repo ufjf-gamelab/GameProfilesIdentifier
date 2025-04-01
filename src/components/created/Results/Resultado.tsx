@@ -76,7 +76,7 @@ function Resultado({ personasTree, actualResult }: ResultadoProps) {
             {actualResult === "diffChildren" && (
               <ComparativeChart
                 chartData={diffChildrenDataset.data}
-                titulo="Diferença dos filhos"
+                titulo="Comparação dos filhos"
                 personasNomes={diffChildrenDataset.dataKeys}
               ></ComparativeChart>
             )}
