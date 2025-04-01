@@ -23,19 +23,19 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
           </section>
 
         </section>
-        <section >
+        <section className="GameSelectCtn__btns">
 
           <Button onClick={
             () => mostrarMediaFilhos()
           }>
-            mostrar media dos filhos
+            media dos filhos
           </Button>
           <Button onClick={
             () => mostrarSomaFilhos()
           }>
-            mostrar soma dos filhos
+            soma dos filhos
           </Button>
-          <Button onClick={() => mostrarNoEmEdicao()}>mostrar valores</Button>
+          <Button onClick={() => mostrarNoEmEdicao()}>valores absolutos</Button>
         </section>
 
         <section>
