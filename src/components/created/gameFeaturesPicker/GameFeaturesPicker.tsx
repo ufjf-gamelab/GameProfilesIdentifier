@@ -8,7 +8,7 @@ import { DialogNameButton } from "./DialogNameButton";
 
 
 
-function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,mostrarNoEmEdicao, mostrarMediaFilhos}: SelectGameProps) {
+function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,mostrarNoEmEdicao, mostrarMediaFilhos, mostrarSomaFilhos}: SelectGameProps) {
   if(!disabled){
   return (
     (
@@ -23,14 +23,19 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
           </section>
 
         </section>
-        <section >
+        <section className="GameSelectCtn__btns">
 
           <Button onClick={
             () => mostrarMediaFilhos()
           }>
-            mostrar media dos filhos
+            media dos filhos
           </Button>
-          <Button onClick={() => mostrarNoEmEdicao()}>mostrar valores</Button>
+          <Button onClick={
+            () => mostrarSomaFilhos()
+          }>
+            soma dos filhos
+          </Button>
+          <Button onClick={() => mostrarNoEmEdicao()}>valores absolutos</Button>
         </section>
 
         <section>
