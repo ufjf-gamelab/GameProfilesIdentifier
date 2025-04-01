@@ -42,7 +42,7 @@ export class DataGenerator {
         });
         const dataSet:dataSet= {
             dataKeys: [],
-            data: [],
+            data: ["jogo", "media"],
         };
         this.#motivacoesKeywords.forEach((legenda) => {
             let totalPesos = 0;
@@ -55,7 +55,6 @@ export class DataGenerator {
             data["jogo"] = jogo[legenda]
             dataSet.data.push(data);
         });
-        dataSet.dataKeys = ["jogo", "media"]
 
         return dataSet;
     }
@@ -76,7 +75,7 @@ export class DataGenerator {
     getAvaregeChildrenDataSet() {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
         const dataSet:dataSet = {
-            dataKeys: ["media"],
+            dataKeys: ["Nó pai","media"],
             data: [],
         };
         this.#motivacoesKeywords.forEach((legenda) => {
@@ -87,8 +86,10 @@ export class DataGenerator {
                 totalPesos += node.pesos[legenda];
             });
             data["media"] = totalPesos / noEmEdicao.children!.length;
+            data["Nó pai"] = noEmEdicao.pesos[legenda]
             dataSet.data.push(data);
         });
         return dataSet;
     }
+    
 }

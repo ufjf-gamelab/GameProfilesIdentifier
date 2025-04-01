@@ -11,6 +11,7 @@ export type SelectGameProps = {
     Features: GameFeatureProps[];
     editPersonaName: (valor: string) => void;
     mostrarNoEmEdicao: () => void;
+    mostrarMediaFilhos: () => void;
     namePersona: string;
     disabled : boolean;
   }

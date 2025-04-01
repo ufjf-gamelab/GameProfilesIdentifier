@@ -72,6 +72,10 @@ function App() {
                     setActualResult('SelectedNode');
                     }
                   }
+                  mostrarMediaFilhos={() => {
+                    setActualResult('averageChildren');
+                    }
+                  }
                   namePersona={selectedNode?.name}
                   disabled={selectedNode === undefined}
                 />
