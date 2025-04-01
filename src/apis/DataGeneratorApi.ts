@@ -91,5 +91,23 @@ export class DataGenerator {
         });
         return dataSet;
     }
-    
+    getSumChildrenDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: ["Nó pai","soma"],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            let totalPesos = 0;
+            console.log(noEmEdicao.children);
+            noEmEdicao.children?.forEach((node) => {
+                totalPesos += node.pesos[legenda];
+            });
+            data["soma"] = totalPesos
+            data["Nó pai"] = noEmEdicao.pesos[legenda]
+            dataSet.data.push(data);
+        });
+        return dataSet;
+    }
 }
