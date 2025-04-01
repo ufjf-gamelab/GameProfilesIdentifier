@@ -94,20 +94,29 @@ export class DataGenerator {
     getSumChildrenDataSet() {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
         const dataSet:dataSet = {
-            dataKeys: ["Nó pai","soma"],
+            dataKeys: ["soma"],
             data: [],
         };
         this.#motivacoesKeywords.forEach((legenda) => {
             const data: { [key: string]: any } = { subtitle: legenda };
             let totalPesos = 0;
-            console.log(noEmEdicao.children);
             noEmEdicao.children?.forEach((node) => {
                 totalPesos += node.pesos[legenda];
+                data[node.name] = node.pesos[legenda];
+
+                dataSet.dataKeys.push(legenda);                
+
             });
             data["soma"] = totalPesos
-            data["Nó pai"] = noEmEdicao.pesos[legenda]
+
             dataSet.data.push(data);
+
         });
+
+       
+        dataSet.dataKeys = noEmEdicao.children.map((node) => node.name);
+        console.log(dataSet);
+        dataSet.dataKeys.push("soma")
         return dataSet;
     }
 }
