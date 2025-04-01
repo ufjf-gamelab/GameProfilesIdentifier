@@ -10,16 +10,15 @@ import { Button } from "@/components/ui/button";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
-  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode";
+  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode" | "averageChildren";
 };
 
 function Resultado({ personasTree, actualResult }: ResultadoProps) {
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
-  const selectedDataset = dataGenerator.getSelectedDataSet();
-  console.log("abosoluteDataset", abosoluteDataset);
-  console.log("selectedDataset", selectedDataset);
-  console.log("avaregeDataSet", dataGenerator.getAvaregeDataSet());
+  const selectedDataset = dataGenerator.getAbsoluteSelectedDataSet();
+  const averageChildrenDataset = dataGenerator.getAvaregeChildrenDataSet();
+  console.log(averageChildrenDataset);
   const avaregeDataSet = dataGenerator.getAvaregeDataSet();
   const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (
@@ -59,7 +58,14 @@ function Resultado({ personasTree, actualResult }: ResultadoProps) {
                 personasNomes={selectedDataset.dataKeys}
               ></ComparativeChart>
             )}
-
+          {actualResult === "averageChildren" && (
+            <ComparativeChart
+              chartData={averageChildrenDataset.data}
+              titulo="Média dos filhos"
+              personasNomes={averageChildrenDataset.dataKeys}
+            ></ComparativeChart>
+          )}
+            
           </div>
         )}
       </div>

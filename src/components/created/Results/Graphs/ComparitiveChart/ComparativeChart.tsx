@@ -35,11 +35,11 @@ type ComparativeChartProps = {
     personasNomes: string[]
     chartData:any
 }
-export function ComparativeChart({personasNomes, chartData}: ComparativeChartProps) {
+export function ComparativeChart({titulo,personasNomes, chartData}: ComparativeChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Compare as Personas</CardTitle>
+        <CardTitle>{titulo}</CardTitle>
         <CardDescription>{
             personasNomes==null?"":personasNomes.join(", ")
             }</CardDescription>

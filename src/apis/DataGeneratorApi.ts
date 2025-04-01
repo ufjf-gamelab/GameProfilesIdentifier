@@ -32,7 +32,33 @@ export class DataGenerator {
         dataSet.dataKeys = nosSelecionados.map((node) => node.name);
         return dataSet;
     }
-    getSelectedDataSet() {
+    
+    getAvaregeDataSet() {
+        const jogo = this.#arvoreAnalisada.jogo
+        const nosSelecionados = this.#arvoreAnalisada.nosSelecionados
+        const nosAnalisados = nosSelecionados.filter((node) => {
+            if (node.name === "Jogo") return false;
+            return true;
+        });
+        const dataSet:dataSet= {
+            dataKeys: [],
+            data: ["jogo", "media"],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            let totalPesos = 0;
+            const data: { [key: string]: any } = { subtitle: legenda };
+            nosAnalisados.forEach((node) => {
+                console.log(node.pesos[legenda]);
+                totalPesos += node.pesos[legenda];
+            });
+            data["media"] = totalPesos / nosAnalisados.length;
+            data["jogo"] = jogo[legenda]
+            dataSet.data.push(data);
+        });
+
+        return dataSet;
+    }
+    getAbsoluteSelectedDataSet() {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
         const dataSet:dataSet = {
             dataKeys: [noEmEdicao.name],
@@ -46,30 +72,24 @@ export class DataGenerator {
         });
         return dataSet;
     }
-    getAvaregeDataSet() {
-        const jogo = this.#arvoreAnalisada.jogo
-        const nosSelecionados = this.#arvoreAnalisada.nosSelecionados
-        const nosAnalisados = nosSelecionados.filter((node) => {
-            if (node.name === "Jogo") return false;
-            return true;
-        });
-        const dataSet:dataSet= {
-            dataKeys: [],
+    getAvaregeChildrenDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: ["Nó pai","media"],
             data: [],
         };
         this.#motivacoesKeywords.forEach((legenda) => {
-            let totalPesos = 0;
             const data: { [key: string]: any } = { subtitle: legenda };
-            nosAnalisados.forEach((node) => {
-                console.log(node.pesos[legenda]);
+            let totalPesos = 0;
+            console.log(noEmEdicao.children);
+            noEmEdicao.children?.forEach((node) => {
                 totalPesos += node.pesos[legenda];
             });
-            data["media"] = totalPesos / nosAnalisados.length;
-            data["jogo"] = jogo[legenda]
+            data["media"] = totalPesos / noEmEdicao.children!.length;
+            data["Nó pai"] = noEmEdicao.pesos[legenda]
             dataSet.data.push(data);
         });
-        dataSet.dataKeys = ["jogo", "media"]
-
         return dataSet;
     }
+    
 }
