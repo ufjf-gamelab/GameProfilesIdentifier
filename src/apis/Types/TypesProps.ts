@@ -9,6 +9,12 @@ import { Motivações } from "../PersonasApi";
 
 export type SelectGameProps = {
     Features: GameFeatureProps[];
+    editPersonaName: (valor: string) => void;
+    mostrarNoEmEdicao: () => void;
+    mostrarMediaFilhos: () => void;
+    mostrarSomaFilhos: () => void;
+    mostrarDifFilhos: () => void;
+    namePersona: string;
     disabled : boolean;
   }
 

@@ -2,9 +2,6 @@ import { Tree } from "react-arborist";
 import "./PersonasTree.css";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { Dialog } from "@radix-ui/react-dialog";
 import { DialogCloseButton } from "./DialogCloseButton";
 import { PersonasApi } from "@/apis/PersonasApi";
 type PersonaProps = {
@@ -13,6 +10,9 @@ type PersonaProps = {
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: String) => void;
+  clonaNo: (uuid: String) => void;
+  setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
+
 };
 
 function PersonasTree({
@@ -21,23 +21,45 @@ function PersonasTree({
   pushNosSelecionados,
   removeNosSelecionados,
   mudaNoEditavel,
+  clonaNo,
+  setActualResult,
 }: PersonaProps) {
   return (
     <div>
+      <h1 className="PersonasTreeH1">Arvore de Personas</h1>
       <div className="menuBotoes">
         <DialogCloseButton callback={addPersonaHandler}></DialogCloseButton>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("Comparative");
+        }}>
+          Comparar Nós
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("Media");
+        }}>
+          Média dos Nós
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("qFoundry");
+        }}>
+          Analisar Jogo (Quantic Foundry)
+        </Button>
+        <Button className="TabBtn" variant="outline" onClick={() => {
+          setActualResult("steamGames");
+        }
+        }>
+          Jogos Semelhantes(Steam)
+        </Button>
       </div>
       <Tree
         className="Tree"
         initialData={arvoreApi.arvorePersonas}
         openByDefault={true}
-        height={1000}
         rowHeight={50}
         overscanCount={1}
         indent={24}
-        paddingTop={30}
-        paddingBottom={10}
-        padding={25 /* sets both */}
+        width={'100%'}
+ 
       >
         {(nodeProps) => (
           <Node
@@ -45,6 +67,7 @@ function PersonasTree({
             pushNosSelecionados={pushNosSelecionados}
             removeNosSelecionados={removeNosSelecionados}
             mudaNoEditavel={mudaNoEditavel}
+            clonaNo = {clonaNo}
             arvoreApi={arvoreApi}
           />
         )}
@@ -60,6 +83,7 @@ function Node({
   pushNosSelecionados,
   removeNosSelecionados,
   mudaNoEditavel,
+  clonaNo,
   arvoreApi,
   
 }: {
@@ -69,6 +93,7 @@ function Node({
   pushNosSelecionados: (uuid: String) => void;
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: string) => void;
+  clonaNo: (uuid: string) => void;
   arvoreApi:PersonasApi
 }) {
   const  selected = arvoreApi.areSelected(node.id)
@@ -83,17 +108,18 @@ function Node({
     
   };
   return (
-    <div className="Node" ref={dragHandle}>
-      <div className="flex-row" onClick={handleCheck}>
-          <div className="checkbox">
-            <Checkbox checked={selected} onChange={handleCheck} />
+    <div className="Node" ref={dragHandle} onClick={() => mudaNoEditavel(node.id)}>
+        <section className="NodeContent">
+          <Checkbox className="checkbox" checked={selected} onClick={handleCheck} />
+          <div style={style}>
+            {"🙂"}
+            {node.data.name}
           </div>
-        <div style={style}>
-          {"🙂"}
-          {node.data.name}
-        </div>
-      </div>
-      <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
+        </section>
+      <section className="NodeButtons">
+        <Button onClick={() => clonaNo(node.id)}>Excluir</Button>
+      </section>
+
     </div>
   );
 }

@@ -32,6 +32,7 @@ export class DataGenerator {
         dataSet.dataKeys = nosSelecionados.map((node) => node.name);
         return dataSet;
     }
+    
     getAvaregeDataSet() {
         const jogo = this.#arvoreAnalisada.jogo
         const nosSelecionados = this.#arvoreAnalisada.nosSelecionados
@@ -41,7 +42,7 @@ export class DataGenerator {
         });
         const dataSet:dataSet= {
             dataKeys: [],
-            data: [],
+            data: ["jogo", "media"],
         };
         this.#motivacoesKeywords.forEach((legenda) => {
             let totalPesos = 0;
@@ -54,8 +55,85 @@ export class DataGenerator {
             data["jogo"] = jogo[legenda]
             dataSet.data.push(data);
         });
-        dataSet.dataKeys = ["jogo", "media"]
 
         return dataSet;
     }
+    getAbsoluteSelectedDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: [noEmEdicao.name],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            dataSet.data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            dataSet.data.push(data);
+        });
+        return dataSet;
+    }
+    getAvaregeChildrenDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: ["Nó pai","media"],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            let totalPesos = 0;
+            console.log(noEmEdicao.children);
+            noEmEdicao.children?.forEach((node) => {
+                totalPesos += node.pesos[legenda];
+            });
+            data["media"] = totalPesos / noEmEdicao.children!.length;
+            data["Nó pai"] = noEmEdicao.pesos[legenda]
+            dataSet.data.push(data);
+        });
+        return dataSet;
+    }
+    getSumChildrenDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: ["soma"],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            let totalPesos = 0;
+            noEmEdicao.children?.forEach((node) => {
+                totalPesos += node.pesos[legenda];
+                data[node.name] = node.pesos[legenda];
+
+                dataSet.dataKeys.push(legenda);                
+
+            });
+            data["soma"] = totalPesos
+
+            dataSet.data.push(data);
+
+        });
+
+       
+        dataSet.dataKeys = noEmEdicao.children.map((node) => node.name);
+        console.log(dataSet);
+        dataSet.dataKeys.push("soma")
+        return dataSet;
+    }
+    getDiffChildrenDataSet() {
+        const nosSelecionados = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: [],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            nosSelecionados.children.forEach((node) => {
+                data[node.name] = node.pesos[legenda];
+            });
+            dataSet.data.push(data);
+        });
+        dataSet.dataKeys = nosSelecionados.children.map((node) => node.name);
+        return dataSet;
+    }
+        
 }

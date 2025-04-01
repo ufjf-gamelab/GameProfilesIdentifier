@@ -1,70 +1,86 @@
 import "./Resultado.css";
-import {  PersonasApi } from "@/apis/PersonasApi";
+import { PersonasApi } from "@/apis/PersonasApi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
 import { VictoryChart } from "./Graphs/VictoryChart/VictoryChart";
 import SteamGameApi from "../SteamGameApi/SteamGameApi";
 import { DataGenerator } from "@/apis/DataGeneratorApi";
+import { Button } from "@/components/ui/button";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
+  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode" | "averageChildren" | "sumChildren" | "diffChildren";
 };
 
-function Resultado({ personasTree }: ResultadoProps) {
+function Resultado({ personasTree, actualResult }: ResultadoProps) {
   const dataGenerator = new DataGenerator(personasTree);
   const abosoluteDataset = dataGenerator.getAbsoluteDataSet();
+  const selectedDataset = dataGenerator.getAbsoluteSelectedDataSet();
+  const averageChildrenDataset = dataGenerator.getAvaregeChildrenDataSet();
+  const sumChildrenDataset = dataGenerator.getSumChildrenDataSet();
+  const diffChildrenDataset = dataGenerator.getDiffChildrenDataSet();
   const avaregeDataSet = dataGenerator.getAvaregeDataSet();
   const gameValues = personasTree.arvorePersonas[0].pesos;	
   return (
     <div className="ResultadoCtn">
-      <h2>Resultado</h2>
-      <Tabs defaultValue="Comparative" className="tabLayouyt">
-        <div className="Graphs">
-          <TabsContent className="space-y-2" value="Comparative">
-            {!!abosoluteDataset && (
+        {!!abosoluteDataset && (
+          <div className="Graphs">
+            {actualResult === "Comparative" && (
               <ComparativeChart
                 chartData={abosoluteDataset.data}
-                titulo="Comparativo"
+                titulo="Comparativo dos Nós Selecionados"
                 personasNomes={abosoluteDataset.dataKeys}
               ></ComparativeChart>
             )}
-          </TabsContent>
-          <TabsContent className="space-y-2" value="qFoundry">
-            {!!abosoluteDataset && (
+            {actualResult === "Media" && (
+              <ComparativeChart
+                chartData={avaregeDataSet.data}
+                titulo="Média dos Nós Selecionados" 
+                personasNomes={avaregeDataSet.dataKeys}
+              ></ComparativeChart>
+            )}
+            {actualResult === "qFoundry" && (
               <VictoryChart
                 gameValues={gameValues}
               ></VictoryChart>
             )}
-          </TabsContent>
-          <TabsContent className="space-y-2" value="Media">
-            {!!abosoluteDataset && (
+            {actualResult === "steamGames" && (
+              <SteamGameApi
+                jogo={personasTree.arvorePersonas[0]}
+              ></SteamGameApi>
+            )}
+            {actualResult === "SelectedNode" && (
               <ComparativeChart
-                chartData={avaregeDataSet.data}
-                titulo="Comparativo"
-                personasNomes={avaregeDataSet.dataKeys}
+                chartData={selectedDataset.data}
+                titulo="Nó Selecionado"
+                personasNomes={selectedDataset.dataKeys}
               ></ComparativeChart>
             )}
-          </TabsContent>
-          <TabsContent className="space-y-2" value="steamGames">
-            <SteamGameApi jogo={personasTree.arvorePersonas[0]}/>
-          </TabsContent>
-        </div>
-        <TabsList className="OperationsPanel">
-          <TabsTrigger className="TabBtn" value="Comparative">
-            Comparar Personas
-          </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="Media">
-            Média
-          </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="qFoundry">
-            QuanticFoundryPersonas
-          </TabsTrigger>
-          <TabsTrigger className="TabBtn" value="steamGames">
-            Steam Games
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
+          {actualResult === "averageChildren" && (
+            <ComparativeChart
+              chartData={averageChildrenDataset.data}
+              titulo="Média dos filhos"
+              personasNomes={averageChildrenDataset.dataKeys}
+            ></ComparativeChart>
+          )}
+            {actualResult === "sumChildren" && (
+            <ComparativeChart
+              chartData={sumChildrenDataset.data}
+              titulo="Soma dos filhos"
+              personasNomes={sumChildrenDataset.dataKeys}
+            ></ComparativeChart>
+          )}
+            {actualResult === "diffChildren" && (
+              <ComparativeChart
+                chartData={diffChildrenDataset.data}
+                titulo="Comparação dos filhos"
+                personasNomes={diffChildrenDataset.dataKeys}
+              ></ComparativeChart>
+            )}
+          </div>
+        )}
+
     </div>
   );
 }

@@ -1,18 +1,45 @@
+import { Button } from "@/components/ui/button";
 import "./GameFeaturesPicker.css";
 
 import GameFeature from "./gameFeature/gameFeature";
 import {  SelectGameProps } from "@/apis/Types/TypesProps";
+import { DialogCloseButton } from "../PersonasTree/DialogCloseButton";
+import { DialogNameButton } from "./DialogNameButton";
 
 
 
-function GameFeaturesPicker({ Features,disabled }: SelectGameProps) {
+function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,mostrarNoEmEdicao, mostrarMediaFilhos, mostrarSomaFilhos,mostrarDifFilhos}: SelectGameProps) {
   if(!disabled){
   return (
     (
       <div className="GameSelectCtn">
-        <h2>
-            Ao selecionar os Motivações do seu jogo abaixo, um grafico será gerado com o resultado da taxa de agradabilidade estimada para cada perfil de jogador.
-        </h2>
+        <section className="editPersonaName">
+          <h1>Nó em edição: {namePersona}</h1>
+         
+
+        </section>
+        <section className="GameSelectCtn__btns">
+
+          <Button  variant={"outline"} onClick={
+            () => mostrarMediaFilhos()
+          }>
+            Média dos filhos
+          </Button>
+          <Button  variant={"outline"}onClick={
+            () => mostrarSomaFilhos()
+          }>
+            Soma dos filhos
+          </Button>
+          <Button  variant={"outline"}onClick={
+            () => mostrarDifFilhos()
+          }>
+            Comparar filhos
+          </Button>
+          <Button  variant={"outline"}onClick={() => mostrarNoEmEdicao()}>Valores absolutos</Button>
+          <DialogNameButton callback={editPersonaName}></DialogNameButton>
+
+        </section>
+
         <section>
           <ul>
             {Features.map((feature, index) => (
