@@ -8,7 +8,7 @@ import { DialogNameButton } from "./DialogNameButton";
 
 
 
-function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,mostrarNoEmEdicao, mostrarMediaFilhos, mostrarSomaFilhos}: SelectGameProps) {
+function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,mostrarNoEmEdicao, mostrarMediaFilhos, mostrarSomaFilhos,mostrarDifFilhos}: SelectGameProps) {
   if(!disabled){
   return (
     (
@@ -34,6 +34,11 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
             () => mostrarSomaFilhos()
           }>
             soma dos filhos
+          </Button>
+          <Button onClick={
+            () => mostrarDifFilhos()
+          }>
+            diferença dos filhos
           </Button>
           <Button onClick={() => mostrarNoEmEdicao()}>valores absolutos</Button>
         </section>

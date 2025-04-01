@@ -79,6 +79,9 @@ function App() {
                   mostrarSomaFilhos={() => {
                     setActualResult('sumChildren');
                   }}
+                  mostrarDifFilhos={() => {
+                    setActualResult('diffChildren');
+                  }}
                   namePersona={selectedNode?.name}
                   disabled={selectedNode === undefined}
                 />

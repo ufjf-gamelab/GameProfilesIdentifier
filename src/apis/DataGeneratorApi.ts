@@ -119,4 +119,21 @@ export class DataGenerator {
         dataSet.dataKeys.push("soma")
         return dataSet;
     }
+    getDiffChildrenDataSet() {
+        const nosSelecionados = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: [],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            nosSelecionados.children.forEach((node) => {
+                data[node.name] = node.pesos[legenda];
+            });
+            dataSet.data.push(data);
+        });
+        dataSet.dataKeys = nosSelecionados.children.map((node) => node.name);
+        return dataSet;
+    }
+        
 }
