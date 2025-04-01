@@ -35,7 +35,7 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
           }>
             Comparar filhos
           </Button>
-          <Button  variant={"outline"}onClick={() => mostrarNoEmEdicao()}>valores absolutos</Button>
+          <Button  variant={"outline"}onClick={() => mostrarNoEmEdicao()}>Valores absolutos</Button>
           <DialogNameButton callback={editPersonaName}></DialogNameButton>
 
         </section>
