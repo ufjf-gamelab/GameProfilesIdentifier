@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
-  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode";
+  actualResult: "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode" | "averageChildren";
 };
 
 function Resultado({ personasTree, actualResult }: ResultadoProps) {
@@ -27,7 +27,7 @@ function Resultado({ personasTree, actualResult }: ResultadoProps) {
       <div className="TabLayout">
         {!!abosoluteDataset && (
           <div className="=graphs">
-            {/* {actualResult === "Comparative" && (
+            {actualResult === "Comparative" && (
               <ComparativeChart
                 chartData={abosoluteDataset.data}
                 titulo="Comparativo"
@@ -57,12 +57,15 @@ function Resultado({ personasTree, actualResult }: ResultadoProps) {
                 titulo="Nó Selecionado"
                 personasNomes={selectedDataset.dataKeys}
               ></ComparativeChart>
-            )} */}
+            )}
+          {actualResult === "averageChildren" && (
             <ComparativeChart
               chartData={averageChildrenDataset.data}
               titulo="Média dos filhos"
               personasNomes={averageChildrenDataset.dataKeys}
             ></ComparativeChart>
+          )}
+            
           </div>
         )}
       </div>
