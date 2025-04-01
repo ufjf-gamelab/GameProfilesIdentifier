@@ -108,7 +108,7 @@ function Node({
     
   };
   return (
-    <div className="Node" ref={dragHandle}>
+    <div className="Node" ref={dragHandle} onClick={() => mudaNoEditavel(node.id)}>
         <section className="NodeContent">
           <Checkbox className="checkbox" checked={selected} onClick={handleCheck} />
           <div style={style}>
@@ -117,8 +117,7 @@ function Node({
           </div>
         </section>
       <section className="NodeButtons">
-        <Button onClick={() => mudaNoEditavel(node.id)}>🖋️</Button>
-        <Button onClick={() => clonaNo(node.id)}>🟥</Button>
+        <Button onClick={() => clonaNo(node.id)}>Excluir</Button>
       </section>
 
     </div>

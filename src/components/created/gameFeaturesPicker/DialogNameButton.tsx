@@ -23,7 +23,7 @@ export function DialogNameButton({callback}: {callback: (valor:string) => void})
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">🖋️</Button>
+        <Button >Mudar Nome</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
