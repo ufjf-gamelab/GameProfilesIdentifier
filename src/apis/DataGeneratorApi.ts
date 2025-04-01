@@ -32,20 +32,7 @@ export class DataGenerator {
         dataSet.dataKeys = nosSelecionados.map((node) => node.name);
         return dataSet;
     }
-    getSelectedDataSet() {
-        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
-        const dataSet:dataSet = {
-            dataKeys: [noEmEdicao.name],
-            data: [],
-        };
-        this.#motivacoesKeywords.forEach((legenda) => {
-            const data: { [key: string]: any } = { subtitle: legenda };
-            dataSet.data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
-            data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
-            dataSet.data.push(data);
-        });
-        return dataSet;
-    }
+    
     getAvaregeDataSet() {
         const jogo = this.#arvoreAnalisada.jogo
         const nosSelecionados = this.#arvoreAnalisada.nosSelecionados
@@ -70,6 +57,38 @@ export class DataGenerator {
         });
         dataSet.dataKeys = ["jogo", "media"]
 
+        return dataSet;
+    }
+    getAbsoluteSelectedDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: [noEmEdicao.name],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            dataSet.data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            data[noEmEdicao.name] = noEmEdicao.pesos[legenda];
+            dataSet.data.push(data);
+        });
+        return dataSet;
+    }
+    getAvaregeChildrenDataSet() {
+        const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        const dataSet:dataSet = {
+            dataKeys: ["media"],
+            data: [],
+        };
+        this.#motivacoesKeywords.forEach((legenda) => {
+            const data: { [key: string]: any } = { subtitle: legenda };
+            let totalPesos = 0;
+            console.log(noEmEdicao.children);
+            noEmEdicao.children?.forEach((node) => {
+                totalPesos += node.pesos[legenda];
+            });
+            data["media"] = totalPesos / noEmEdicao.children!.length;
+            dataSet.data.push(data);
+        });
         return dataSet;
     }
 }
