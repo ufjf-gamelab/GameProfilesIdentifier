@@ -3,7 +3,6 @@ import "./GameFeaturesPicker.css";
 
 import GameFeature from "./gameFeature/gameFeature";
 import {  SelectGameProps } from "@/apis/Types/TypesProps";
-import { DialogCloseButton } from "../PersonasTree/DialogCloseButton";
 import { DialogNameButton } from "./DialogNameButton";
 
 
