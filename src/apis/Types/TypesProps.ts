@@ -12,6 +12,7 @@ export type SelectGameProps = {
     editPersonaName: (valor: string) => void;
     mostrarNoEmEdicao: () => void;
     mostrarMediaFilhos: () => void;
+    mostrarSomaFilhos: () => void;
     namePersona: string;
     disabled : boolean;
   }
