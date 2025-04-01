@@ -20,13 +20,17 @@ function GameFeaturesPicker({ Features,disabled,namePersona,editPersonaName,most
           } >
 
             <DialogNameButton callback={editPersonaName}></DialogNameButton>
-            <Button onClick={() => mostrarNoEmEdicao()}>👀</Button>
           </section>
 
         </section>
+        <section >
 
-        <h2>
-        </h2>
+          <Button>
+            média dos filhos
+          </Button>
+          <Button onClick={() => mostrarNoEmEdicao()}>mostrar valores</Button>
+        </section>
+
         <section>
           <ul>
             {Features.map((feature, index) => (
