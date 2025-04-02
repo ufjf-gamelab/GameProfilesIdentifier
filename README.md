@@ -7,6 +7,13 @@ Um app baseado nos perfis de jogadores da Quantic Foundry que facilita a determi
 * Estêvão Fiorillo
 
 ## Objetivos:
+**O Objetivo Principal** desta aplicação foi visar a facilitação da escolha e comparação de público alvo para projetos de jogos, facilitando a escolha de aspectos de game design que atraiam os perfis desejados.
+
+**Objetivos Secundários:**
+
+* Objetivo Secundario 1
+
+* Objetivo Secundario 2
 
 ## Funções Principais:
 
