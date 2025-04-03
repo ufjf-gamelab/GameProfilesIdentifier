@@ -11,6 +11,7 @@ type PersonaProps = {
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: String) => void;
   clonaNo: (uuid: String) => void;
+  deletaNo: (uuid: String) => void;
   setActualResult: (value: "Comparative" | "Media" | "qFoundry" | "steamGames") => void;
 
 };
@@ -22,6 +23,7 @@ function PersonasTree({
   removeNosSelecionados,
   mudaNoEditavel,
   clonaNo,
+  deletaNo,
   setActualResult,
 }: PersonaProps) {
   return (
@@ -47,6 +49,7 @@ function PersonasTree({
             removeNosSelecionados={removeNosSelecionados}
             mudaNoEditavel={mudaNoEditavel}
             clonaNo = {clonaNo}
+            deletaNo={arvoreApi.deletaNo}
             arvoreApi={arvoreApi}
           />
         )}
@@ -63,6 +66,7 @@ function Node({
   removeNosSelecionados,
   mudaNoEditavel,
   clonaNo,
+  deletaNo,
   arvoreApi,
   
 }: {
@@ -73,6 +77,7 @@ function Node({
   removeNosSelecionados: (uuid: String) => void;
   mudaNoEditavel: (uuid: string) => void;
   clonaNo: (uuid: string) => void;
+  deletaNo: (uuid: String) => void;
   arvoreApi:PersonasApi
 }) {
   const  selected = arvoreApi.areSelected(node.id)
@@ -96,7 +101,9 @@ function Node({
           </div>
         </section>
       <section className="NodeButtons">
-        <Button onClick={() => clonaNo(node.id)}>Excluir</Button>
+        <Button onClick={() => clonaNo(node.id)}>Clonar</Button>
+        <Button onClick={() => deletaNo(node.id)}>Excluir</Button> 
+
       </section>
 
     </div>
