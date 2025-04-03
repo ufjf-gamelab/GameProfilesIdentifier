@@ -14,9 +14,9 @@ import { Button } from "./components/ui/button.tsx";
 
 function App() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasApi());
-  type Results = "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode" | "averageChildren" | "sumChildren" | "diffChildren";
+  type Results = "Comparative" | "Media" | "qFoundry" | "steamGames" | "SelectedNode" | "averageChildren" | "sumChildren";
   const [actualResult, setActualResult] = useReducer<(state: Results, action: React.SetStateAction<Results>) => Results>(
-    (_, action) => {
+    (state, action) => {
       return action as Results;
     },
 

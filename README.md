@@ -1,42 +1,50 @@
-# Profile Planner
-Um app baseado nos perfis de jogadores da Quantic Foundry que facilita a determinação dos perfis ideais para um jogo em desenvolvimento.
+# React + TypeScript + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Contribuidores:
-* Marcelo Caniato Renhe
-* Igor de Oliveira Knop
-* Eduarda Pereira Mourão
-* Emerson Caneschi Coelho de Souza
-* Estêvão Fiorillo
-* Gabriel Aly Baraky
-* Miguel Dias
+Currently, two official plugins are available:
 
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Objetivos:
-**O Objetivo** desta aplicação é visar a facilitação da escolha e comparação de público alvo para projetos de jogos, melhorando a escolha de aspectos de game design que atraiam os perfis desejados. Estes são atingidos por meio de:
+## Expanding the ESLint configuration
 
-* Oferecimento de uma maneira simplificada de definir motivações dos jogadores e obter perfis destes no modelo da Quantic Foundry
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-* Métodos de comparação diversos entre os nós para melhor análise das motivações selecionadas, com destaque à verificação de jogos semelhantes na Steam
+- Configure the top-level `parserOptions` property like this:
 
-* Resultados objetivos obtidos a partir dos dados inseridos pelo usuário
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-## Como Utilizar:
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-1. Inicialmente, na tela inicial, o app cria um jogo principal. Neste, é possível adicionar personas com diferentes nomes no botão **+ Persona** 
-2. Ao clicar em cada persona, é possível editar as motivações de cada persona individualmente na aba a direita. Aqui, também é possível mudar o nome da persona, e comparar seus filhos de diversas formas.
-3. Após criar as personas, na barra da esquerda, é possível transformar uma persona em filha de outra persona ao arrastá-la.
-4. A partir destas, é possível não só comparar os nós selecionados, como também verificar os perfis que mais se encaixam neste jogo de acordo com a Quantic Foundry e alguns exemplos de jogos com mesma agradabilidabe na Steam
-
-
-## Referências
-
-1. BARAKY, G. A. O que motiva os jogadores? E o que te motiva a jogar? (Parte 1). 2023. Disponível em: https://www2.ufjf.br/inovagames/atividades/muro-de-texto/o-que-motiva-os-jogadores-e-o-que-te-motiva-a-jogar-parte-1
-
-2. BARTLE, R. A Self of Sense. 2003. Disponível em: https://mud.co.uk/richard/selfware.htm
-
-3. FOUNDRY, Q. Teste do Perfil de Jogador da Quantic Foundry. 2024. Disponível em: https://apps.quanticfoundry.com/surveys/start/gamerprofile/
-
-4. ROCHA, E. B. F. da; ABREU, M. D. de. O que motiva os jogadores? E o que te motiva a jogar? (Parte 3). 2024. Disponível em: https://www2.ufjf.br/inovagames/2024/10/10/o-que-motiva-os-jogadores-e-o-que-te-motiva-a-jogar-parte-3
-
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```

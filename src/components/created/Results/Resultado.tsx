@@ -1,10 +1,12 @@
 import "./Resultado.css";
 import { PersonasApi } from "@/apis/PersonasApi";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 import { ComparativeChart } from "./Graphs/ComparitiveChart/ComparativeChart";
 import { VictoryChart } from "./Graphs/VictoryChart/VictoryChart";
 import SteamGameApi from "../SteamGameApi/SteamGameApi";
 import { DataGenerator } from "@/apis/DataGeneratorApi";
+import { Button } from "@/components/ui/button";
 
 type ResultadoProps = {
   personasTree: PersonasApi;
