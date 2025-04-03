@@ -46,6 +46,9 @@ function App() {
                   clonaNo={(value) => {
                     dispatch({ type: "CLONA_PERSONA", value})
                   }}
+                  deletaNo={(value) => {
+                    dispatch({ type: "DELETA_PERSONA", value})
+                  }}
                   arvoreApi={estado}
                   setActualResult={
                     (value) => {

@@ -49,7 +49,7 @@ function PersonasTree({
             removeNosSelecionados={removeNosSelecionados}
             mudaNoEditavel={mudaNoEditavel}
             clonaNo = {clonaNo}
-            deletaNo={arvoreApi.deletaNo}
+            deletaNo={deletaNo}
             arvoreApi={arvoreApi}
           />
         )}
