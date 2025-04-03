@@ -11,7 +11,7 @@
     padding: 10px;
     width: 90%;
     flex-wrap: wrap;
-    overflow: scroll;
+    overflow: hidden;
 }
 .Tree{
     width: 100% !important;
