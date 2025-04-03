@@ -5,10 +5,10 @@ Um app baseado nos perfis de jogadores da Quantic Foundry que facilita a determi
 ## Contribuidores:
 * Marcelo Caniato Renhe
 * Igor de Oliveira Knop
-* Gabriel Aly Baraky
 * Eduarda Pereira Mourão
 * Emerson Caneschi Coelho de Souza
 * Estêvão Fiorillo
+* Gabriel Aly Baraky
 * Miguel Dias
 
 
