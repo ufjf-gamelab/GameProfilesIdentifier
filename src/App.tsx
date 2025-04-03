@@ -10,6 +10,7 @@ import {
 } from "@/apis/PersonasApi.ts";
 import { getActions } from "@/apis/ActionsApi.tsx";
 import { TreeReducer } from "./apis/TreeReduce.tsx";
+import { Button } from "./components/ui/button.tsx";
 
 function App() {
   const [estado, dispatch] = useReducer(TreeReducer, new PersonasApi());
@@ -59,6 +60,29 @@ function App() {
                   actualResult={actualResult}
                   >
                 </Resultado>
+                <div>
+                  <Button className="TabBtn" variant="outline" onClick={() => {
+                    setActualResult("Comparative");
+                  }}>
+                    Comparar Nós
+                  </Button>
+                  <Button className="TabBtn" variant="outline" onClick={() => {
+                    setActualResult("Media");
+                  }}>
+                    Média dos Nós
+                  </Button>
+                  <Button className="TabBtn" variant="outline" onClick={() => {
+                    setActualResult("qFoundry");
+                  }}>
+                    Analisar Jogo (Quantic Foundry)
+                  </Button>
+                  <Button className="TabBtn" variant="outline" onClick={() => {
+                    setActualResult("steamGames");
+                  }
+                  }>
+                    Jogos Semelhantes(Steam)
+                  </Button>
+                </div>
               </div>
 
               <aside>
