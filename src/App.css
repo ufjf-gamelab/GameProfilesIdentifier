@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 body{
   margin: 0;
@@ -11,9 +12,13 @@ body{
   height: 100vh;
   background-color: #ffffff;
 
-  font-family: "VT323", monospace;
+  /*font-family: "VT323", monospace;*/
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 
 }
 main{ 
@@ -86,11 +91,6 @@ main{
           justify-content: center;
           align-items: center;
           gap:.5em;
-
-          div{
-            display: flex;
-            gap: .5em;
-          }
       }
       aside{
           background-color: rgb(239, 239, 239);
