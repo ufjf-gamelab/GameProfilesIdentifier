@@ -31,3 +31,12 @@ Um app baseado nos perfis de jogadores da Quantic Foundry que facilita a determi
 
 
 ## Referências
+
+1. BARAKY, G. A. O que motiva os jogadores? E o que te motiva a jogar? (Parte 1). 2023. Disponível em: ⟨<www2.ufjf.br/inovagames/atividades/muro-de-texto/o-que-motiva-os-jogadores-e-o-que-te-motiva-a-jogar-parte-1>⟩.
+
+2. BARTLE, R. A Self of Sense. 2003. Disponível em: ⟨<https://mud.co.uk/richard/selfware.htm>⟩.
+
+3. FOUNDRY, Q. Teste do Perfil de Jogador da Quantic Foundry. 2024. Disponível em: ⟨<https://apps.quanticfoundry.com/surveys/start/gamerprofile/>⟩.
+
+4. ROCHA, E. B. F. da; ABREU, M. D. de. O que motiva os jogadores? E o que te motiva a jogar? (Parte 3). 2024. Disponível em: ⟨<www2.ufjf.br/inovagames/2024/10/10/o-que-motiva-os-jogadores-e-o-que-te-motiva-a-jogar-parte-3>⟩.
+
