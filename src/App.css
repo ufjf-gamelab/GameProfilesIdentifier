@@ -101,6 +101,9 @@ main{
           flex-direction: column;
           box-shadow:-2.5px -5px 10px rgb(92, 91, 91);
       }
+      aside::-webkit-scrollbar {
+        display: none;
+      }
   }
   
 }
