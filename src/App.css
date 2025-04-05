@@ -17,9 +17,6 @@ body{
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-
 }
 main{ 
   width: 100%;
@@ -84,18 +81,29 @@ main{
       .Results{
           /*grid-row: 1;
           grid-column: 2;*/
-          width: 100%;
+          box-sizing: border-box;
+          padding: 1.5em;
+          width: 50%;
           height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           gap:.5em;
+          font-size: .8rem;
+          Button{
+            font-size: 1em;
+          }
+      }
+      .results-buttons{
+        display: flex;
+        gap:.5em;
       }
       aside{
+          padding: 0px 1.5em;
           background-color: rgb(239, 239, 239);
           height: 100%;
-          width: 50%;
+          width: 25%;
           overflow-y: auto;
           display: flex;
           flex-direction: column;

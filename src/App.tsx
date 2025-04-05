@@ -63,7 +63,7 @@ function App() {
                   actualResult={actualResult}
                   >
                 </Resultado>
-                <div>
+                <div className="results-buttons">
                   <Button className="TabBtn" variant="outline" onClick={() => {
                     setActualResult("Comparative");
                   }}>
