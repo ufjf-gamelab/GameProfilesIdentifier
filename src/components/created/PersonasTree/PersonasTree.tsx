@@ -8,7 +8,7 @@ import { PersonasApi } from "@/apis/PersonasApi";
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faClone, faTrash } from '@fortawesome/free-solid-svg-icons'
 config.autoAddCss = false
 
 type PersonaProps = {
@@ -108,8 +108,8 @@ function Node({
           </div>
         </section>
       <section className="NodeButtons">
-        <Button onClick={() => clonaNo(node.id)}><FontAwesomeIcon icon={faThumbsUp} className="fa-fw" /></Button>
-        <Button onClick={() => deletaNo(node.id)}>🗑️</Button> 
+        <Button onClick={() => clonaNo(node.id)}><FontAwesomeIcon icon={faClone} /></Button>
+        <Button onClick={() => deletaNo(node.id)}><FontAwesomeIcon icon={faTrash} /></Button> 
 
       </section>
 
