@@ -24,7 +24,7 @@ function PersonasTree({
   mudaNoEditavel,
   clonaNo,
   deletaNo,
-  setActualResult,
+  //setActualResult,
 }: PersonaProps) {
   return (
     <div>
