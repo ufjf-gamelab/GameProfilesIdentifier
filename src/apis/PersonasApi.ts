@@ -64,18 +64,9 @@ export class PersonasApi implements PersonasTreeInterface {
     this.arvorePersonas[0].children.push(clonedPersona);
   }
   deletaNo(uuid: string): void {
-    const nodeToClone = this.findbyUUID(this.arvorePersonas[0], uuid);
-    if(nodeToClone?.name === "Jogo") return;
-    const cloneNode = (node: TreeData): TreeData => {
-      const clonedNode = new TreeData(node.name, { ...node.pesos });
-      if (node.children) {
-        clonedNode.children = node.children.map((child) => cloneNode(child));
-      }
-      return clonedNode;
-    };
-    if(!nodeToClone) return;
-    const clonedPersona = cloneNode(nodeToClone);
-    this.arvorePersonas[0].children.push(clonedPersona);
+    const nodeToDelete = this.findbyUUID(this.arvorePersonas[0], uuid);
+    if(nodeToDelete?.name === "Jogo") return;
+    this.arvorePersonas[0].children.filter(child => child.id !== uuid);
   }
   changePersonaNamee(uuid: string, novoNome: string): void {
     const node = this.findbyUUID(this.arvorePersonas[0], uuid);
