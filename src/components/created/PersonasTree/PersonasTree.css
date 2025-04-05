@@ -3,6 +3,8 @@
     margin: 0;
     padding-top: 15px;
     border-bottom: 3px solid gainsboro;
+    font-size: 1.5em;
+    text-align: center;
 }
 .menuBotoes{
     display: flex;
