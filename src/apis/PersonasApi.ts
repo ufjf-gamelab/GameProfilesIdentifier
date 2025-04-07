@@ -66,7 +66,7 @@ export class PersonasApi implements PersonasTreeInterface {
   deletaNo(uuid: string): void {
     const nodeToDelete = this.findbyUUID(this.arvorePersonas[0], uuid);
     if(nodeToDelete?.name === "Jogo") return;
-    this.arvorePersonas[0].children.filter(child => child.id !== uuid);
+    this.arvorePersonas[0].children = this.arvorePersonas[0].children.filter(child => child.id !== uuid);
   }
   changePersonaNamee(uuid: string, novoNome: string): void {
     const node = this.findbyUUID(this.arvorePersonas[0], uuid);

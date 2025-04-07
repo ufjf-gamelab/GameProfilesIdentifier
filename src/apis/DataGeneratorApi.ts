@@ -60,6 +60,7 @@ export class DataGenerator {
     }
     getAbsoluteSelectedDataSet() {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        if (noEmEdicao === null) return;
         const dataSet:dataSet = {
             dataKeys: [noEmEdicao.name],
             data: [],
@@ -74,6 +75,7 @@ export class DataGenerator {
     }
     getAvaregeChildrenDataSet() {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        if(noEmEdicao === null) return;
         const dataSet:dataSet = {
             dataKeys: ["Nó pai","media"],
             data: [],
@@ -93,6 +95,7 @@ export class DataGenerator {
     }
     getSumChildrenDataSet() {
         const noEmEdicao = this.#arvoreAnalisada.noEmEdicao
+        if(noEmEdicao === null) return;
         const dataSet:dataSet = {
             dataKeys: ["soma"],
             data: [],
@@ -121,6 +124,7 @@ export class DataGenerator {
     }
     getDiffChildrenDataSet() {
         const nosSelecionados = this.#arvoreAnalisada.noEmEdicao
+        if(nosSelecionados === null) return;
         const dataSet:dataSet = {
             dataKeys: [],
             data: [],
