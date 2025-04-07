@@ -107,11 +107,12 @@ function Node({
             {node.data.name}
           </div>
         </section>
-      <section className="NodeButtons">
-        <Button onClick={() => clonaNo(node.id)}><FontAwesomeIcon icon={faClone} /></Button>
-        <Button onClick={() => deletaNo(node.id)}><FontAwesomeIcon icon={faTrash} /></Button> 
-
-      </section>
+      {node.data.name !== "Jogo" ? 
+        <section className="NodeButtons">
+          <Button onClick={() => clonaNo(node.id)}><FontAwesomeIcon icon={faClone} /></Button>
+          <Button onClick={() => deletaNo(node.id)}><FontAwesomeIcon icon={faTrash} /></Button> 
+        </section> 
+      : null}
 
     </div>
   );
