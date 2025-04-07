@@ -82,15 +82,21 @@
 
 .GameSelectCtn__btns {
     display: flex;
+    flex-direction: row;
     justify-content: flex-start !important;
-    gap: 10px;
-    width: 90% !important;
+    gap: .5em;
+    column-gap: 5%;
+    width: 100% !important;
     padding: 0%;
     margin: 0%;
     height: auto;
     padding: 10px !important;
     border-radius: 5px;
     flex-wrap: wrap;
+
+    Button{
+        width: 45%;
+    }
     
 }
 
